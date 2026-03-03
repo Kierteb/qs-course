@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 12 — Pricing a Tender | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+  <style>
+    /* Capstone exercise overrides */
+    .capstone {
+      background: var(--bg-secondary);
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: var(--sp-8);
+      margin-top: var(--sp-8);
+    }
+    .capstone__header {
+      text-align: center;
+      padding-bottom: var(--sp-6);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--sp-6);
+    }
+    .capstone__badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: var(--text-xs);
+      padding: 4px 12px;
+      border-radius: 3px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .capstone__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin: 0 0 var(--sp-2);
+    }
+    .capstone__subtitle {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+    }
+    .capstone-section {
+      margin-bottom: var(--sp-6);
+    }
+    .capstone-section__title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--sp-2);
+      margin-bottom: var(--sp-4);
+    }
+    .capstone-score {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: var(--sp-4) var(--sp-6);
+      margin-top: var(--sp-6);
+      text-align: center;
+      display: none;
+    }
+    .capstone-score__number {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .capstone-score__label {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      margin-top: var(--sp-1);
+    }
+    .prelims-input-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--sp-3);
+      align-items: center;
+      padding: var(--sp-2) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .prelims-input-row label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    .prelims-input-row input {
+      width: 120px;
+      text-align: right;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-3) 0;
+      font-weight: 700;
+      border-top: 2px solid var(--border);
+      margin-top: var(--sp-3);
+    }
+    .total-row span:last-child {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 12</p>
+        <h1 class="module-header__title">Putting It Together: Pricing a Tender</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 8</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 12-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-12-01" data-chunk="12-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">The End-to-End Tender Pricing Process</h2>
+        <div class="chunk__body">
+          <p>Pricing a civil engineering tender is a structured process. Experienced estimators follow the same sequence every time — not because it is rigid, but because skipping steps causes costly errors. Here is the complete sequence you will follow in this module:</p>
+          <table class="rate-table">
+            <thead><tr><th>Step</th><th>Action</th><th>Output</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td>Read the BoQ, preambles, and specification</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Understanding of what is and isn't included in rates; list of queries</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Sequence the work — build a programme outline</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Construction order, resource plan, critical path</td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Price the measured works — section by section</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Unit rates for all BoQ items; section totals</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Build the Preliminaries section from first principles</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Class A total; time-related and fixed costs</td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Apply overhead recovery percentage</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Recovery of head office costs</td>
+              </tr>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>Tender adjudication — sense check and set profit</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Final tender price for submission</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">This module takes you through each step, then ends with a full capstone exercise where you price a complete civil and groundworks BoQ from scratch using everything you have learned.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-01"
+            onclick="handleMarkComplete('12-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 12-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-12-02" data-chunk="12-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Step 1: Read the BoQ and Preambles Before Pricing Anything</h2>
+        <div class="chunk__body">
+          <p>The single most important rule in tendering: <strong>read the preambles before pricing a single rate.</strong> The preambles define the contract-specific rules that overlay CESMM4.</p>
+          <p>When reading a new tender, work through this checklist:</p>
+          <ul class="content-list">
+            <li><strong>Coverage rules:</strong> what is and isn't included in each rate? Has excavation been removed from pipe rates (measured separately in Class E)?</li>
+            <li><strong>Measurement rules:</strong> are there project-specific departures from CESMM4 standard? (e.g., trench width measured at actual excavated width, not minimum)</li>
+            <li><strong>Specification references:</strong> where does the BoQ description reference the spec? Read those spec clauses — they impose real cost obligations.</li>
+            <li><strong>Provisional sums:</strong> which items are provisional and how are they to be valued?</li>
+            <li><strong>Dayworks schedule:</strong> what uplift percentages are stated for labour, plant, and materials?</li>
+            <li><strong>Errors and ambiguities:</strong> note anything unclear. Raise a query via the ITT process — do not silently assume.</li>
+          </ul>
+          <div class="callout callout--warning">
+            <strong>Queries close before tender.</strong> Most ITTs specify a query cut-off date (typically 5–7 working days before tender return). Miss this date and any ambiguities remain your risk. Set a calendar reminder when you receive each tender.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-02"
+            onclick="handleMarkComplete('12-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 12-03: Concept -->
+      <div class="chunk chunk--locked" id="chunk-12-03" data-chunk="12-03">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Step 2: Sequence the Work — Price in Construction Order</h2>
+        <div class="chunk__body">
+          <p>BoQ items are listed in CESMM4 class order — not construction order. Class E (Earthworks) comes before Class F (Concrete), which comes before Class R (Roads). But on site, the sequence might be: <em>topsoil strip → bulk dig → drainage → concrete bases → sub-base → surfacing.</em></p>
+          <p>Pricing in construction sequence reveals things that BoQ order hides:</p>
+          <ul class="content-list">
+            <li><strong>Programme duration:</strong> sequencing tells you how long the project takes — which sets your prelims duration.</li>
+            <li><strong>Resource clashes:</strong> can you run drainage and concrete simultaneously, or does one follow the other? Two concurrent gangs may need additional supervision priced.</li>
+            <li><strong>Critical path:</strong> which items must be complete before others can start? Delays on the critical path extend the whole project — and your time-related prelims.</li>
+            <li><strong>Temporary works sequencing:</strong> trench support, dewatering, and falsework may be needed at specific points. Missing these is easier when pricing in BoQ order.</li>
+          </ul>
+          <p>A simple bar chart (even hand-drawn) showing the key operations, their duration, and sequence is an invaluable pricing tool. It forces you to think like a contractor, not a BoQ processor.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-03"
+            onclick="handleMarkComplete('12-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 12-04: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-12-04" data-chunk="12-04">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Step 3: Pricing Measured Works — Earthworks and Drainage</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A BoQ extract has three measured works items. Using the methods from Modules 07 and 08, build the unit rates and section total from first principles.
+          </div>
+
+          <div class="worked-example__steps" id="steps-12-04">
+
+            <div class="step" id="step-12-04-1">
+              <button class="step__trigger" onclick="revealStep('12-04', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Bulk excavation rate build-up</span>
+              </button>
+              <div class="step__content">
+                <p>BoQ item: <em>"Excavation; material other than topsoil/rock; max depth 1–2m: 950 m³"</em></p>
+                <div class="step__formula">
+                  Excavator (13T, £832/day, 160 m³/day): £832 ÷ 160 = £5.20/m³<br>
+                  Disposal (4 wagons × £550, 200 m³ loose/day):<br>
+                  &nbsp;&nbsp;Haulage: £2,200 ÷ 200 loose m³ × 1.25 bulk = £13.75/m³ net<br>
+                  Gate fee (clay 1.7t/m³ × £10/t):               £17.00/m³ net<br>
+                  ─────────────────────────────────────────────────────────────<br>
+                  Unit rate:    £5.20 + £13.75 + £17.00 = £35.95/m³<br>
+                  Section total: 950 × £35.95 = £34,153
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-12-04-2">
+              <button class="step__trigger" disabled onclick="revealStep('12-04', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Drainage pipe rate build-up</span>
+              </button>
+              <div class="step__content">
+                <p>BoQ item: <em>"Pipe, uPVC 225mm nom. bore, depth 1.0–1.5m: 120 m"</em></p>
+                <div class="step__formula">
+                  Trench vol/m: 0.60w × 1.40d = 0.840 m³/m<br>
+                  Excavation:   0.840 × £12/m³           = £10.08/m<br>
+                  Disposal:     0.840 × £14/m³            = £11.76/m<br>
+                  Pipe supply:  225mm uPVC                = £22.00/m<br>
+                  Bedding:      0.240 m³/m × £51.48/m³    = £12.36/m<br>
+                  Backfill:     0.575 m³/m × £15/m³       = £ 8.63/m<br>
+                  Labour:       £19.43/m<br>
+                  ──────────────────────────────────────────────────<br>
+                  Unit rate:    £84.26/m<br>
+                  Section total: 120 × £84.26 = £10,111
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-12-04-3">
+              <button class="step__trigger" disabled onclick="revealStep('12-04', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Manhole rate</span>
+              </button>
+              <div class="step__content">
+                <p>BoQ item: <em>"Precast concrete manhole, 1200mm int. dia, depth 1.5–2.0m: 3 nr"</em></p>
+                <div class="step__formula">
+                  Supply (base + 2 rings + taper + F&amp;C + connections): £1,670<br>
+                  Excavation + disposal:   £146<br>
+                  Backfill:                £ 50<br>
+                  Labour:                  £420<br>
+                  ─────────────────────────────<br>
+                  Unit rate:   £2,286/nr (round to £2,300)<br>
+                  Section total: 3 × £2,300 = £6,900
+                </div>
+                <p style="margin-top:12px;">These three items sum to £34,153 + £10,111 + £6,900 = <strong>£51,164</strong> for this extract. Every rate was built from first principles — not from memory or rough estimates.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-04" disabled
+            onclick="handleMarkComplete('12-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 12-05: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-12-05" data-chunk="12-05">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Steps 4–6: Prelims, Overheads, and Final Tender Price</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            Total measured works: £485,000. Project duration: 18 weeks. Build the prelims, apply OH&amp;P, and arrive at the final tender price.
+          </div>
+
+          <div class="worked-example__steps" id="steps-12-05">
+
+            <div class="step" id="step-12-05-1">
+              <button class="step__trigger" onclick="revealStep('12-05', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Build prelims (18-week project)</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Time-related (18 weeks):<br>
+                  Site agent (£1,600/wk):   18 × £1,600 = £28,800<br>
+                  Site foreman (£1,400/wk): 18 × £1,400 = £25,200<br>
+                  Welfare + office (£600/wk): 18 × £600 = £10,800<br>
+                  Security fence (£350/wk): 18 × £350  = £ 6,300<br>
+                  <br>
+                  Fixed costs:<br>
+                  Plant mob/demob:              £ 3,000<br>
+                  CAR + PL insurance:           £ 5,500<br>
+                  Signage + set-up:             £ 1,500<br>
+                  ─────────────────────────────────────<br>
+                  <strong>Prelims total:              £81,100</strong>
+                </div>
+                <p style="margin-top:12px;">£81,100 is 16.7% of measured works (£485,000) — within the expected 8–18% range. This validates the prelims build-up.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-12-05-2">
+              <button class="step__trigger" disabled onclick="revealStep('12-05', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Apply overhead recovery (9%)</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Measured works:    £485,000<br>
+                  Prelims:           £ 81,100<br>
+                  Sub-total:         £566,100<br>
+                  <br>
+                  Overhead (9%):     £566,100 × 0.09 = £50,949<br>
+                  ────────────────────────────────────────────<br>
+                  Sub-total + OH:    £617,049
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-12-05-3">
+              <button class="step__trigger" disabled onclick="revealStep('12-05', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Adjudication: set profit and submit</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Sub-total + OH:    £617,049<br>
+                  Profit (4.5%):     £617,049 × 0.045 = £27,767<br>
+                  ────────────────────────────────────────────<br>
+                  <strong>Tender price:      £644,816</strong><br>
+                  Round to:          £645,000
+                </div>
+                <p style="margin-top:12px;">At adjudication, the team reviewed three key risks: ground conditions (medium — some GI data), services (low — clear drawings), and programme (low — no critical constraints). Risk-adjusted margin: 4.5% accepted. Final tender price: £645,000.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-05" disabled
+            onclick="handleMarkComplete('12-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 12-06: Concept -->
+      <div class="chunk chunk--locked" id="chunk-12-06" data-chunk="12-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Step 6: Sense-Checking Your Price Before Submission</h2>
+        <div class="chunk__body">
+          <p>Never submit a tender without a sense check. A systematic review takes 30–60 minutes and can catch errors that would cost tens of thousands of pounds on site.</p>
+          <p><strong>Benchmark rate review:</strong> for each major section, check your all-in rate against expected ranges:</p>
+          <table class="rate-table">
+            <thead><tr><th>Section</th><th>Benchmark range</th><th>Flag if outside</th></tr></thead>
+            <tbody>
+              <tr><td>Bulk excavation &amp; dispose</td><td style="color:var(--accent);">£20–40/m³</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&lt;£18 or &gt;£50 — investigate</td></tr>
+              <tr><td>150mm uPVC pipe, 1m depth</td><td style="color:var(--accent);">£45–70/m</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&lt;£40 — likely missing excavation or bedding</td></tr>
+              <tr><td>300mm concrete pipe, 2m depth</td><td style="color:var(--accent);">£120–180/m</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&lt;£100 — missing disposal or bedding cost</td></tr>
+              <tr><td>1200mm manhole, 2m deep</td><td style="color:var(--accent);">£1,800–2,800</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&lt;£1,500 — missing connections or excavation</td></tr>
+              <tr><td>Type 1 sub-base 250mm</td><td style="color:var(--accent);">£18–28/m²</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&lt;£15 — check material density conversion</td></tr>
+              <tr><td>Concrete slab C25/30 200mm (all-in)</td><td style="color:var(--accent);">£50–75/m²</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&lt;£45 — check mesh and formwork included</td></tr>
+              <tr><td>Prelims as % of measured works</td><td style="color:var(--accent);">8–18%</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&lt;8% — build-up is probably incomplete</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout--info">
+            <strong>Construction Act 1996 — Payment:</strong> Check the contract's payment interval (typically monthly). If you have significant upfront costs (mob/demob, establishment), your cashflow is negative in weeks 1–4. This financing cost is real. On contracts over £1M, consider whether your working capital assumptions are correct.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-06"
+            onclick="handleMarkComplete('12-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 12-07: Concept -->
+      <div class="chunk chunk--locked" id="chunk-12-07" data-chunk="12-07">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">The Construction Act 1996 — Your Payment Rights</h2>
+        <div class="chunk__body">
+          <p>The Housing Grants, Construction and Regeneration Act 1996 (as amended by the Local Democracy, Economic Development and Construction Act 2011) gives contractors four key payment protections. Know them — they protect your cashflow:</p>
+          <table class="rate-table">
+            <thead><tr><th>Notice</th><th>What it is</th><th>Timing</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Payment Notice</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Issued by the paying party within 5 days of the payment due date. States the sum due and basis of calculation.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Within 5 days of due date</td>
+              </tr>
+              <tr>
+                <td><strong>Default Payment Notice</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">If the payer fails to issue a Payment Notice, the payee (you) may issue their own Default Payment Notice for the sum they consider due.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">After payer fails to serve</td>
+              </tr>
+              <tr>
+                <td><strong>Pay Less Notice</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">If the payer intends to pay less than the notified sum, they must serve a Pay Less Notice by the prescribed period before the final payment date. Must state the basis and amount of any deduction.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Before final date for payment</td>
+              </tr>
+              <tr>
+                <td><strong>Adjudication</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Either party may refer any dispute to adjudication at any time. Adjudicator must reach a decision within 28 days (extendable to 42 days with referring party's consent). Decision is binding unless overturned by court.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Any time</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--warning">
+            <strong>If no Pay Less Notice is served</strong> — the payer must pay the full sum in the Payment Notice by the final date for payment. Non-payment entitles you to suspend work (after 7 days' notice) and refer to adjudication. These are statutory rights — they cannot be contracted out of.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-07"
+            onclick="handleMarkComplete('12-07')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 12-08: CAPSTONE EXERCISE -->
+      <div class="chunk chunk--locked" id="chunk-12-08" data-chunk="12-08">
+        <p class="chunk__type-label">Capstone Exercise</p>
+        <h2 class="chunk__title">Price a Complete Civil &amp; Groundworks Tender</h2>
+        <div class="chunk__body">
+
+          <div class="capstone">
+            <div class="capstone__header">
+              <div class="capstone__badge">Final Exercise</div>
+              <h2 class="capstone__title">Tender: Industrial Unit — Earthworks, Drainage &amp; Hardstanding</h2>
+              <p class="capstone__subtitle">
+                Use everything you have learned in this course. Price each section from first principles, build the prelims, then calculate the complete tender price. No hints. No partial answers. This is the real thing.
+              </p>
+            </div>
+
+            <!-- Project Brief -->
+            <div class="capstone-section">
+              <h3 class="capstone-section__title">Project Brief</h3>
+              <p>A new industrial unit on a brownfield site. Your scope covers all groundworks: earthworks, drainage, concrete, roads, and hardstanding. The contract is 20 weeks. You have obtained supplier and hire quotations as follows:</p>
+              <ul class="content-list" style="margin-top:8px;">
+                <li>13T excavator (dry hire): £500/day. Fuel: £108/day. Operator: £224/day. Output: 160 m³/day.</li>
+                <li>4 wagons × £550/day. Clay bulks 25%. Gate fee: £10/t. Clay density: 1.7 t/m³.</li>
+                <li>Drainage gang (ganger + 2 ops): £68/hr. 225mm pipe output: 25 m/day (1.5m depth). 1200mm MH output: 1/day.</li>
+                <li>uPVC 225mm pipe: £22/m. Bedding (10mm gravel): £51.48/m³. Backfill: £15/m³. Trench 0.6m wide × 1.5m deep.</li>
+                <li>1200mm precast MH (1.5–2m): supply £1,670 + excavation/backfill £196 + labour £420 = £2,286/nr.</li>
+                <li>Type 1 sub-base: £32/t delivered, 2.1 t/m³, 8% wastage, spread + compact £4.67/m².</li>
+                <li>C25/30 slab: £132/m³, labour £14/m³. A393 mesh: £8/m². Edge formwork: £40/m². Blinding C16/20: £120/m³ + £14/m³ labour.</li>
+                <li>DBM binder course 60mm: £14/m². SMA surface course 30mm: £11/m².</li>
+              </ul>
+            </div>
+
+            <!-- SECTION 1: Measured Works -->
+            <div class="capstone-section">
+              <h3 class="capstone-section__title">Section 1 — Measured Works</h3>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm); margin-bottom:12px;">Build each unit rate from first principles, then enter it below. ±15% tolerance.</p>
+
+              <table class="boq-table">
+                <thead>
+                  <tr>
+                    <th>Ref</th>
+                    <th>Description</th>
+                    <th>Unit</th>
+                    <th>Qty</th>
+                    <th>Your Rate (£)</th>
+                    <th>Total</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>E.1</td>
+                    <td>Excavation, bulk, material other than topsoil/rock, max depth 1–2m</td>
+                    <td>m³</td>
+                    <td>1200</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-e1" type="number" placeholder="£/m³" min="0" step="0.50"></td>
+                    <td id="boq-total-12-08-e1">—</td>
+                    <td id="boq-result-12-08-e1"></td>
+                  </tr>
+                  <tr>
+                    <td>I.1</td>
+                    <td>Pipe, uPVC 225mm nom. bore, depth 1.0–1.5m</td>
+                    <td>m</td>
+                    <td>150</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-i1" type="number" placeholder="£/m" min="0" step="1"></td>
+                    <td id="boq-total-12-08-i1">—</td>
+                    <td id="boq-result-12-08-i1"></td>
+                  </tr>
+                  <tr>
+                    <td>K.1</td>
+                    <td>Precast concrete manhole, 1200mm int. dia, depth 1.5–2.0m</td>
+                    <td>nr</td>
+                    <td>5</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-k1" type="number" placeholder="£/nr" min="0" step="10"></td>
+                    <td id="boq-total-12-08-k1">—</td>
+                    <td id="boq-result-12-08-k1"></td>
+                  </tr>
+                  <tr>
+                    <td>F.1</td>
+                    <td>Blinding concrete, C16/20, 75mm thick</td>
+                    <td>m³</td>
+                    <td>20</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-f1" type="number" placeholder="£/m³" min="0" step="1"></td>
+                    <td id="boq-total-12-08-f1">—</td>
+                    <td id="boq-result-12-08-f1"></td>
+                  </tr>
+                  <tr>
+                    <td>F.2</td>
+                    <td>Reinforced concrete, C25/30, ground slab 200mm</td>
+                    <td>m³</td>
+                    <td>160</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-f2" type="number" placeholder="£/m³" min="0" step="1"></td>
+                    <td id="boq-total-12-08-f2">—</td>
+                    <td id="boq-result-12-08-f2"></td>
+                  </tr>
+                  <tr>
+                    <td>G.1</td>
+                    <td>Fabric reinforcement, A393, ground slab</td>
+                    <td>m²</td>
+                    <td>800</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-g1" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                    <td id="boq-total-12-08-g1">—</td>
+                    <td id="boq-result-12-08-g1"></td>
+                  </tr>
+                  <tr>
+                    <td>R.1</td>
+                    <td>Type 1 sub-base, 250mm thick, spread and compact</td>
+                    <td>m²</td>
+                    <td>2000</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-r1" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                    <td id="boq-total-12-08-r1">—</td>
+                    <td id="boq-result-12-08-r1"></td>
+                  </tr>
+                  <tr>
+                    <td>R.2</td>
+                    <td>Binder course, DBM 60mm nominal thickness</td>
+                    <td>m²</td>
+                    <td>2000</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-r2" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                    <td id="boq-total-12-08-r2">—</td>
+                    <td id="boq-result-12-08-r2"></td>
+                  </tr>
+                  <tr>
+                    <td>R.3</td>
+                    <td>Surface course, SMA 30mm nominal thickness</td>
+                    <td>m²</td>
+                    <td>2000</td>
+                    <td><input class="boq-rate-input" id="boq-input-12-08-r3" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                    <td id="boq-total-12-08-r3">—</td>
+                    <td id="boq-result-12-08-r3"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <button class="btn btn--primary" id="boq-submit-12-08" onclick="gradeCapstoneSection()" style="margin-top:16px;">
+                Grade Measured Works
+              </button>
+              <div id="boq-feedback-12-08" class="boq-feedback-panel" style="display:none;"></div>
+            </div>
+
+            <!-- SECTION 2: Prelims -->
+            <div class="capstone-section" id="capstone-prelims-section" style="display:none;">
+              <h3 class="capstone-section__title">Section 2 — Preliminaries Build-Up</h3>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm); margin-bottom:12px;">
+                The contract is 20 weeks. Enter your time-related weekly costs and fixed costs to calculate the prelims total. The system will then calculate your full tender price.
+              </p>
+
+              <div class="prelims-input-row">
+                <label>Site agent/manager (£/week)</label>
+                <input class="boq-rate-input" id="prelim-agent" type="number" value="1600" min="0" step="100">
+              </div>
+              <div class="prelims-input-row">
+                <label>Site foreman (£/week)</label>
+                <input class="boq-rate-input" id="prelim-foreman" type="number" value="1400" min="0" step="100">
+              </div>
+              <div class="prelims-input-row">
+                <label>Welfare + office hire (£/week)</label>
+                <input class="boq-rate-input" id="prelim-welfare" type="number" value="600" min="0" step="50">
+              </div>
+              <div class="prelims-input-row">
+                <label>Other time-related costs (£/week)</label>
+                <input class="boq-rate-input" id="prelim-other" type="number" value="500" min="0" step="50">
+              </div>
+              <div class="prelims-input-row">
+                <label>Plant mob/demob (£ fixed)</label>
+                <input class="boq-rate-input" id="prelim-mob" type="number" value="3000" min="0" step="500">
+              </div>
+              <div class="prelims-input-row">
+                <label>Insurances &amp; bonds (£ fixed)</label>
+                <input class="boq-rate-input" id="prelim-insurance" type="number" value="6000" min="0" step="500">
+              </div>
+              <div class="prelims-input-row">
+                <label>Other fixed costs (£)</label>
+                <input class="boq-rate-input" id="prelim-otherfixed" type="number" value="1500" min="0" step="250">
+              </div>
+
+              <div class="prelims-input-row" style="margin-top:12px;">
+                <label>Overhead recovery (%)</label>
+                <input class="boq-rate-input" id="prelim-oh" type="number" value="9" min="0" max="30" step="0.5">
+              </div>
+              <div class="prelims-input-row">
+                <label>Profit margin (%)</label>
+                <input class="boq-rate-input" id="prelim-profit" type="number" value="4" min="0" max="20" step="0.5">
+              </div>
+
+              <button class="btn btn--primary" onclick="calculateFinalTender()" style="margin-top:16px;">
+                Calculate Final Tender Price
+              </button>
+            </div>
+
+            <!-- SECTION 3: Final Score -->
+            <div class="capstone-score" id="capstone-score">
+              <div class="capstone-score__number" id="capstone-score-number">—</div>
+              <div class="capstone-score__label">items within acceptable range</div>
+              <div id="capstone-tender-total" style="margin-top:16px; font-size:var(--text-lg); font-weight:700;"></div>
+              <p style="margin-top:12px; color:var(--text-secondary); font-size:var(--text-sm); max-width:480px; margin-left:auto; margin-right:auto;" id="capstone-summary-text"></p>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="12-08" disabled
+            onclick="handleMarkComplete('12-08')">&#10003; Complete the Course</button>
+        </div>
+      </div>
+
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Course Complete!</h2>
+        <p>You have completed all 12 modules of Practical QS for Civil Engineering &amp; Groundworks. You can now read and price a civil Bill of Quantities from first principles.</p>
+        <a href="../index.html" class="btn btn--primary">Return to Dashboard &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '12';
+  const CHUNK_LIST = ['12-01','12-02','12-03','12-04','12-05','12-06','12-07','12-08'];
+
+  const CHUNK_WE_CONFIG = {
+    '12-04': { totalSteps: 3 },
+    '12-05': { totalSteps: 3 },
+  };
+
+  // Capstone measured works config
+  const CAPSTONE_ITEMS = [
+    {
+      ref: 'e1', unit: 'm³', qty: 1200,
+      // Excav £5.20 + haulage £13.75 + gate £17 = £35.95
+      correctRate: 35.95, tolerance: 0.15,
+      explanation: 'Excavation £5.20/m³ (£832÷160) + haulage £13.75/m³ (wagons÷loose vol×bulking) + gate fee £17.00/m³ (1.7t×£10) = £35.95/m³.',
+    },
+    {
+      ref: 'i1', unit: 'm', qty: 150,
+      // Excav 0.84m³ × £12 = £10.08 + disposal 0.84 × £14 = £11.76 + pipe £22 + bedding 0.24×£51.48=£12.36 + backfill 0.575×£15=£8.63 + labour £19.43 = £84.26
+      correctRate: 84.26, tolerance: 0.15,
+      explanation: 'Excavation £10.08 + disposal £11.76 + pipe £22 + bedding £12.36 + backfill £8.63 + labour £19.43 = £84.26/m. Each component built from the provided rates.',
+    },
+    {
+      ref: 'k1', unit: 'nr', qty: 5,
+      correctRate: 2286, tolerance: 0.15,
+      explanation: 'Supply £1,670 + excavation/backfill £196 + labour £420 = £2,286/nr. All components provided in the brief.',
+    },
+    {
+      ref: 'f1', unit: 'm³', qty: 20,
+      // £120×1.03 + £14 = £138
+      correctRate: 137.60, tolerance: 0.15,
+      explanation: '£120/m³ × 1.03 (3% wastage) + £14 labour = £137.60/m³ for blinding.',
+    },
+    {
+      ref: 'f2', unit: 'm³', qty: 160,
+      // £132×1.03 + £14 = £149.96
+      correctRate: 149.96, tolerance: 0.15,
+      explanation: '£132/m³ × 1.03 (3% wastage) + £14 labour = £149.96/m³ for structural C25/30 slab.',
+    },
+    {
+      ref: 'g1', unit: 'm²', qty: 800,
+      correctRate: 8.00, tolerance: 0.15,
+      explanation: 'A393 mesh supply and fix: £8.00/m² as provided.',
+    },
+    {
+      ref: 'r1', unit: 'm²', qty: 2000,
+      // £32/t × 2.1 t/m³ × 1.08 wastage × 0.25m depth + £4.67 compact = £18.14 + £4.67 = £22.81
+      correctRate: 22.81, tolerance: 0.15,
+      explanation: 'Material: £32×2.1×1.08×0.250m = £18.14/m². Compact: £4.67/m². Total: £22.81/m².',
+    },
+    {
+      ref: 'r2', unit: 'm²', qty: 2000,
+      correctRate: 14.00, tolerance: 0.15,
+      explanation: 'DBM binder course 60mm supply and lay: £14/m² as provided.',
+    },
+    {
+      ref: 'r3', unit: 'm²', qty: 2000,
+      correctRate: 11.00, tolerance: 0.15,
+      explanation: 'SMA surface course 30mm supply and lay: £11/m² as provided.',
+    },
+  ];
+
+  let measuredWorksTotal = 0;
+  let capstoneSectionGraded = false;
+
+  function gradeCapstoneSection() {
+    const submitBtn = document.getElementById('boq-submit-12-08');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Graded'; }
+
+    let correctCount = 0;
+    let acceptableCount = 0;
+    const feedbackItems = [];
+    measuredWorksTotal = 0;
+
+    CAPSTONE_ITEMS.forEach(item => {
+      const input = document.getElementById('boq-input-12-08-' + item.ref);
+      const totalCell = document.getElementById('boq-total-12-08-' + item.ref);
+      const resultCell = document.getElementById('boq-result-12-08-' + item.ref);
+      if (!input) return;
+      input.disabled = true;
+
+      const userRate = parseFloat(input.value) || 0;
+      const result = evaluateRate(userRate, item.correctRate, item.tolerance);
+
+      if (result === 'correct') correctCount++;
+      if (result === 'acceptable') acceptableCount++;
+      input.classList.add(result);
+
+      if (totalCell) totalCell.textContent = userRate ? '£' + (userRate * item.qty).toFixed(0) : '—';
+      if (resultCell) {
+        resultCell.textContent = result === 'correct' ? '✓' : result === 'acceptable' ? '~' : '✗';
+        resultCell.style.color = result === 'correct' ? 'var(--success)' : result === 'acceptable' ? 'var(--warning)' : 'var(--error)';
+      }
+
+      measuredWorksTotal += userRate * item.qty;
+      feedbackItems.push({ result, item, userRate });
+    });
+
+    const feedbackPanel = document.getElementById('boq-feedback-12-08');
+    if (feedbackPanel) {
+      const inRange = correctCount + acceptableCount;
+      feedbackPanel.style.display = 'block';
+      feedbackPanel.innerHTML = `
+        <p class="boq-score">${inRange} / ${CAPSTONE_ITEMS.length} items within acceptable range</p>
+        <div class="boq-feedback">
+          ${feedbackItems.map(({ result, item, userRate }) => `
+            <div class="boq-feedback__item boq-feedback__item--${result}">
+              <strong>${item.ref.toUpperCase()}</strong> —
+              Your rate: <span class="text-mono">£${userRate.toFixed(2)}</span>
+              &nbsp;|&nbsp; Correct: <span class="text-mono">£${item.correctRate.toFixed(2)}</span><br>
+              <span style="color:var(--text-secondary); font-size:var(--text-sm);">${item.explanation}</span>
+            </div>
+          `).join('')}
+        </div>`;
+    }
+
+    capstoneSectionGraded = true;
+    document.getElementById('capstone-prelims-section').style.display = 'block';
+    document.getElementById('capstone-prelims-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function calculateFinalTender() {
+    const weeks = 20;
+    const agent = parseFloat(document.getElementById('prelim-agent').value) || 0;
+    const foreman = parseFloat(document.getElementById('prelim-foreman').value) || 0;
+    const welfare = parseFloat(document.getElementById('prelim-welfare').value) || 0;
+    const other = parseFloat(document.getElementById('prelim-other').value) || 0;
+    const mob = parseFloat(document.getElementById('prelim-mob').value) || 0;
+    const insurance = parseFloat(document.getElementById('prelim-insurance').value) || 0;
+    const otherfixed = parseFloat(document.getElementById('prelim-otherfixed').value) || 0;
+    const ohPct = (parseFloat(document.getElementById('prelim-oh').value) || 0) / 100;
+    const profitPct = (parseFloat(document.getElementById('prelim-profit').value) || 0) / 100;
+
+    const timeRelated = (agent + foreman + welfare + other) * weeks;
+    const fixed = mob + insurance + otherfixed;
+    const prelims = timeRelated + fixed;
+    const subTotal = measuredWorksTotal + prelims;
+    const oh = subTotal * ohPct;
+    const subTotalOH = subTotal + oh;
+    const profit = subTotalOH * profitPct;
+    const tenderTotal = subTotalOH + profit;
+
+    const prelimsPct = measuredWorksTotal > 0 ? (prelims / measuredWorksTotal * 100).toFixed(1) : 0;
+    const prelimOk = prelimsPct >= 8 && prelimsPct <= 18;
+
+    const scoreEl = document.getElementById('capstone-score');
+    const scoreNumEl = document.getElementById('capstone-score-number');
+    const tenderEl = document.getElementById('capstone-tender-total');
+    const summaryEl = document.getElementById('capstone-summary-text');
+
+    scoreEl.style.display = 'block';
+    scoreNumEl.textContent = '—';
+
+    tenderEl.innerHTML = `
+      <div style="text-align:left; max-width:400px; margin:16px auto 0; font-family:'IBM Plex Mono',monospace; font-size:var(--text-sm);">
+        Measured works:  £${measuredWorksTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}<br>
+        Prelims:         £${prelims.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')} (${prelimsPct}% of works)<br>
+        Sub-total:       £${subTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}<br>
+        Overhead:        £${oh.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}<br>
+        Profit:          £${profit.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}<br>
+        ─────────────────────────────────────────────<br>
+        <strong>Tender Total:    £${tenderTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',')}</strong>
+      </div>`;
+
+    const prelimNote = prelimOk
+      ? `Prelims at ${prelimsPct}% — within expected range (8–18%). ✓`
+      : `Prelims at ${prelimsPct}% — ${prelimsPct < 8 ? 'below minimum (8%). Review your supervision and establishment costs.' : 'above typical range (18%). Check for double-counting.'}`;
+
+    summaryEl.textContent = prelimNote;
+    scoreEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Enable complete button
+    const completeBtn = document.getElementById('complete-btn-12-08');
+    if (completeBtn) completeBtn.disabled = false;
+  }
+
+  initModulePage();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 09 — Concrete &amp; Structures Pricing | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 09</p>
+        <h1 class="module-header__title">Concrete &amp; Structures Pricing</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 8</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 09-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-09-01" data-chunk="09-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">The Three Elements of Every Concrete Item</h2>
+        <div class="chunk__body">
+          <p>Every in-situ concrete structure — from a blinding layer to a retaining wall — is built from three distinct cost elements that must be priced separately:</p>
+          <table class="rate-table">
+            <thead><tr><th>Element</th><th>What it covers</th><th>CESMM4 Class</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Formwork</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Temporary moulds (plywood, steel, proprietary systems) that hold fresh concrete in shape until it cures. Labour-intensive to erect and strike.</td>
+                <td>Class G</td>
+              </tr>
+              <tr>
+                <td><strong>Reinforcement</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Steel mesh (fabric) or bar (rebar) placed inside the formwork to provide tensile strength. Measured in tonnes (bar) or m² (mesh).</td>
+                <td>Class G</td>
+              </tr>
+              <tr>
+                <td><strong>Concrete</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Ready-mix supplied by truck, pumped or skip-poured, vibrated and cured. Measured in m³ by strength class.</td>
+                <td>Class F</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">Some concrete items use only one or two elements. Blinding uses concrete only (no formwork, no rebar). A ground slab uses concrete and mesh reinforcement, but minimal formwork (just edge shutters). A retaining wall uses all three.</p>
+          <div class="callout callout--warning">
+            <strong>Never price concrete as "just the m³."</strong> A BoQ item for "in-situ concrete, C25/30, walls" includes only the concrete supply — formwork and rebar are separate items. Miss them and you win the contract at a loss.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-01"
+            onclick="handleMarkComplete('09-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 09-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-09-02" data-chunk="09-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">CESMM4 Classes F and G — Concrete and Ancillaries</h2>
+        <div class="chunk__body">
+          <p>Civil concrete work is split between two CESMM4 classes:</p>
+          <table class="rate-table">
+            <thead><tr><th>Class</th><th>Covers</th><th>Unit</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--accent); font-weight:700;">F — In-Situ Concrete</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">The concrete itself — mass concrete, reinforced concrete, blinding, sundry. Described by mix or strength class, location (foundations, walls, slabs, etc.).</td>
+                <td>m³</td>
+              </tr>
+              <tr>
+                <td style="color:var(--accent); font-weight:700;">G — Concrete Ancillaries</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Formwork, reinforcement (bar and mesh), joints, finishes, post-tensioning. Each ancillary is a separate item.</td>
+                <td>m², m, t, nr</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">In practice, a ground slab BoQ section will contain: one or more Class F items (blinding m³, structural slab m³) and several Class G items (edge formwork m, fabric reinforcement m², expansion joints m). You price all of them.</p>
+          <div class="callout callout--info">
+            <strong>Concrete strength classes (EN 206):</strong>
+            C10/12 and C16/20 = lean mixes for blinding and non-structural fill. C25/30 = standard structural. C32/40 = higher-strength for sections under heavy load. The notation is characteristic cylinder strength / characteristic cube strength.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-02"
+            onclick="handleMarkComplete('09-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 09-03: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-09-03" data-chunk="09-03">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Pricing a Strip Foundation — Blinding and Structural Pour</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A strip foundation is 600mm wide × 300mm deep × 50m long. It sits on 75mm of C16/20 blinding. Price the two concrete Class F items. Ready-mix C16/20: £120/m³; C25/30: £132/m³. Labour gang (2 concretors at £22/hr all-in): 25 m³/day output. No pump required.
+          </div>
+
+          <div class="worked-example__steps" id="steps-09-03">
+
+            <div class="step" id="step-09-03-1">
+              <button class="step__trigger" onclick="revealStep('09-03', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Blinding concrete — volume and cost</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Blinding width:  0.600m (same as foundation width)<br>
+                  Blinding depth:  0.075m<br>
+                  Length:          50m<br>
+                  Volume:          0.600 × 0.075 × 50 = 2.25 m³<br>
+                  + 3% wastage:    2.25 × 1.03 = 2.32 m³<br>
+                  <br>
+                  Material cost:   2.32 × £120 = £278/item (≈ £123/m³ incl wastage)
+                </div>
+                <p style="margin-top:12px;">Blinding is a thin layer — small volume, low cost. Its purpose is a clean level surface, not structure. No reinforcement, no formwork (poured against the formation). Labour: typically included in the pour gang time at low productivity cost.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-09-03-2">
+              <button class="step__trigger" disabled onclick="revealStep('09-03', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Structural foundation concrete — volume and material cost</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Foundation width:  0.600m<br>
+                  Foundation depth:  0.300m<br>
+                  Length:            50m<br>
+                  Volume:            0.600 × 0.300 × 50 = 9.00 m³<br>
+                  + 3% wastage:      9.00 × 1.03 = 9.27 m³<br>
+                  <br>
+                  Material cost:     9.27 × £132 = £1,224
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-09-03-3">
+              <button class="step__trigger" disabled onclick="revealStep('09-03', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Labour cost per m³ and unit rates</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Gang: 2 × £22/hr × 8 hrs = £352/day<br>
+                  Output: 25 m³/day<br>
+                  Labour: £352 ÷ 25 = £14.08/m³<br>
+                  <br>
+                  Blinding unit rate:    £120 + £14.08 = £134/m³<br>
+                  Foundation unit rate:  £132 + £14.08 = £146/m³
+                </div>
+                <p style="margin-top:12px;">These are your Class F rates for the BoQ. Separately, Class G items (rebar, edge formwork) would be priced. A strip foundation typically requires minimal formwork (trench sides act as mould) but does need rebar or mesh if structurally reinforced.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-03" disabled
+            onclick="handleMarkComplete('09-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 09-04: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-09-04" data-chunk="09-04">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Ground-Bearing Slab — Full Build-Up Priced Out</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A 200mm ground-bearing slab covers 300 m². Build-up: 75mm blinding (C16/20), DPM, A393 mesh reinforcement, 200mm structural slab (C25/30). Price the complete build-up per m² of slab. Rates: C16/20 £120/m³; C25/30 £132/m³; A393 mesh £6.50/m²; DPM £1.20/m²; edge formwork £18/m (allow 70m perimeter). Labour pour gang output: 30 m²/hr for blinding, 25 m²/hr for slab.
+          </div>
+
+          <div class="worked-example__steps" id="steps-09-04">
+
+            <div class="step" id="step-09-04-1">
+              <button class="step__trigger" onclick="revealStep('09-04', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Blinding, DPM, and mesh cost per m²</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Blinding:   0.075m × £120/m³ × 1.03 = £9.27/m²<br>
+                  DPM:        £1.20/m²<br>
+                  A393 mesh:  £6.50/m² (supply only — fixing labour separate)<br>
+                  ─────────────────────────────────────────────────────<br>
+                  Sub-total:  £16.97/m²
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-09-04-2">
+              <button class="step__trigger" disabled onclick="revealStep('09-04', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Structural slab concrete cost per m²</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Slab concrete: 0.200m × £132/m³ × 1.03 = £27.19/m²<br>
+                  <br>
+                  Edge formwork: 70m × £18/m ÷ 300 m² = £4.20/m²<br>
+                  ──────────────────────────────────────────────<br>
+                  Concrete + formwork sub-total: £31.39/m²
+                </div>
+                <p style="margin-top:12px;">The edge formwork is a fixed cost (70 linear metres regardless of slab area). Dividing by the slab area converts it to a per-m² contribution. Smaller slabs have proportionally higher formwork costs per m².</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-09-04-3">
+              <button class="step__trigger" disabled onclick="revealStep('09-04', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Labour and total rate per m²</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Gang: 3 concretors × £22/hr = £66/hr<br>
+                  Blinding labour: £66 ÷ 30 m²/hr = £2.20/m²<br>
+                  Slab labour:     £66 ÷ 25 m²/hr = £2.64/m²<br>
+                  Mesh fixing:     allow £1.50/m² (2 operatives, 50 m²/hr)<br>
+                  <br>
+                  Total labour: £2.20 + £2.64 + £1.50 = £6.34/m²<br>
+                  <br>
+                  ─────────────────────────────────────────────────<br>
+                  Materials:     £16.97 + £31.39 = £48.36/m²<br>
+                  Labour:        £6.34/m²<br>
+                  <strong>Total build-up: £54.70/m²</strong>
+                </div>
+                <p style="margin-top:12px;">For a 300 m² slab, the total concrete section cost is approximately £16,400. This excludes: excavation and formation, sub-base below the blinding, and any power-float finishing. Always check the specification — some slabs specify a power-float finish which requires additional plant and labour.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-04" disabled
+            onclick="handleMarkComplete('09-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 09-05: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-09-05" data-chunk="09-05">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Concrete &amp; Reinforcement — Key Rates</h2>
+        <div class="chunk__body">
+          <table class="rate-table">
+            <thead><tr><th>Item</th><th>Unit</th><th>Indicative Rate</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Ready-mix C10 / blinding</td>
+                <td>m³</td>
+                <td style="color:var(--accent);">£100–120/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Lean mix, non-structural. 75mm typical for blinding.</td>
+              </tr>
+              <tr>
+                <td>Ready-mix C16/20</td>
+                <td>m³</td>
+                <td style="color:var(--accent);">£115–135/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Low-strength structural. Strip foundations, mass fill.</td>
+              </tr>
+              <tr>
+                <td>Ready-mix C25/30</td>
+                <td>m³</td>
+                <td style="color:var(--accent);">£125–145/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Standard structural. Ground slabs, foundations, walls.</td>
+              </tr>
+              <tr>
+                <td>Ready-mix C32/40</td>
+                <td>m³</td>
+                <td style="color:var(--accent);">£135–160/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Higher strength. Heavily loaded columns, piers, bridge abutments.</td>
+              </tr>
+              <tr>
+                <td>Concrete pump (per day)</td>
+                <td>day</td>
+                <td style="color:var(--accent);">£350–600/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Mobile pump. Fixed to Prelims or priced separately as a method-related charge.</td>
+              </tr>
+              <tr>
+                <td>A193 fabric reinforcement (light slab)</td>
+                <td>m²</td>
+                <td style="color:var(--accent);">£4.50–6.00/m²</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">193 kg/m² mesh. Light industrial floors and paths.</td>
+              </tr>
+              <tr>
+                <td>A393 fabric reinforcement (standard slab)</td>
+                <td>m²</td>
+                <td style="color:var(--accent);">£6.00–8.00/m²</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">393 kg/m² mesh. Standard industrial floor slab specification.</td>
+              </tr>
+              <tr>
+                <td>High-yield bar (T16–T32)</td>
+                <td>tonne</td>
+                <td style="color:var(--accent);">£900–1,200/t</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Supply and fix. Retaining walls, columns, heavily reinforced sections.</td>
+              </tr>
+              <tr>
+                <td>Sawn softwood formwork (walls, columns)</td>
+                <td>m²</td>
+                <td style="color:var(--accent);">£35–60/m²</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Supply, erect, strike, remove. Rate per m² of formed face. Higher for complex shapes.</td>
+              </tr>
+              <tr>
+                <td>Steel-faced proprietary formwork (reused)</td>
+                <td>m²</td>
+                <td style="color:var(--accent);">£20–40/m²</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Hire rate per use amortised over reuse cycles. Faster to erect than timber.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">Indicative UK 2025 market rates — verify locally before use in any live tender.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-05"
+            onclick="handleMarkComplete('09-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 09-06: Concept + Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-09-06" data-chunk="09-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Formwork — Types, Reuse, and Labour Content</h2>
+        <div class="chunk__body">
+          <p>Formwork is the most labour-intensive element of concrete work. The cost depends on: the type of formwork, its complexity, and how many times it can be reused on the same project.</p>
+          <table class="rate-table">
+            <thead><tr><th>Formwork Type</th><th>Best for</th><th>Reuse</th><th>Labour</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Plywood sheet on timber frames</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Walls, foundations, bespoke shapes</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">3–8 uses</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">High — cut and fix to size</td>
+              </tr>
+              <tr>
+                <td>Proprietary steel/aluminium panels</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Repetitive walls, columns</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">50–200+ uses</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Lower per use — quick assembly</td>
+              </tr>
+              <tr>
+                <td>Stay-in-place permanent formwork</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">RC slabs over voids, bridge decks</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">1 use (stays in)</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Low — no striking required</td>
+              </tr>
+              <tr>
+                <td>Earth-formed (no formwork)</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Blinding, strip foundations in clay</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">N/A</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Nil — formed against trimmed ground</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">The key measure is <strong>cost per m² of formed face</strong> — the contact area between formwork and fresh concrete. A 5m wall requires formwork to both faces = 2 × 5 × height m² of formed area. The BoQ will describe it as "Formwork, plane vertical surface, height 3–4.5m: X m²."</p>
+          <div class="callout callout--info">
+            <strong>Striking time</strong> is specified by the engineer — typically 12–48 hours for vertical formwork, depending on concrete gain and ambient temperature. Formwork that must stay longer reduces your reuse rate and may affect programme.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-06"
+            onclick="handleMarkComplete('09-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 09-07: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-09-07" data-chunk="09-07">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Retaining Wall — Why the Cost Per m³ Is Much Higher Than a Slab</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            An L-shaped retaining wall is 3m high × 0.3m thick × 20m long. Price the three cost elements: concrete (C25/30), two-sided formwork to wall face, and high-yield bar at 90 kg/m³. Rates: C25/30 £135/m³; formwork £45/m² (both faces); rebar £1,050/t supply and fix.
+          </div>
+
+          <div class="worked-example__steps" id="steps-09-07">
+
+            <div class="step" id="step-09-07-1">
+              <button class="step__trigger" onclick="revealStep('09-07', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Concrete volume and cost</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Volume:  0.3m × 3.0m × 20m = 18.0 m³<br>
+                  + 3% wastage: × 1.03 = 18.54 m³<br>
+                  <br>
+                  Concrete cost: 18.54 × £135 = £2,503
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-09-07-2">
+              <button class="step__trigger" disabled onclick="revealStep('09-07', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Formwork — two faces</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Each face:  3.0m × 20m = 60 m²<br>
+                  Both faces: 60 × 2 = 120 m²<br>
+                  <br>
+                  Formwork cost: 120 m² × £45/m² = £5,400
+                </div>
+                <p style="margin-top:12px;">The formwork cost (£5,400) exceeds the concrete cost (£2,503). This is typical for retaining walls and columns — the element is mostly surface, not volume. This is why retaining wall concrete is priced at £280–400/m³ all-in vs £55–80/m³ for a ground slab.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-09-07-3">
+              <button class="step__trigger" disabled onclick="revealStep('09-07', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Reinforcement and total</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Rebar: 18.0 m³ × 90 kg/m³ = 1,620 kg = 1.62 t<br>
+                  Rebar cost: 1.62 t × £1,050/t = £1,701<br>
+                  <br>
+                  ──────────────────────────────────────────<br>
+                  Concrete:         £ 2,503<br>
+                  Formwork:         £ 5,400<br>
+                  Reinforcement:    £ 1,701<br>
+                  ──────────────────────────────────────────<br>
+                  <strong>Total:            £ 9,604</strong><br>
+                  <strong>Per m³:           £9,604 ÷ 18 = £534/m³</strong>
+                </div>
+                <p style="margin-top:12px;">Compare £534/m³ to the ground slab at ~£55–80/m³ all-in. The difference is formwork. A wall has very high surface area relative to volume. This is why the engineer's choice of wall geometry has a major cost impact — a thinner, taller wall costs more per m³ than a shorter, thicker one even with identical concrete volume.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-07" disabled
+            onclick="handleMarkComplete('09-07')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 09-08: BoQ Rate Exercise -->
+      <div class="chunk chunk--locked" id="chunk-09-08" data-chunk="09-08">
+        <p class="chunk__type-label">BoQ Rate Exercise</p>
+        <h2 class="chunk__title">Price a Concrete BoQ Section</h2>
+        <div class="chunk__body">
+          <p>Using the rates provided, enter your unit rate for each concrete BoQ item. ±15% tolerance accepted.</p>
+
+          <div class="callout callout--info" style="margin-bottom:16px;">
+            <strong>Rates:</strong>
+            C16/20 ready-mix £120/m³; C25/30 £132/m³; Blinding labour £14/m³ (incl. pour);
+            Slab pour labour £14/m³; Formwork (plane vertical, to 1.5m) £40/m²;
+            A393 mesh supply and fix £8.00/m²; Rebar T16 supply and fix £1,050/t.
+            All concrete + 3% wastage.
+          </div>
+
+          <table class="boq-table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Qty</th>
+                <th>Rate (£)</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>F.1</td>
+                <td>Blinding concrete, C16/20, thickness 75mm</td>
+                <td>m³</td>
+                <td>15</td>
+                <td><input class="boq-rate-input" id="boq-input-09-08-f1" type="number" placeholder="£/m³" min="0" step="1"></td>
+                <td id="boq-total-09-08-f1">—</td>
+                <td id="boq-result-09-08-f1"></td>
+              </tr>
+              <tr>
+                <td>F.2</td>
+                <td>Reinforced concrete, C25/30, ground slab</td>
+                <td>m³</td>
+                <td>60</td>
+                <td><input class="boq-rate-input" id="boq-input-09-08-f2" type="number" placeholder="£/m³" min="0" step="1"></td>
+                <td id="boq-total-09-08-f2">—</td>
+                <td id="boq-result-09-08-f2"></td>
+              </tr>
+              <tr>
+                <td>G.1</td>
+                <td>Fabric reinforcement, A393, ground slab</td>
+                <td>m²</td>
+                <td>300</td>
+                <td><input class="boq-rate-input" id="boq-input-09-08-g1" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                <td id="boq-total-09-08-g1">—</td>
+                <td id="boq-result-09-08-g1"></td>
+              </tr>
+              <tr>
+                <td>G.2</td>
+                <td>Formwork, plane vertical surface, height not exceeding 1.5m</td>
+                <td>m²</td>
+                <td>80</td>
+                <td><input class="boq-rate-input" id="boq-input-09-08-g2" type="number" placeholder="£/m²" min="0" step="1"></td>
+                <td id="boq-total-09-08-g2">—</td>
+                <td id="boq-result-09-08-g2"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn--primary" id="boq-submit-09-08" onclick="submitBoQRateExercise('09-08')">
+            Submit &amp; Grade
+          </button>
+          <div id="boq-feedback-09-08" class="boq-feedback-panel" style="display:none;"></div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="09-08" disabled
+            onclick="handleMarkComplete('09-08')">&#10003; Complete</button>
+        </div>
+      </div>
+
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 09 Complete</h2>
+        <p>You can now price concrete sections including formwork and reinforcement. Next: roads and surfacing.</p>
+        <a href="module-10.html" class="btn btn--primary">Continue to Module 10 &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '09';
+  const CHUNK_LIST = ['09-01','09-02','09-03','09-04','09-05','09-06','09-07','09-08'];
+
+  const CHUNK_WE_CONFIG = {
+    '09-03': { totalSteps: 3 },
+    '09-04': { totalSteps: 3 },
+    '09-07': { totalSteps: 3 },
+  };
+
+  const CHUNK_BOQ_EXERCISE_CONFIG = {
+    '09-08': {
+      items: [
+        {
+          ref: 'f1',
+          description: 'Blinding concrete C16/20',
+          unit: 'm³',
+          qty: 15,
+          // £120 × 1.03 + £14 labour = £123.60 + £14 = £137.60/m³
+          correctRate: 137.60,
+          tolerance: 0.15,
+          explanation: '£120/m³ × 1.03 wastage = £123.60 + £14.00 labour = £137.60/m³. Blinding is a simple pour — no formwork or reinforcement required.',
+        },
+        {
+          ref: 'f2',
+          description: 'Reinforced concrete C25/30 ground slab',
+          unit: 'm³',
+          qty: 60,
+          // £132 × 1.03 + £14 labour = £135.96 + £14 = £149.96/m³ ≈ £150
+          correctRate: 149.96,
+          tolerance: 0.15,
+          explanation: '£132/m³ × 1.03 wastage = £135.96 + £14.00 pour labour = £149.96/m³. Note: mesh and edge formwork are separate BoQ items (G.1 and G.2).',
+        },
+        {
+          ref: 'g1',
+          description: 'A393 fabric reinforcement supply and fix',
+          unit: 'm²',
+          qty: 300,
+          correctRate: 8.00,
+          tolerance: 0.15,
+          explanation: 'A393 mesh supply and fix rate provided: £8.00/m². This is the Class G item for reinforcement — separate from the Class F concrete.',
+        },
+        {
+          ref: 'g2',
+          description: 'Formwork, plane vertical, height ≤1.5m',
+          unit: 'm²',
+          qty: 80,
+          correctRate: 40.00,
+          tolerance: 0.15,
+          explanation: 'Formwork rate provided: £40/m² for plane vertical surface up to 1.5m high. This covers supply, erect, strike, and remove of edge shutters.',
+        },
+      ],
+    },
+  };
+
+  initModulePage();
+</script>
+
+</body>
+</html>

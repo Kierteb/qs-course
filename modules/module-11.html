@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 11 — Preliminaries, Overheads &amp; Profit | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 11</p>
+        <h1 class="module-header__title">Preliminaries, Overheads &amp; Profit</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 8</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 11-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-11-01" data-chunk="11-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Why Prelims Are the Most Under-Priced Section in Civil Tendering</h2>
+        <div class="chunk__body">
+          <p>Preliminaries (CESMM4 Class A — General Items) cover the cost of running the site as a whole: welfare, supervision, temporary works, plant mobilisation, insurances, and bonds. They do not directly produce any permanent works.</p>
+          <p>Two habits cause chronic under-pricing of prelims:</p>
+          <ul class="content-list">
+            <li><strong>Percentage uplift instead of build-up:</strong> applying "10% for prelims" to the measured works total. Prelims costs are time-related and fixed — they do not scale proportionally with measured work value. A small high-value job and a large low-value job can have identical prelims costs.</li>
+            <li><strong>Burying prelims in unit rates:</strong> hiding site management cost inside measured work rates. This appears to reduce the prelims line, but distorts unit rates, makes the tender fragile if quantities change, and prevents proper cost control during the project.</li>
+          </ul>
+          <p>The correct approach is to identify every prelims item, categorise it as <strong>fixed</strong> (one-off cost regardless of duration) or <strong>time-related</strong> (weekly/monthly recurring cost × project duration), price each one from first principles, and sum to a prelims total.</p>
+          <div class="callout callout--info">
+            <strong>Prelims as % of tender total (industry data):</strong> Typical range for groundworks contracts is <strong>8–18%</strong> of the measured works total. If your prelims come out below 8%, challenge your build-up — you have probably missed something.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-01"
+            onclick="handleMarkComplete('11-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 11-02: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-11-02" data-chunk="11-02">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Site Establishment Costs — Welfare, Offices, and Fencing</h2>
+        <div class="chunk__body">
+          <p>Site establishment items are typically fixed costs (one-off set-up) or time-related costs (weekly hire for the project duration). Both must be priced separately.</p>
+          <table class="rate-table">
+            <thead><tr><th>Item</th><th>Type</th><th>Indicative Cost</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Welfare unit (toilet, drying room, mess)</td>
+                <td>Time-related</td>
+                <td style="color:var(--accent);">£150–300/week hire</td>
+              </tr>
+              <tr>
+                <td>Site office (portable cabin)</td>
+                <td>Time-related</td>
+                <td style="color:var(--accent);">£200–400/week hire</td>
+              </tr>
+              <tr>
+                <td>Secure storage container</td>
+                <td>Time-related</td>
+                <td style="color:var(--accent);">£80–150/week hire</td>
+              </tr>
+              <tr>
+                <td>Hoarding / temporary fence (Heras)</td>
+                <td>Time-related</td>
+                <td style="color:var(--accent);">£2–4/panel/week + set-up</td>
+              </tr>
+              <tr>
+                <td>Site signage (statutory + project)</td>
+                <td>Fixed</td>
+                <td style="color:var(--accent);">£500–2,000 (one-off)</td>
+              </tr>
+              <tr>
+                <td>Temporary site road / access</td>
+                <td>Fixed or time-related</td>
+                <td style="color:var(--accent);">£3–15/m² depending on spec</td>
+              </tr>
+              <tr>
+                <td>Temporary lighting and power</td>
+                <td>Time-related</td>
+                <td style="color:var(--accent);">£100–300/week for supply + connection</td>
+              </tr>
+              <tr>
+                <td>Water connection (temporary supply)</td>
+                <td>Fixed + usage</td>
+                <td style="color:var(--accent);">£500–1,500 connection + metered usage</td>
+              </tr>
+              <tr>
+                <td>Wheel wash (required on most civil contracts)</td>
+                <td>Time-related</td>
+                <td style="color:var(--accent);">£150–350/week hire + water + labour</td>
+              </tr>
+              <tr>
+                <td>Skip/waste management</td>
+                <td>Time-related</td>
+                <td style="color:var(--accent);">£250–500/skip collected</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">Indicative UK 2025 market rates — verify locally before use in any live tender.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-02"
+            onclick="handleMarkComplete('11-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 11-03: Concept + Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-11-03" data-chunk="11-03">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Supervision and Management — Always in Prelims</h2>
+        <div class="chunk__body">
+          <p>Site supervision and management costs are time-related prelims items. They must never be buried in unit rates for measured work. The reason is simple: if the quantity of measured work changes, your supervision cost does not change — it tracks programme duration, not quantity.</p>
+          <p>A 20-week contract requires 20 weeks of site agent time whether the earthworks volume is 1,000 m³ or 1,200 m³. Burying the agent cost in your excavation rate creates a problem if earthworks quantities are varied downward — you recover less supervision cost.</p>
+
+          <div class="worked-example__problem" style="margin-top:16px;">
+            <strong>Example calculation: supervision cost for a 16-week contract</strong>
+          </div>
+
+          <div class="step__formula" style="margin:12px 0;">
+            Site agent (SMSTS qualified):  £320/day × 5 days × 16 weeks = £25,600<br>
+            Site foreman:                  £280/day × 5 days × 16 weeks = £22,400<br>
+            QS (part-time, 2 days/week):   £350/day × 2 days × 16 weeks = £11,200<br>
+            ─────────────────────────────────────────────────────────────────────<br>
+            Supervision total:                                             £59,200
+          </div>
+
+          <p>This £59,200 is a prelims line item, not a rate-per-m³ component. It is split into weekly time-related amounts when completing the Class A schedule in the BoQ.</p>
+          <div class="callout callout--warning">
+            <strong>Employer's agents and CDM Coordinators</strong> are not your cost — they are employer-side roles. The Principal Contractor pays for their own health and safety and management. Do not confuse client-side roles with contractor-side costs.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-03"
+            onclick="handleMarkComplete('11-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 11-04: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-11-04" data-chunk="11-04">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Insurances, Bonds, Temporary Works &amp; Mob/Demob</h2>
+        <div class="chunk__body">
+          <table class="rate-table">
+            <thead><tr><th>Item</th><th>Type</th><th>Basis &amp; Indicative Cost</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Contractor's All Risks (CAR)</strong></td>
+                <td>Fixed</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">0.1–0.5% of contract value. Covers damage to the works during construction.</td>
+              </tr>
+              <tr>
+                <td><strong>Employer's Liability (EL)</strong></td>
+                <td>Time-related</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Part of all-in labour rate (covered in Module 04). Do not double-count in prelims.</td>
+              </tr>
+              <tr>
+                <td><strong>Public Liability (PL)</strong></td>
+                <td>Time-related</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Annual premium allocated across projects by turnover. Typically £1,000–5,000/project for a medium-value contract.</td>
+              </tr>
+              <tr>
+                <td><strong>Performance Bond (10% of contract)</strong></td>
+                <td>Fixed</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">0.5–2% of bond value per annum. Bond value = 10% of contract sum. If not required, do not price it.</td>
+              </tr>
+              <tr>
+                <td><strong>Advance Payment Bond</strong></td>
+                <td>Fixed</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Required if an advance payment is made. Same basis as performance bond. Check if advance payment is offered in the contract documents.</td>
+              </tr>
+              <tr>
+                <td><strong>Plant mob/demob</strong></td>
+                <td>Fixed</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Haulage to/from site. 13T excavator on low-loader: £800–£1,500 each way. Price for each major plant item.</td>
+              </tr>
+              <tr>
+                <td><strong>Temporary works design</strong></td>
+                <td>Fixed</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Engineer-designed shoring, excavation support, falsework. £1,500–8,000 depending on complexity.</td>
+              </tr>
+              <tr>
+                <td><strong>Traffic management (if required)</strong></td>
+                <td>Time-related</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Chapter 8 TM: £1,500–5,000/week depending on road classification. Includes signs, cones, operative.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">Indicative UK 2025 market rates — verify locally before use in any live tender.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-04"
+            onclick="handleMarkComplete('11-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 11-05: Concept -->
+      <div class="chunk chunk--locked" id="chunk-11-05" data-chunk="11-05">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">CDM 2015 Compliance Costs and Environmental Obligations</h2>
+        <div class="chunk__body">
+          <p>The Construction (Design and Management) Regulations 2015 impose specific duties on the Principal Contractor. These duties have real costs that belong in Preliminaries:</p>
+          <table class="rate-table">
+            <thead><tr><th>CDM Duty</th><th>Cost implication</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Construction Phase Plan (CPP)</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Time cost to prepare and maintain. PC must produce before work starts. Allow site agent time.</td>
+              </tr>
+              <tr>
+                <td><strong>Health &amp; Safety File contribution</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">As-built records, test results, maintenance data for handover. Time cost to compile.</td>
+              </tr>
+              <tr>
+                <td><strong>Induction and briefings</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">All workers must receive a site induction. Ongoing toolbox talks. Allow for downtime.</td>
+              </tr>
+              <tr>
+                <td><strong>Welfare provision (CDM Schedule 2)</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Sanitary facilities, washing facilities, rest facilities. Statutory — must be provided from day one.</td>
+              </tr>
+              <tr>
+                <td><strong>F10 notification (where applicable)</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Online submission to HSE. Minimal cost in time. Required when project exceeds 30 working days with &gt;20 simultaneous workers, or 500 person-days.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:12px;"><strong>Environmental obligations</strong> with cost implications:</p>
+          <ul class="content-list">
+            <li><strong>Dust suppression:</strong> water bowser or misting system. Required in urban areas and near sensitive receptors. £300–800/week.</li>
+            <li><strong>Noise monitoring:</strong> required on some contracts near residential areas. £500–2,000 for monitoring equipment and reporting.</li>
+            <li><strong>Waste transfer notes:</strong> time cost to produce, retain, and report. Required for all waste movements.</li>
+            <li><strong>SWMP (Site Waste Management Plan):</strong> mandatory for projects over £300,000 in some regions. Time cost to prepare and maintain.</li>
+          </ul>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-05"
+            onclick="handleMarkComplete('11-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 11-06: Rate Builder -->
+      <div class="chunk chunk--locked" id="chunk-11-06" data-chunk="11-06">
+        <p class="chunk__type-label">Rate Builder</p>
+        <h2 class="chunk__title">Prelims Section Builder</h2>
+        <div class="chunk__body">
+          <p>Enter the project duration and weekly/fixed costs to build a prelims total. This is a simplified model — a real prelims section has 30–50 individual line items.</p>
+
+          <div class="rate-builder" id="rb-11-06">
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Project duration (weeks)</label>
+              <input class="rate-builder__input" data-key="weeks" type="number" value="20" min="1" max="200" step="1">
+            </div>
+            <div class="rate-builder__row rate-builder__section-header">
+              <span style="color:var(--text-secondary); font-size:var(--text-sm); padding:8px 0 4px; font-weight:600;">Time-related costs (£/week)</span>
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Site manager/agent (£/week)</label>
+              <input class="rate-builder__input" data-key="agent" type="number" value="1600" min="0" max="5000" step="100">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Site foreman (£/week)</label>
+              <input class="rate-builder__input" data-key="foreman" type="number" value="1400" min="0" max="4000" step="100">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Welfare + site office hire (£/week)</label>
+              <input class="rate-builder__input" data-key="welfare" type="number" value="600" min="0" max="2000" step="50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Security fencing hire (£/week)</label>
+              <input class="rate-builder__input" data-key="fencing" type="number" value="400" min="0" max="2000" step="50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Other time-related (£/week)</label>
+              <input class="rate-builder__input" data-key="other_time" type="number" value="300" min="0" max="5000" step="50">
+            </div>
+            <div class="rate-builder__row rate-builder__section-header">
+              <span style="color:var(--text-secondary); font-size:var(--text-sm); padding:8px 0 4px; font-weight:600;">Fixed costs (£ one-off)</span>
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Plant mob/demob (£ total)</label>
+              <input class="rate-builder__input" data-key="mob" type="number" value="3000" min="0" max="50000" step="500">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Insurances and bonds (£ total)</label>
+              <input class="rate-builder__input" data-key="insurance" type="number" value="5000" min="0" max="100000" step="500">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Signage and set-up (£ total)</label>
+              <input class="rate-builder__input" data-key="signage" type="number" value="1500" min="0" max="20000" step="250">
+            </div>
+            <div class="rate-builder__result">
+              <span class="rate-builder__result-label">Total prelims</span>
+              <span class="rate-builder__result-value" id="rb-11-06-result">£—</span>
+              <span class="rate-builder__result-unit"></span>
+            </div>
+          </div>
+
+          <p style="margin-top:16px; color:var(--text-secondary); font-size:var(--text-sm);">
+            With the default values (20 weeks, typical supervision and establishment), the prelims total should be approximately £80,000–90,000. On a £600,000 measured works contract, this is around 13–15% — within the expected range.
+          </p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-06"
+            onclick="handleMarkComplete('11-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 11-07: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-11-07" data-chunk="11-07">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Overhead Recovery and Profit Margin — The Final Build-Up</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A tender has measured works totalling £580,000 and prelims of £78,000. The company's overhead recovery rate is 9% and target profit margin is 4%. Calculate the final tender price.
+          </div>
+
+          <div class="worked-example__steps" id="steps-11-07">
+
+            <div class="step" id="step-11-07-1">
+              <button class="step__trigger" onclick="revealStep('11-07', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Sub-total: measured works + prelims</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Measured works:  £580,000<br>
+                  Prelims:         £ 78,000<br>
+                  ─────────────────────────<br>
+                  Sub-total:       £658,000
+                </div>
+                <p style="margin-top:12px;">This is the direct cost of doing the job. Overhead and profit are applied to this sub-total to reach the tender price submitted to the client.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-11-07-2">
+              <button class="step__trigger" disabled onclick="revealStep('11-07', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Add overhead recovery</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Sub-total:       £658,000<br>
+                  Overhead (9%):   £658,000 × 0.09 = £59,220<br>
+                  ──────────────────────────────────────<br>
+                  Sub-total + OH:  £717,220
+                </div>
+                <p style="margin-top:12px;">The overhead percentage (9%) was calculated from the company's actual annual overhead cost divided by annual turnover. It recovers: head office costs, directors' salaries, company vehicles, IT systems, accountancy, and all other non-site costs.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-11-07-3">
+              <button class="step__trigger" disabled onclick="revealStep('11-07', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Add profit and arrive at tender price</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Sub-total + OH:  £717,220<br>
+                  Profit (4%):     £717,220 × 0.04 = £28,689<br>
+                  ─────────────────────────────────────────<br>
+                  <strong>Tender price:    £745,909</strong><br>
+                  Round to:        £746,000
+                </div>
+                <p style="margin-top:12px;">The profit percentage is set during tender adjudication — the final meeting between the estimator, commercial manager, and director before the tender is submitted. Profit may be adjusted (up or down) based on: risk assessment, market intelligence, strategic importance of the client, and workload pipeline. A 4% profit on £717,220 base generates £28,689 — before any risk materialises.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-07" disabled
+            onclick="handleMarkComplete('11-07')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 11-08: Concept -->
+      <div class="chunk chunk--locked" id="chunk-11-08" data-chunk="11-08">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Tender Adjudication — Sense-Checking Before You Submit</h2>
+        <div class="chunk__body">
+          <p>Tender adjudication is the final review before submission. It is your last opportunity to catch errors, challenge assumptions, and set the profit margin intelligently. A formal adjudication involves:</p>
+          <ul class="content-list">
+            <li><strong>Rate review:</strong> compare every major rate against benchmarks. Flag any rate >20% outside the expected range for investigation.</li>
+            <li><strong>Prelims sense check:</strong> confirm prelims as a percentage of measured works is within expected range (8–18%). Below 8% means you've probably missed items.</li>
+            <li><strong>Risk review:</strong> identify the three biggest risks in the project. Has each been priced? Or is a contingency allowance needed?</li>
+            <li><strong>Programme check:</strong> is the prelims duration (weeks) consistent with the construction programme? If your prelims assume 16 weeks but the programme requires 22, you are underpricing supervision.</li>
+            <li><strong>Competitive intelligence:</strong> what do you expect competitors to price? If you are significantly higher, investigate. If significantly lower, investigate.</li>
+          </ul>
+          <p>The profit margin is the commercial lever at adjudication. In a competitive market, margin may need to be reduced. On a strategically important project, it may be worth pricing at cost to secure it. On a high-risk project, the margin should reflect that risk.</p>
+          <div class="callout callout--warning">
+            <strong>The Construction Act 1996 and payment:</strong> Ensure the tender programme assumes payment in line with the contract's payment mechanism. If the contract specifies monthly payment applications, your cashflow assumes you finance the work for 30–35 days before receiving any payment. On large contracts, this financing cost may need to be priced.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="11-08"
+            onclick="handleMarkComplete('11-08')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 11 Complete</h2>
+        <p>You can now build a complete prelims section and price the final tender build-up. Final module: pricing a complete tender from scratch.</p>
+        <a href="module-12.html" class="btn btn--primary">Continue to Module 12 &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '11';
+  const CHUNK_LIST = ['11-01','11-02','11-03','11-04','11-05','11-06','11-07','11-08'];
+
+  const CHUNK_WE_CONFIG = {
+    '11-07': { totalSteps: 3 },
+  };
+
+  initRateBuilder('rb-11-06', function(v) {
+    const timeRelated = (v.agent + v.foreman + v.welfare + v.fencing + v.other_time) * v.weeks;
+    const fixed = v.mob + v.insurance + v.signage;
+    return timeRelated + fixed;
+  }, '£', '');
+
+  initModulePage();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 10 — Roads, Hardstanding &amp; Surfacing | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 10</p>
+        <h1 class="module-header__title">Roads, Hardstanding &amp; Surfacing</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 7</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 10-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-10-01" data-chunk="10-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">The Road Construction Sequence — Formation to Surface Course</h2>
+        <div class="chunk__body">
+          <p>A road or hardstanding is built from the bottom up in defined layers. Each layer has a specification, thickness, and material class. You price each layer separately in the BoQ.</p>
+          <table class="rate-table">
+            <thead><tr><th>Layer</th><th>Material</th><th>Typical Thickness</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Formation</strong></td>
+                <td>Prepared subgrade</td>
+                <td>—</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">The in-situ or imported subgrade, trimmed and proof-rolled. No separate material cost but labour and testing.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Capping / Sub-base</strong></td>
+                <td>Type 1 MOT or 6F5</td>
+                <td>150–350mm</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Granular layer providing structural support and drainage. Spread, compacted, and tested.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Roadbase</strong></td>
+                <td>Dense Bituminous Macadam (DBM)</td>
+                <td>60–100mm</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Structural bituminous layer — carries traffic load. Laid and rolled by specialist gang.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Binder Course</strong></td>
+                <td>DBM / HRA binder</td>
+                <td>50–80mm</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Regulating layer, provides a level surface for the wearing course.</td>
+              </tr>
+              <tr>
+                <td><strong>5. Surface Course</strong></td>
+                <td>Hot Rolled Asphalt, SMA, or tarmac</td>
+                <td>30–50mm</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">The final riding surface — texture, colour, skid resistance. Usually sub-contracted to specialist.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--info">
+            <strong>Not every road needs all five layers.</strong> A simple hardstanding may have only sub-base and surface course. A public highway requires the full build-up to adoptable standard. Check the specification drawing before pricing.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="10-01"
+            onclick="handleMarkComplete('10-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 10-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-10-02" data-chunk="10-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">CESMM4 Class R — How Roads Are Measured</h2>
+        <div class="chunk__body">
+          <p>Class R (Roads &amp; Paving) covers all road construction except earthworks (Class E) and drainage (Classes I–L). Key measurement rules:</p>
+          <table class="rate-table">
+            <thead><tr><th>Item type</th><th>Unit</th><th>Description convention</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Sub-base layers</td>
+                <td>m³ or m²</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Specified by material type (Type 1, 6F5) and thickness. m² is common for uniform thickness layers.</td>
+              </tr>
+              <tr>
+                <td>Bituminous layers (roadbase, binder, surface)</td>
+                <td>t or m²</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Often measured in tonnes or m² at a stated thickness. The description identifies layer, material, and nominal thickness.</td>
+              </tr>
+              <tr>
+                <td>Kerbs and edgings</td>
+                <td>m</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Linear metres. Description: material (precast concrete, granite, etc.), type (bullnose, half batter), and size.</td>
+              </tr>
+              <tr>
+                <td>Road markings and furniture</td>
+                <td>m, m², nr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Lines in m, hatching in m², signs and bollards in nr.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--warning">
+            <strong>Sub-base in Class E vs Class R:</strong> Some BoQs measure sub-base as a Class E filling item (m³) rather than Class R. The preamble defines which class applies — this affects how you price it. Always check before pricing.
+          </div>
+          <p>Roads work is often wholly or partly sub-contracted to specialist surfacing gangs, who quote per tonne laid or per m² at a stated thickness. Your role is to manage the sub-contract, check their output assumptions, and price the package correctly in the tender.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="10-02"
+            onclick="handleMarkComplete('10-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 10-03: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-10-03" data-chunk="10-03">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Pricing a Sub-Base Layer: Type 1, 250mm Compacted</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            Price a Type 1 sub-base layer, 250mm compacted thickness, over 1,500 m² of hardstanding formation. Type 1 delivered: £32/t. Bulk density: 2.1 t/m³. Wastage: 8%. Spreading and compaction (dozer + roller + operator): £2,800/day, output 600 m²/day.
+          </div>
+
+          <div class="worked-example__steps" id="steps-10-03">
+
+            <div class="step" id="step-10-03-1">
+              <button class="step__trigger" onclick="revealStep('10-03', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Material cost per m²</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Volume/m²:       0.250m depth × 1m² = 0.250 m³/m²<br>
+                  Material rate:   £32/t × 2.1 t/m³ = £67.20/m³<br>
+                  + 8% wastage:    £67.20 × 1.08 = £72.58/m³<br>
+                  <br>
+                  Material/m²:     0.250 × £72.58 = £18.14/m²
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-10-03-2">
+              <button class="step__trigger" disabled onclick="revealStep('10-03', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Spreading and compaction cost per m²</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Plant + operator daily cost:  £2,800/day<br>
+                  Output:                       600 m²/day<br>
+                  <br>
+                  Plant/m²: £2,800 ÷ 600 = £4.67/m²
+                </div>
+                <p style="margin-top:12px;">This covers the dozer (spreading), vibrating roller (compaction), and operators. Testing (compaction density testing, plate bearing tests) is a separate cost — if required by specification, price separately or include an allowance.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-10-03-3">
+              <button class="step__trigger" disabled onclick="revealStep('10-03', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Sum to unit rate</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Material:        £18.14/m²<br>
+                  Spread + compact: £4.67/m²<br>
+                  ────────────────────────────<br>
+                  <strong>Unit rate:        £22.81/m²</strong>
+                </div>
+                <p style="margin-top:12px;">For 1,500 m²: £22.81 × 1,500 = £34,215 for the sub-base layer. This is the m² rate for the BoQ if measured in m². If measured in m³, multiply: £22.81 ÷ 0.250m = £91.24/m³.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="10-03" disabled
+            onclick="handleMarkComplete('10-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 10-04: Rate Card + Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-10-04" data-chunk="10-04">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Bituminous Surfacing — Rates, Tonnage, and Laying Outputs</h2>
+        <div class="chunk__body">
+          <p>Bituminous materials are quoted per tonne by the asphalt plant. To build a BoQ rate (usually m² or m²), you need to convert: how many tonnes per m² at the specified thickness?</p>
+          <div class="step__formula" style="margin:12px 0;">
+            Tonnes per m² = Thickness (m) × Density (t/m³)
+          </div>
+          <table class="rate-table">
+            <thead><tr><th>Material</th><th>Density</th><th>Rate</th><th>Typical Thickness</th><th>Cost/m²</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>DBM Roadbase (60/70 pen)</td>
+                <td>2.35 t/m³</td>
+                <td style="color:var(--accent);">£95–115/t</td>
+                <td>80mm</td>
+                <td style="color:var(--accent);">£18–22/m²</td>
+              </tr>
+              <tr>
+                <td>DBM Binder Course</td>
+                <td>2.35 t/m³</td>
+                <td style="color:var(--accent);">£95–115/t</td>
+                <td>60mm</td>
+                <td style="color:var(--accent);">£13–16/m²</td>
+              </tr>
+              <tr>
+                <td>Hot Rolled Asphalt (HRA) 30/14</td>
+                <td>2.40 t/m³</td>
+                <td style="color:var(--accent);">£115–140/t</td>
+                <td>40mm</td>
+                <td style="color:var(--accent);">£11–13/m²</td>
+              </tr>
+              <tr>
+                <td>Stone Mastic Asphalt (SMA) 10mm</td>
+                <td>2.40 t/m³</td>
+                <td style="color:var(--accent);">£125–155/t</td>
+                <td>30mm</td>
+                <td style="color:var(--accent);">£9–11/m²</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">Bituminous laying gangs typically achieve <strong>300–600 m²/day</strong> with a paving machine on open areas. Manual laying in confined areas or small patches: 50–150 m²/day. Output depends on access, layer thickness, and mix temperature constraints.</p>
+          <div class="callout callout--info">
+            <strong>Tack coat:</strong> A thin emulsion spray applied before each bituminous layer to bond layers together. Cost is typically £0.50–1.50/m² and often missed in tender pricing. The BoQ may include it as a separate item or include it in the layer rate — check the preambles.
+          </div>
+          <p class="rate-table__disclaimer">Indicative UK 2025 market rates — verify locally before use in any live tender.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="10-04"
+            onclick="handleMarkComplete('10-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 10-05: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-10-05" data-chunk="10-05">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Kerb and Channel Rate Build-Up</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            Price precast concrete half-batter kerb (125 × 255 mm), supply and lay, bedded on C20 concrete haunching. Rate data: kerb unit supply £5.50/m; concrete haunching C20 £118/m³ (0.05 m³/m of kerb); bedding mortar £0.60/m; laying labour: 2 operatives at £22/hr, 80m/day output.
+          </div>
+
+          <div class="worked-example__steps" id="steps-10-05">
+
+            <div class="step" id="step-10-05-1">
+              <button class="step__trigger" onclick="revealStep('10-05', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Material cost per linear metre</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Kerb unit:       £5.50/m<br>
+                  Concrete haunch: 0.05 m³/m × £118/m³ = £5.90/m<br>
+                  Mortar joint:    £0.60/m<br>
+                  ─────────────────────────────────────<br>
+                  Material total:  £12.00/m
+                </div>
+                <p style="margin-top:12px;">The haunching concrete is the main material cost — it anchors the kerb unit and prevents lateral movement. The volume (0.05 m³/m) assumes a triangular haunch on one side. Kerbs with dual haunching (both sides) double this volume.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-10-05-2">
+              <button class="step__trigger" disabled onclick="revealStep('10-05', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Labour cost per linear metre</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Gang:   2 operatives × £22/hr = £44/hr<br>
+                  Day:    £44 × 8hrs = £352/day<br>
+                  Output: 80m/day<br>
+                  <br>
+                  Labour: £352 ÷ 80 = £4.40/m
+                </div>
+              </div>
+            </div>
+
+            <div class="step" id="step-10-05-3">
+              <button class="step__trigger" disabled onclick="revealStep('10-05', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Total unit rate</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Materials:  £12.00/m<br>
+                  Labour:     £ 4.40/m<br>
+                  ──────────────────────<br>
+                  <strong>Unit rate:  £16.40/m</strong>
+                </div>
+                <p style="margin-top:12px;">This rate covers supply, lay, and haunch for a standard concrete half-batter kerb. Granular bedding, if specified instead of or in addition to mortar, would be a separate Class R item. Road furniture items (gully gratings, drainage channels) are measured separately as nr items.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="10-05" disabled
+            onclick="handleMarkComplete('10-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 10-06: Concept -->
+      <div class="chunk chunk--locked" id="chunk-10-06" data-chunk="10-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Road Furniture and Items Commonly Missed</h2>
+        <div class="chunk__body">
+          <p>Roads tenders frequently have under-priced or missed items in three categories. Review every roads BoQ section against this checklist:</p>
+          <table class="rate-table">
+            <thead><tr><th>Category</th><th>Items to check</th><th>Why missed</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Edge treatment</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Kerbs, edgings, channel units, drop kerbs, crossover radii. Each type may be a separate BoQ item.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Curvilinear sections (radii) require cutting or specials — missed when pricing only straight runs.</td>
+              </tr>
+              <tr>
+                <td><strong>Road markings</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">White lines, give-way lines, pedestrian crossing markings, arrows, hatching. Thermoplastic or paint.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Applied at the end of the job — easy to miss in the initial tender pricing phase.</td>
+              </tr>
+              <tr>
+                <td><strong>Signs and furniture</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Road signs (nr), bollards (nr), guard rails (m), traffic islands, tactile paving, cycle lane markings.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Often buried in Class X (Miscellaneous Works) — not obvious in the Class R section.</td>
+              </tr>
+              <tr>
+                <td><strong>Sub-grade treatment</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Proof rolling (plant to compact formation), geotextile separator, capping layer where CBR is low.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Not always shown on drawings — stated in the specification. Read the spec carefully.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--info">
+            <strong>Adoptable roads carry additional costs:</strong> LA inspection fees, S38 legal agreement costs, as-built drawings, independent testing — all are costs to the developer/contractor that may not appear as explicit BoQ items but are real project costs. Consider where these sit in your tender.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="10-06"
+            onclick="handleMarkComplete('10-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 10-07: BoQ Rate Exercise -->
+      <div class="chunk chunk--locked" id="chunk-10-07" data-chunk="10-07">
+        <p class="chunk__type-label">BoQ Rate Exercise</p>
+        <h2 class="chunk__title">Price a Road Construction BoQ Section</h2>
+        <div class="chunk__body">
+          <p>Using the rates provided, price the following road BoQ items. ±15% tolerance accepted.</p>
+
+          <div class="callout callout--info" style="margin-bottom:16px;">
+            <strong>Rates:</strong>
+            Type 1 sub-base, supply, spread, compact: £23/m² at 250mm &nbsp;|&nbsp;
+            DBM binder course 60mm (supply and lay): £14/m² &nbsp;|&nbsp;
+            SMA surface course 30mm (supply and lay): £11/m² &nbsp;|&nbsp;
+            Precast concrete kerb, supply and lay: £16.40/m &nbsp;|&nbsp;
+            Thermoplastic road markings (white line): £8/m
+          </div>
+
+          <table class="boq-table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Qty</th>
+                <th>Rate (£)</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>R.1</td>
+                <td>Type 1 granular sub-base, 250mm thick, spread and compact</td>
+                <td>m²</td>
+                <td>1500</td>
+                <td><input class="boq-rate-input" id="boq-input-10-07-r1" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                <td id="boq-total-10-07-r1">—</td>
+                <td id="boq-result-10-07-r1"></td>
+              </tr>
+              <tr>
+                <td>R.2</td>
+                <td>Binder course, DBM 60mm nominal thickness</td>
+                <td>m²</td>
+                <td>1500</td>
+                <td><input class="boq-rate-input" id="boq-input-10-07-r2" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                <td id="boq-total-10-07-r2">—</td>
+                <td id="boq-result-10-07-r2"></td>
+              </tr>
+              <tr>
+                <td>R.3</td>
+                <td>Surface course, SMA 30mm nominal thickness</td>
+                <td>m²</td>
+                <td>1500</td>
+                <td><input class="boq-rate-input" id="boq-input-10-07-r3" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                <td id="boq-total-10-07-r3">—</td>
+                <td id="boq-result-10-07-r3"></td>
+              </tr>
+              <tr>
+                <td>R.4</td>
+                <td>Precast concrete half-batter kerb 125×255mm, supply and lay</td>
+                <td>m</td>
+                <td>320</td>
+                <td><input class="boq-rate-input" id="boq-input-10-07-r4" type="number" placeholder="£/m" min="0" step="0.25"></td>
+                <td id="boq-total-10-07-r4">—</td>
+                <td id="boq-result-10-07-r4"></td>
+              </tr>
+              <tr>
+                <td>R.5</td>
+                <td>Thermoplastic road markings, white, 100mm wide</td>
+                <td>m</td>
+                <td>180</td>
+                <td><input class="boq-rate-input" id="boq-input-10-07-r5" type="number" placeholder="£/m" min="0" step="0.25"></td>
+                <td id="boq-total-10-07-r5">—</td>
+                <td id="boq-result-10-07-r5"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn--primary" id="boq-submit-10-07" onclick="submitBoQRateExercise('10-07')">
+            Submit &amp; Grade
+          </button>
+          <div id="boq-feedback-10-07" class="boq-feedback-panel" style="display:none;"></div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="10-07" disabled
+            onclick="handleMarkComplete('10-07')">&#10003; Complete</button>
+        </div>
+      </div>
+
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 10 Complete</h2>
+        <p>You can now price a complete road construction section. Next: preliminaries and overheads.</p>
+        <a href="module-11.html" class="btn btn--primary">Continue to Module 11 &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '10';
+  const CHUNK_LIST = ['10-01','10-02','10-03','10-04','10-05','10-06','10-07'];
+
+  const CHUNK_WE_CONFIG = {
+    '10-03': { totalSteps: 3 },
+    '10-05': { totalSteps: 3 },
+  };
+
+  const CHUNK_BOQ_EXERCISE_CONFIG = {
+    '10-07': {
+      items: [
+        {
+          ref: 'r1',
+          description: 'Type 1 sub-base 250mm, spread and compact',
+          unit: 'm²',
+          qty: 1500,
+          correctRate: 23.00,
+          tolerance: 0.15,
+          explanation: 'All-in rate provided: £23/m² for Type 1 at 250mm. Includes supply, delivery, spread, and compaction.',
+        },
+        {
+          ref: 'r2',
+          description: 'DBM binder course 60mm',
+          unit: 'm²',
+          qty: 1500,
+          correctRate: 14.00,
+          tolerance: 0.15,
+          explanation: 'Supply and lay rate provided: £14/m² for 60mm DBM binder course. Includes material, laying gang, and roller.',
+        },
+        {
+          ref: 'r3',
+          description: 'SMA surface course 30mm',
+          unit: 'm²',
+          qty: 1500,
+          correctRate: 11.00,
+          tolerance: 0.15,
+          explanation: 'Supply and lay rate provided: £11/m² for 30mm SMA surface course. Thinner layer, higher material cost per tonne.',
+        },
+        {
+          ref: 'r4',
+          description: 'Precast concrete kerb, supply and lay',
+          unit: 'm',
+          qty: 320,
+          correctRate: 16.40,
+          tolerance: 0.15,
+          explanation: 'Supply and lay rate provided: £16.40/m. Includes kerb unit, concrete haunching, mortar joint, and laying labour.',
+        },
+        {
+          ref: 'r5',
+          description: 'Thermoplastic road markings 100mm white',
+          unit: 'm',
+          qty: 180,
+          correctRate: 8.00,
+          tolerance: 0.15,
+          explanation: 'Rate provided: £8.00/m for thermoplastic road markings. This is usually a specialist sub-contractor activity.',
+        },
+      ],
+    },
+  };
+
+  initModulePage();
+</script>
+
+</body>
+</html>
