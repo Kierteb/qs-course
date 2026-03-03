@@ -324,7 +324,7 @@ code, .mono {
 
 .content-wrapper {
   max-width: var(--content-max);
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* ============================================================
