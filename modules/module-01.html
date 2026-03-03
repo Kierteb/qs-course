@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 01 — How QS Works | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="content-wrapper">
+
+      <!-- Module Header -->
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 01</p>
+        <h1 class="module-header__title">How QS Works in Civil &amp; Groundworks</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width: 0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 6</span>
+        </div>
+      </div>
+
+      <!-- SR Banner (shown if questions due) -->
+      <div class="sr-banner" id="sr-banner" style="display: none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">3 recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Dismiss</button>
+        </div>
+      </div>
+
+      <!-- Chunk List -->
+      <div class="chunk-list" id="chunk-list">
+
+        <!-- CHUNK 01-01: Concept -->
+        <div class="chunk" id="chunk-01-01" data-chunk="01-01">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">What a QS Actually Does — and What You Need From This Course</h2>
+          <div class="chunk__body">
+            <p>A Quantity Surveyor measures, values, and manages the cost of construction work. In civil engineering, that means taking a set of drawings and a specification and turning them into a priced Bill of Quantities — the document that tells a client exactly what the work will cost, item by item.</p>
+            <p>For a groundworks contractor, QS skills aren't optional. When you tender for work, you're pricing directly against a BoQ. If you misread it, miss coverage rules, or misjudge output rates, you'll either win the job at a loss or lose it to a cheaper (and probably underprepared) competitor.</p>
+            <p>This course is not about theory. It's about reading a civil BoQ and pricing it accurately from first principles — so that when you submit a tender, you know exactly what you've priced, what you've assumed, and where your risk sits.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="01-01" onclick="handleMarkComplete('01-01')">
+              &#10003; Got it
+            </button>
+          </div>
+        </div>
+
+        <!-- CHUNK 01-02: Concept -->
+        <div class="chunk chunk--locked" id="chunk-01-02" data-chunk="01-02">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">How a Civil Engineering Project Gets Tendered — ITT to BoQ to Submitted Price</h2>
+          <div class="chunk__body">
+            <p>Civil contracts follow a standard procurement sequence. The client issues an <strong>Invitation to Tender (ITT)</strong>, which typically includes the drawings, specification, contract conditions, and a Bill of Quantities.</p>
+            <p>The BoQ is pre-prepared — usually by the client's QS — using a standard measurement method (CESMM4 for most civil work). It lists every item of work, with quantities already calculated. Your job as tenderer is to insert a unit rate for each item.</p>
+            <p>Your <strong>submitted price</strong> = all unit rates × quantities, summed across sections, plus preliminaries, overheads, and profit. That total becomes your tender. If you win, the BoQ becomes a contract document and the rates you submitted are the basis for valuing any variations.</p>
+            <p>The rates you insert are legally binding. A rate that was too low on day one stays low for the life of the contract.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="01-02" onclick="handleMarkComplete('01-02')">
+              &#10003; Got it
+            </button>
+          </div>
+        </div>
+
+        <!-- CHUNK 01-03: Concept -->
+        <div class="chunk chunk--locked" id="chunk-01-03" data-chunk="01-03">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">Key Terminology: Measured Works, PC Sums, Provisional Sums, Prelims, Dayworks</h2>
+          <div class="chunk__body">
+            <p><strong>Measured works</strong> — the main body of the BoQ. Physical items of permanent work, each with a unit, a quantity, and a rate column for you to fill in. This is where most of your pricing effort goes.</p>
+            <p><strong>PC sums (Prime Cost sums)</strong> — a fixed sum included for work that will be carried out by a nominated subcontractor or supplier. You add your profit and attendance allowance on top.</p>
+            <p><strong>Provisional sums</strong> — an allowance for work that can't be fully defined at tender. Defined provisional sums have a rough scope; undefined ones are genuinely unknown. Both are adjusted during the contract.</p>
+            <p><strong>Preliminaries (Prelims)</strong> — the cost of running the site: welfare facilities, site offices, fencing, signage, supervision, plant mobilisation, insurances, and bonds. Priced in Class A of CESMM4. Not embedded in unit rates.</p>
+            <p><strong>Dayworks</strong> — work valued on the basis of actual resources used (time + materials + plant), not a unit rate. Used for instructions that cannot be measured in the normal way. Your daywork schedule is submitted with the tender.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="01-03" onclick="handleMarkComplete('01-03')">
+              &#10003; Got it
+            </button>
+          </div>
+        </div>
+
+        <!-- CHUNK 01-04: Worked Example -->
+        <div class="chunk chunk--locked" id="chunk-01-04" data-chunk="01-04">
+          <p class="chunk__type-label">Worked Example</p>
+          <h2 class="chunk__title">The Pricing Hierarchy — Unit Rate to Tender Total</h2>
+          <div class="chunk__body">
+
+            <div class="worked-example__problem">
+              <strong>Problem</strong>
+              A drainage BoQ section has three pipe items. Work through how a unit rate becomes a section total, and how sections sum to the tender total.
+            </div>
+
+            <div class="worked-example__steps" id="steps-01-04">
+
+              <div class="step" id="step-01-04-1">
+                <button class="step__trigger" onclick="revealStep('01-04', 1, 3)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 1</span>
+                  <span class="step__trigger-label">Insert unit rates for each pipe item</span>
+                </button>
+                <div class="step__content">
+                  <p>Each item in the BoQ has a description, a unit, and a quantity. You insert a rate (£ per unit):</p>
+                  <table class="rate-table" style="margin-top: 8px;">
+                    <thead>
+                      <tr><th>Item</th><th>Description</th><th>Unit</th><th>Qty</th><th>Rate</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>I.1</td><td>150mm uPVC pipe, 1.2–1.5m deep</td><td>m</td><td>120</td><td class="text-accent">£48.00</td></tr>
+                      <tr><td>I.2</td><td>225mm uPVC pipe, 1.5–2m deep</td><td>m</td><td>45</td><td class="text-accent">£84.00</td></tr>
+                      <tr><td>I.3</td><td>150mm uPVC pipe, 3–3.5m deep</td><td>m</td><td>30</td><td class="text-accent">£120.00</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="step" id="step-01-04-2">
+                <button class="step__trigger" disabled onclick="revealStep('01-04', 2, 3)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 2</span>
+                  <span class="step__trigger-label">Extend to item totals</span>
+                </button>
+                <div class="step__content">
+                  <p>Rate × Quantity = Item Total for each line:</p>
+                  <div class="step__formula">
+                    I.1: £48.00 × 120m = <span style="color: var(--text-primary)">£5,760</span><br>
+                    I.2: £84.00 × 45m &nbsp;= <span style="color: var(--text-primary)">£3,780</span><br>
+                    I.3: £120.00 × 30m = <span style="color: var(--text-primary)">£3,600</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step" id="step-01-04-3">
+                <button class="step__trigger" disabled onclick="revealStep('01-04', 3, 3)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 3</span>
+                  <span class="step__trigger-label">Sum to section total, then tender total</span>
+                </button>
+                <div class="step__content">
+                  <p>Section total = sum of all item totals in that section:</p>
+                  <div class="step__formula">
+                    Drainage section: £5,760 + £3,780 + £3,600 = <span style="color: var(--accent)">£13,140</span>
+                  </div>
+                  <p style="margin-top: 12px;">The tender total is built by summing all section totals, then adding prelims and applying overhead &amp; profit:</p>
+                  <div class="step__formula">
+                    Measured Works Sections<br>
+                    + Preliminaries<br>
+                    + Overhead % + Profit %<br>
+                    ────────────────────<br>
+                    <span style="color: var(--accent)">= Tender Total</span>
+                  </div>
+                  <p style="margin-top: 12px;">Every rate you enter directly affects the final number. A £5/m error on 120m of pipe is £600 lost — before overhead and profit are applied.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" id="complete-btn-01-04" data-chunk="01-04" onclick="handleMarkComplete('01-04')" disabled>
+              &#10003; Mark Complete
+            </button>
+          </div>
+        </div>
+
+        <!-- CHUNK 01-05: Concept -->
+        <div class="chunk chunk--locked" id="chunk-01-05" data-chunk="01-05">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">How Errors in a BoQ Affect You — and What to Do About Them</h2>
+          <div class="chunk__body">
+            <p>BoQ errors fall into two categories: <strong>quantity errors</strong> (wrong measurement) and <strong>description errors</strong> (ambiguous or missing information). Both carry risk — but in different directions.</p>
+            <p>If a quantity is understated, you win the job on a lower-than-expected volume. Under most civil contracts (NEC, ICC), the engineer can remeasure and the contract quantity is adjusted — but only if you've priced the rate correctly. A wrong rate cannot be corrected by remeasurement.</p>
+            <p>If a description is ambiguous or missing, you may have priced something different from what the client intended. This is where the coverage rules (which you'll study in Module 02) become critical — they determine what's included in a rate even when it isn't explicitly stated.</p>
+            <p><strong>What to do:</strong> Before tender, read the entire BoQ carefully. Raise queries in writing via the tender query process. Document your assumptions. If something looks wrong, ask — don't silently correct it and don't price it without flagging the issue.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="01-05" onclick="handleMarkComplete('01-05')">
+              &#10003; Got it
+            </button>
+          </div>
+        </div>
+
+        <!-- CHUNK 01-06: Knowledge Check -->
+        <div class="chunk chunk--locked" id="chunk-01-06" data-chunk="01-06">
+          <p class="chunk__type-label">Knowledge Check</p>
+          <h2 class="chunk__title">Module 01 — Check Your Understanding</h2>
+          <div class="chunk__body">
+
+            <p class="knowledge-check__question">A BoQ item reads: "150mm uPVC pipe, depth 1.2–1.5m." You know from site experience that the actual depth will likely be 2.5m. What is the correct approach?</p>
+
+            <div class="knowledge-check__options" id="kc-options-01-06">
+              <button class="kc-option" onclick="selectKCOption('01-06', 0, 1)">
+                <span class="kc-option__letter">A</span>
+                Price the item using the 2.5m depth rate, since you know better than the BoQ
+              </button>
+              <button class="kc-option" onclick="selectKCOption('01-06', 1, 1)">
+                <span class="kc-option__letter">B</span>
+                Price the item as written at the 1.2–1.5m depth rate, and raise a tender query about the discrepancy
+              </button>
+              <button class="kc-option" onclick="selectKCOption('01-06', 2, 1)">
+                <span class="kc-option__letter">C</span>
+                Include a risk allowance in your prelims to cover the deeper digging
+              </button>
+              <button class="kc-option" onclick="selectKCOption('01-06', 3, 1)">
+                <span class="kc-option__letter">D</span>
+                Refuse to price the item until it is corrected
+              </button>
+            </div>
+
+            <div id="kc-feedback-01-06" style="display: none;" class="kc-feedback">
+              <!-- Populated by JS -->
+            </div>
+
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" id="complete-btn-01-06" data-chunk="01-06" onclick="handleMarkComplete('01-06')" disabled>
+              &#10003; Mark Complete
+            </button>
+          </div>
+        </div>
+
+      </div><!-- end chunk-list -->
+
+      <!-- Module Complete Banner (hidden until all chunks done) -->
+      <div class="module-complete" id="module-complete" style="display: none;">
+        <div class="module-complete__icon">&#10003;</div>
+        <h2 class="module-complete__title">Module 01 Complete</h2>
+        <p class="module-complete__subtitle">Module 02 — Reading a Bill of Quantities is now unlocked.</p>
+        <a href="../index.html" class="btn btn--primary" style="margin-top: 8px;">Back to Dashboard</a>
+      </div>
+
+    </div><!-- end content-wrapper -->
+  </main>
+
+</div><!-- end layout -->
+
+<!-- SR Review Overlay -->
+<div class="sr-overlay" id="sr-overlay" style="display: none;">
+  <div class="sr-overlay__header">
+    <span class="sr-overlay__title">Spaced Repetition Review</span>
+    <span class="sr-overlay__counter" id="sr-counter">1 of 3</span>
+  </div>
+  <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+  <div class="sr-card" id="sr-card">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script>
+  const MODULE_ID = '01';
+  const TOTAL_CHUNKS = 6;
+
+  const MODULES_META = [
+    { id: '01', title: 'How QS Works in Civil & Groundworks' },
+    { id: '02', title: 'Reading a Bill of Quantities' },
+    { id: '03', title: 'Understanding Measurements & Units' },
+    { id: '04', title: 'Labour Pricing' },
+    { id: '05', title: 'Plant & Equipment Pricing' },
+    { id: '06', title: 'Materials Pricing' },
+    { id: '07', title: 'Earthworks & Excavation Pricing' },
+    { id: '08', title: 'Drainage & Utilities Pricing' },
+    { id: '09', title: 'Concrete & Structures Pricing' },
+    { id: '10', title: 'Roads, Hardstanding & Surfacing' },
+    { id: '11', title: 'Preliminaries, Overheads & Profit' },
+    { id: '12', title: 'Putting It Together: Pricing a Tender' },
+  ];
+
+  // ============================================================
+  // Initialisation
+  // ============================================================
+
+  function init() {
+    updateStreak();
+    renderSidebar();
+    renderTopbarProgress();
+    applyChunkStates();
+    checkSRBanner();
+  }
+
+  function renderSidebar() {
+    const nav = document.getElementById('sidebar-nav');
+    nav.innerHTML = '';
+    MODULES_META.forEach(mod => {
+      const unlocked = isModuleUnlocked(mod.id);
+      const prog = getModuleProgress(mod.id);
+      const li = document.createElement('li');
+      li.className = 'sidebar__nav-item'
+        + (mod.id === MODULE_ID ? ' active' : '')
+        + (unlocked ? '' : ' locked');
+
+      if (unlocked) {
+        li.innerHTML = `
+          <a href="../modules/module-${mod.id}.html">
+            <span class="sidebar__module-num">${mod.id}</span>
+            <span class="sidebar__module-name">${mod.title}</span>
+            <span class="sidebar__module-progress">${prog.completed}/${prog.total}</span>
+          </a>`;
+      } else {
+        li.innerHTML = `
+          <button disabled>
+            <span class="sidebar__module-num">${mod.id}</span>
+            <span class="sidebar__module-name">${mod.title}</span>
+            <span class="sidebar__lock-icon">&#128274;</span>
+          </button>`;
+      }
+      nav.appendChild(li);
+    });
+  }
+
+  function renderTopbarProgress() {
+    const overall = getOverallProgress();
+    const pct = overall.total > 0 ? Math.round((overall.completed / overall.total) * 100) : 0;
+    document.getElementById('topbar-progress-fill').style.width = pct + '%';
+    document.getElementById('topbar-progress-label').textContent = `${overall.completed} / ${overall.total} chunks`;
+  }
+
+  // ============================================================
+  // Chunk State Management
+  // ============================================================
+
+  function applyChunkStates() {
+    const chunks = ['01-01', '01-02', '01-03', '01-04', '01-05', '01-06'];
+    let lastComplete = true;
+
+    chunks.forEach((chunkId, idx) => {
+      const el = document.getElementById('chunk-' + chunkId);
+      if (!el) return;
+      const complete = isChunkComplete(MODULE_ID, chunkId);
+
+      if (complete) {
+        el.classList.remove('chunk--locked', 'chunk--active');
+        el.classList.add('chunk--complete');
+        setMarkCompleteButtonDone(chunkId);
+      } else if (lastComplete) {
+        el.classList.remove('chunk--locked', 'chunk--complete');
+        el.classList.add('chunk--active');
+        lastComplete = false;
+      } else {
+        el.classList.add('chunk--locked');
+        el.classList.remove('chunk--active', 'chunk--complete');
+      }
+
+      if (complete) {
+        // Keep lastComplete true
+      } else {
+        lastComplete = false;
+      }
+    });
+
+    updateModuleProgressDisplay();
+
+    // Re-evaluate lastComplete properly
+    let allPreviousComplete = true;
+    chunks.forEach(chunkId => {
+      const el = document.getElementById('chunk-' + chunkId);
+      if (!el) return;
+      const complete = isChunkComplete(MODULE_ID, chunkId);
+      if (!complete && allPreviousComplete) {
+        // This is the first incomplete chunk — ensure it is active not locked
+        el.classList.remove('chunk--locked');
+        el.classList.add('chunk--active');
+        allPreviousComplete = false;
+      } else if (!complete && !allPreviousComplete) {
+        el.classList.add('chunk--locked');
+        el.classList.remove('chunk--active');
+      }
+      if (complete) {
+        // continue
+      } else {
+        allPreviousComplete = false;
+      }
+    });
+
+    if (isModuleComplete(MODULE_ID)) {
+      document.getElementById('module-complete').style.display = 'block';
+    }
+  }
+
+  function setMarkCompleteButtonDone(chunkId) {
+    const btn = document.querySelector(`button.mark-complete-btn[data-chunk="${chunkId}"]`);
+    if (btn) {
+      btn.textContent = '✓ Complete';
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+    }
+  }
+
+  function updateModuleProgressDisplay() {
+    const prog = getModuleProgress(MODULE_ID);
+    const pct = prog.total > 0 ? Math.round((prog.completed / prog.total) * 100) : 0;
+    const fillEl = document.getElementById('module-progress-fill');
+    const textEl = document.getElementById('module-progress-text');
+    if (fillEl) fillEl.style.width = pct + '%';
+    if (textEl) textEl.textContent = `Chunk ${prog.completed} of ${prog.total}`;
+  }
+
+  // ============================================================
+  // Mark Complete
+  // ============================================================
+
+  function handleMarkComplete(chunkId) {
+    markChunkComplete(MODULE_ID, chunkId);
+
+    // Check if module just completed — activate SR questions
+    if (isModuleComplete(MODULE_ID)) {
+      if (typeof activateSRQuestionsForModule === 'function') {
+        activateSRQuestionsForModule(MODULE_ID);
+      }
+    }
+
+    applyChunkStates();
+    renderSidebar();
+    renderTopbarProgress();
+
+    // Smooth scroll to next chunk
+    const chunks = ['01-01', '01-02', '01-03', '01-04', '01-05', '01-06'];
+    const idx = chunks.indexOf(chunkId);
+    if (idx < chunks.length - 1) {
+      const next = document.getElementById('chunk-' + chunks[idx + 1]);
+      if (next) {
+        setTimeout(() => next.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    }
+
+    if (isModuleComplete(MODULE_ID)) {
+      setTimeout(() => {
+        document.getElementById('module-complete').style.display = 'block';
+        document.getElementById('module-complete').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }
+  }
+
+  // ============================================================
+  // Worked Example — Step Reveal
+  // ============================================================
+
+  function revealStep(chunkId, stepNum, totalSteps) {
+    const stepEl = document.getElementById(`step-${chunkId}-${stepNum}`);
+    if (!stepEl) return;
+    stepEl.classList.add('step--revealed');
+    stepEl.querySelector('.step__trigger').disabled = true;
+
+    // Unlock next step if exists
+    const nextStep = document.getElementById(`step-${chunkId}-${stepNum + 1}`);
+    if (nextStep) {
+      nextStep.querySelector('.step__trigger').disabled = false;
+    }
+
+    // If all steps revealed, enable mark complete
+    if (stepNum === totalSteps) {
+      const btn = document.getElementById(`complete-btn-${chunkId}`);
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  // ============================================================
+  // Knowledge Check
+  // ============================================================
+
+  function selectKCOption(chunkId, selectedIdx, correctIdx) {
+    const container = document.getElementById(`kc-options-${chunkId}`);
+    const buttons = container.querySelectorAll('.kc-option');
+    const feedbackEl = document.getElementById(`kc-feedback-${chunkId}`);
+
+    // Disable all options
+    buttons.forEach((btn, idx) => {
+      btn.disabled = true;
+      if (idx === correctIdx) {
+        btn.classList.add('kc-option--correct');
+      } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
+        btn.classList.add('kc-option--incorrect');
+      } else {
+        btn.classList.add('kc-option--dimmed');
+      }
+    });
+
+    const correct = selectedIdx === correctIdx;
+    feedbackEl.style.display = 'block';
+    feedbackEl.className = 'kc-feedback ' + (correct ? 'kc-feedback--correct' : 'kc-feedback--incorrect');
+
+    if (correct) {
+      feedbackEl.innerHTML = `<strong style="color: var(--success)">Correct.</strong> You price the item exactly as written in the BoQ — at the 1.2–1.5m depth rate — and raise a formal tender query about the discrepancy. If the depth turns out to be greater during the works, you'll need a remeasured item or a variation instruction. Silently pricing a different depth is risky: the client's QS will check your submission against the BoQ description.`;
+    } else {
+      feedbackEl.innerHTML = `<strong style="color: var(--error)">Not quite.</strong> The correct approach is B: price as written and raise the query formally.
+        ${selectedIdx === 0 ? 'Pricing at a different depth without instruction means your rate doesn\'t match the BoQ description — this can cause valuation disputes.' : ''}
+        ${selectedIdx === 2 ? 'Burying a risk allowance in prelims might cover you financially, but it doesn\'t resolve the description discrepancy — and it won\'t help if the client\'s QS queries why your prelims are high.' : ''}
+        ${selectedIdx === 3 ? 'Refusing to price an item is rarely appropriate — it would make your tender incomplete.' : ''}`;
+    }
+
+    // Enable mark complete after one attempt
+    const btn = document.getElementById(`complete-btn-${chunkId}`);
+    if (btn) btn.disabled = false;
+  }
+
+  // ============================================================
+  // SR Banner & Overlay
+  // ============================================================
+
+  function checkSRBanner() {
+    if (typeof getDueQuestions !== 'function') return;
+    const due = getDueQuestions();
+    if (due.length > 0) {
+      document.getElementById('sr-banner-count').textContent =
+        `${due.length} recap question${due.length > 1 ? 's' : ''} due`;
+      document.getElementById('sr-banner').style.display = 'flex';
+    }
+  }
+
+  function dismissSRBanner() {
+    document.getElementById('sr-banner').style.display = 'none';
+  }
+
+  let srQueue = [];
+  let srCurrentIdx = 0;
+
+  function openSROverlay() {
+    srQueue = typeof getDueQuestions === 'function' ? getDueQuestions() : [];
+    if (srQueue.length === 0) return;
+    srCurrentIdx = 0;
+    document.getElementById('sr-overlay').style.display = 'flex';
+    renderSRCard();
+  }
+
+  function closeSROverlay() {
+    document.getElementById('sr-overlay').style.display = 'none';
+    dismissSRBanner();
+  }
+
+  function renderSRCard() {
+    const q = srQueue[srCurrentIdx];
+    const card = document.getElementById('sr-card');
+    document.getElementById('sr-counter').textContent =
+      `${srCurrentIdx + 1} of ${srQueue.length}`;
+
+    const optionsHTML = q.options.map((opt, i) =>
+      `<button class="kc-option" onclick="answerSR(${i})" id="sr-opt-${i}">
+        <span class="kc-option__letter">${String.fromCharCode(65 + i)}</span>
+        ${opt}
+      </button>`
+    ).join('');
+
+    card.innerHTML = `
+      <p class="sr-card__source">Module ${q.moduleSource}</p>
+      <p class="sr-card__question">${q.question}</p>
+      <div class="sr-card__options">${optionsHTML}</div>
+      <div id="sr-feedback" style="display:none; margin-top: 16px;"></div>
+      <div class="sr-card__footer">
+        <span></span>
+        <button class="btn btn--primary btn--small" id="sr-next-btn" style="display:none" onclick="nextSRQuestion()">
+          ${srCurrentIdx < srQueue.length - 1 ? 'Next Question' : 'Finish Review'}
+        </button>
+      </div>`;
+  }
+
+  function answerSR(selectedIdx) {
+    const q = srQueue[srCurrentIdx];
+    const correct = selectedIdx === q.correctIndex;
+
+    if (typeof recordSRAnswer === 'function') {
+      recordSRAnswer(q.id, correct);
+    }
+
+    // Style options
+    for (let i = 0; i < q.options.length; i++) {
+      const btn = document.getElementById(`sr-opt-${i}`);
+      if (!btn) continue;
+      btn.disabled = true;
+      if (i === q.correctIndex) btn.classList.add('kc-option--correct');
+      else if (i === selectedIdx) btn.classList.add('kc-option--incorrect');
+      else btn.classList.add('kc-option--dimmed');
+    }
+
+    const feedback = document.getElementById('sr-feedback');
+    feedback.style.display = 'block';
+    feedback.className = 'kc-feedback ' + (correct ? 'kc-feedback--correct' : 'kc-feedback--incorrect');
+    feedback.innerHTML = (correct ? '<strong style="color:var(--success)">Correct.</strong> ' : '<strong style="color:var(--error)">Not quite.</strong> ') + q.explanation;
+
+    document.getElementById('sr-next-btn').style.display = 'inline-flex';
+  }
+
+  function nextSRQuestion() {
+    srCurrentIdx++;
+    if (srCurrentIdx >= srQueue.length) {
+      closeSROverlay();
+    } else {
+      renderSRCard();
+    }
+  }
+
+  // ============================================================
+  // Boot
+  // ============================================================
+  init();
+</script>
+
+</body>
+</html>

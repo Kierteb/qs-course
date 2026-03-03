@@ -1,0 +1,748 @@
+/* ============================================================
+   QS Learning Platform — module.css
+   Module page styles: chunks, content types, SR overlay
+   ============================================================ */
+
+/* ============================================================
+   Module Header
+   ============================================================ */
+
+.module-header {
+  margin-bottom: var(--sp-6);
+}
+
+.module-header__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-decoration: none;
+  margin-bottom: var(--sp-3);
+  transition: color var(--transition);
+}
+
+.module-header__back:hover {
+  color: var(--text-secondary);
+}
+
+.module-header__back::before {
+  content: '←';
+}
+
+.module-header__meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  margin-bottom: var(--sp-1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.module-header__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: var(--sp-2);
+}
+
+.module-header__progress {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.module-header__progress .progress-bar {
+  width: 200px;
+  height: 4px;
+}
+
+.module-header__progress-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+}
+
+/* ============================================================
+   SR Prompt Banner (in-module)
+   ============================================================ */
+
+.sr-banner {
+  background: var(--bg-secondary);
+  border: 1px solid var(--purple);
+  border-left: 4px solid var(--purple);
+  border-radius: 6px;
+  padding: var(--sp-2) var(--sp-3);
+  margin-bottom: var(--sp-4);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.sr-banner__icon {
+  font-size: var(--text-lg);
+}
+
+.sr-banner__text {
+  flex: 1;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.sr-banner__text strong {
+  color: var(--text-primary);
+}
+
+.sr-banner__actions {
+  display: flex;
+  gap: var(--sp-1);
+  align-items: center;
+}
+
+/* ============================================================
+   Chunk Cards
+   ============================================================ */
+
+.chunk-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.chunk {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 6px;
+  padding: var(--sp-4);
+  transition: border-left-color var(--transition), opacity var(--transition);
+  position: relative;
+}
+
+.chunk--active {
+  border-left-color: var(--accent);
+}
+
+.chunk--complete {
+  border-left-color: var(--success);
+  opacity: 0.75;
+}
+
+.chunk--complete:hover {
+  opacity: 0.9;
+}
+
+.chunk--locked {
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+}
+
+.chunk__type-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--sp-2);
+}
+
+.chunk--complete .chunk__type-label::after {
+  content: ' — COMPLETE';
+  color: var(--success);
+}
+
+.chunk__title {
+  font-size: var(--text-md);
+  font-weight: 600;
+  margin-bottom: var(--sp-2);
+}
+
+.chunk__body {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  line-height: 1.65;
+}
+
+.chunk__body p {
+  margin-bottom: var(--sp-2);
+}
+
+.chunk__body p:last-child {
+  margin-bottom: 0;
+}
+
+.chunk__footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================================
+   Concept Chunk (type 1)
+   ============================================================ */
+
+.chunk--concept .chunk__type-label {
+  color: var(--text-dim);
+}
+
+/* ============================================================
+   Rate Card / Key Numbers Chunk (type 2)
+   ============================================================ */
+
+.rate-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  margin: var(--sp-2) 0;
+}
+
+.rate-table th {
+  text-align: left;
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  padding: var(--sp-1) var(--sp-2) var(--sp-1) 0;
+  font-weight: 600;
+}
+
+.rate-table td {
+  padding: 7px var(--sp-2) 7px 0;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(46, 51, 71, 0.5);
+  vertical-align: top;
+}
+
+.rate-table tr:last-child td {
+  border-bottom: none;
+}
+
+.rate-table td:last-child {
+  color: var(--accent);
+  text-align: right;
+  padding-right: 0;
+}
+
+.rate-table__disclaimer {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  margin-top: var(--sp-2);
+  font-style: italic;
+  font-family: var(--font-sans);
+}
+
+/* ============================================================
+   Worked Example Chunk (type 3)
+   ============================================================ */
+
+.worked-example__problem {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: var(--sp-3);
+  margin-bottom: var(--sp-3);
+  font-size: var(--text-base);
+}
+
+.worked-example__problem strong {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-1);
+  font-family: var(--font-mono);
+}
+
+.worked-example__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.step {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.step__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-tertiary);
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  transition: background var(--transition), color var(--transition);
+}
+
+.step__trigger:hover:not(:disabled) {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+.step__trigger:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.step__trigger-icon {
+  font-size: var(--text-xs);
+  transition: transform var(--transition);
+}
+
+.step--revealed .step__trigger-icon {
+  transform: rotate(90deg);
+}
+
+.step__trigger-label {
+  font-weight: 600;
+}
+
+.step__trigger-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+}
+
+.step__content {
+  display: none;
+  padding: var(--sp-3);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-base);
+  line-height: 1.65;
+}
+
+.step--revealed .step__content {
+  display: block;
+}
+
+.step__formula {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: var(--sp-2) var(--sp-3);
+  margin: var(--sp-2) 0;
+  color: var(--accent);
+}
+
+/* ============================================================
+   Rate Builder / Interactive Calculator (type 4)
+   ============================================================ */
+
+.rate-builder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.rate-builder__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.rate-builder__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.rate-builder__label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.rate-builder__input {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  color: var(--text-primary);
+  width: 120px;
+  text-align: right;
+  transition: border-color var(--transition);
+}
+
+.rate-builder__input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.rate-builder__formula {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: var(--sp-2) var(--sp-3);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.rate-builder__formula .formula-var {
+  color: var(--accent);
+}
+
+.rate-builder__result {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: var(--sp-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rate-builder__result-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.rate-builder__result-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ============================================================
+   BoQ Pricing Exercise (type 5)
+   ============================================================ */
+
+.boq-exercise {
+  overflow-x: auto;
+}
+
+.boq-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.boq-table th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  padding: var(--sp-1) var(--sp-2) var(--sp-1) 0;
+}
+
+.boq-table td {
+  padding: 8px var(--sp-2) 8px 0;
+  border-bottom: 1px solid rgba(46, 51, 71, 0.4);
+  vertical-align: middle;
+}
+
+.boq-table tr:last-child td {
+  border-bottom: none;
+}
+
+.boq-table__item-ref {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.boq-table__qty,
+.boq-table__total {
+  font-family: var(--font-mono);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.boq-rate-input {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 4px 8px;
+  color: var(--text-primary);
+  width: 90px;
+  text-align: right;
+  transition: border-color var(--transition);
+}
+
+.boq-rate-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.boq-rate-input.correct {
+  border-color: var(--success);
+  background: rgba(76, 175, 130, 0.08);
+}
+
+.boq-rate-input.acceptable {
+  border-color: var(--warning);
+  background: rgba(232, 193, 58, 0.08);
+}
+
+.boq-rate-input.incorrect {
+  border-color: var(--error);
+  background: rgba(232, 90, 58, 0.08);
+}
+
+.boq-result-icon {
+  font-size: var(--text-md);
+}
+
+.boq-feedback {
+  margin-top: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.boq-feedback__item {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--text-sm);
+  border-left: 3px solid var(--border);
+}
+
+.boq-feedback__item--correct  { border-left-color: var(--success); }
+.boq-feedback__item--acceptable { border-left-color: var(--warning); }
+.boq-feedback__item--incorrect { border-left-color: var(--error); }
+
+.boq-score {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: var(--sp-2);
+}
+
+/* ============================================================
+   Knowledge Check (type 6)
+   ============================================================ */
+
+.knowledge-check__question {
+  font-size: var(--text-md);
+  font-weight: 600;
+  margin-bottom: var(--sp-3);
+  line-height: 1.4;
+}
+
+.knowledge-check__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.kc-option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+  text-align: left;
+  font-family: var(--font-sans);
+  width: 100%;
+}
+
+.kc-option:hover:not(:disabled) {
+  border-color: var(--text-dim);
+  color: var(--text-primary);
+}
+
+.kc-option--correct {
+  border-color: var(--success);
+  background: rgba(76, 175, 130, 0.08);
+  color: var(--text-primary);
+}
+
+.kc-option--incorrect {
+  border-color: var(--error);
+  background: rgba(232, 90, 58, 0.08);
+  color: var(--text-primary);
+}
+
+.kc-option--dimmed {
+  opacity: 0.4;
+}
+
+.kc-option__letter {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  min-width: 16px;
+  margin-top: 1px;
+}
+
+.kc-feedback {
+  margin-top: var(--sp-3);
+  padding: var(--sp-3);
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.kc-feedback--correct {
+  border-left: 4px solid var(--success);
+}
+
+.kc-feedback--incorrect {
+  border-left: 4px solid var(--error);
+}
+
+.kc-retry {
+  margin-top: var(--sp-2);
+}
+
+/* ============================================================
+   Module Complete Banner
+   ============================================================ */
+
+.module-complete {
+  background: var(--bg-secondary);
+  border: 1px solid var(--success);
+  border-left: 4px solid var(--success);
+  border-radius: 6px;
+  padding: var(--sp-4);
+  text-align: center;
+  margin-top: var(--sp-4);
+}
+
+.module-complete__icon {
+  font-size: 40px;
+  margin-bottom: var(--sp-2);
+}
+
+.module-complete__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: var(--sp-1);
+}
+
+.module-complete__subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-3);
+}
+
+/* ============================================================
+   SR Review Overlay (full-screen)
+   ============================================================ */
+
+.sr-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6);
+}
+
+.sr-overlay__header {
+  position: absolute;
+  top: var(--sp-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.sr-overlay__title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sr-overlay__counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+}
+
+.sr-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--sp-6);
+  width: 100%;
+  max-width: 600px;
+}
+
+.sr-card__source {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-2);
+}
+
+.sr-card__question {
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--sp-4);
+}
+
+.sr-card__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.sr-card__footer {
+  margin-top: var(--sp-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sr-close {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: var(--text-md);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.sr-close:hover {
+  color: var(--text-secondary);
+}

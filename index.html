@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical QS for Civil Engineering & Groundworks</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Dashboard-specific overrides */
+    .main--dashboard {
+      margin-left: 0;
+      padding: var(--sp-6) var(--sp-8);
+    }
+    .content-wrapper--dashboard {
+      max-width: 900px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav">
+      <!-- Populated by JS -->
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main main--dashboard">
+    <div class="content-wrapper content-wrapper--dashboard">
+
+      <!-- Header -->
+      <div class="dashboard__header">
+        <h1 class="dashboard__title">Practical QS for Civil Engineering &amp; Groundworks</h1>
+        <p class="dashboard__subtitle">Learn to read and price a Bill of Quantities from first principles.</p>
+      </div>
+
+      <!-- Overall Progress + Streak -->
+      <div class="dashboard__overall-progress">
+        <div class="progress-bar" style="height: 6px;">
+          <div class="progress-bar__fill" id="overall-progress-fill" style="width: 0%"></div>
+        </div>
+        <span class="dashboard__progress-text" id="overall-progress-text">0 of 0 chunks complete</span>
+        <span class="dashboard__streak" id="streak-display">Streak: <span>0</span> day(s)</span>
+      </div>
+
+      <!-- SR Notification (hidden until due) -->
+      <div class="sr-notification" id="sr-notification" style="display: none;">
+        <span style="font-size: 18px;">&#128218;</span>
+        <p class="sr-notification__text" id="sr-notification-text">
+          <strong>Recap questions due</strong>
+        </p>
+        <button class="btn btn--small btn--purple" onclick="startSRReview()">Start Review</button>
+      </div>
+
+      <!-- Module Grid -->
+      <div class="module-grid" id="module-grid">
+        <!-- Populated by JS -->
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script src="js/progress.js"></script>
+<script src="js/spaced-repetition.js"></script>
+<script>
+  // Module metadata
+  const MODULES = [
+    { id: '01', title: 'How QS Works in Civil & Groundworks',     chunks: 6  },
+    { id: '02', title: 'Reading a Bill of Quantities',            chunks: 8  },
+    { id: '03', title: 'Understanding Measurements & Units',      chunks: 6  },
+    { id: '04', title: 'Labour Pricing',                          chunks: 8  },
+    { id: '05', title: 'Plant & Equipment Pricing',               chunks: 8  },
+    { id: '06', title: 'Materials Pricing',                       chunks: 7  },
+    { id: '07', title: 'Earthworks & Excavation Pricing',         chunks: 9  },
+    { id: '08', title: 'Drainage & Utilities Pricing',            chunks: 10 },
+    { id: '09', title: 'Concrete & Structures Pricing',           chunks: 8  },
+    { id: '10', title: 'Roads, Hardstanding & Surfacing',         chunks: 7  },
+    { id: '11', title: 'Preliminaries, Overheads & Profit',       chunks: 8  },
+    { id: '12', title: 'Putting It Together: Pricing a Tender',   chunks: 8  },
+  ];
+
+  function init() {
+    updateStreak();
+    renderSidebar();
+    renderModuleGrid();
+    renderTopbarProgress();
+    checkSRNotification();
+  }
+
+  function renderSidebar() {
+    const nav = document.getElementById('sidebar-nav');
+    nav.innerHTML = '';
+    MODULES.forEach(mod => {
+      const unlocked = isModuleUnlocked(mod.id);
+      const complete = isModuleComplete(mod.id);
+      const prog = getModuleProgress(mod.id);
+      const li = document.createElement('li');
+      li.className = 'sidebar__nav-item' + (unlocked ? '' : ' locked');
+
+      if (unlocked) {
+        li.innerHTML = `
+          <a href="modules/module-${mod.id}.html">
+            <span class="sidebar__module-num">${mod.id}</span>
+            <span class="sidebar__module-name">${mod.title}</span>
+            <span class="sidebar__module-progress">${prog.completed}/${prog.total}</span>
+          </a>`;
+      } else {
+        li.innerHTML = `
+          <button disabled>
+            <span class="sidebar__module-num">${mod.id}</span>
+            <span class="sidebar__module-name">${mod.title}</span>
+            <span class="sidebar__lock-icon">&#128274;</span>
+          </button>`;
+      }
+      nav.appendChild(li);
+    });
+  }
+
+  function renderModuleGrid() {
+    const grid = document.getElementById('module-grid');
+    grid.innerHTML = '';
+    MODULES.forEach(mod => {
+      const unlocked = isModuleUnlocked(mod.id);
+      const complete = isModuleComplete(mod.id);
+      const prog = getModuleProgress(mod.id);
+      const pct = prog.total > 0 ? Math.round((prog.completed / prog.total) * 100) : 0;
+
+      let statusClass = 'module-card--locked';
+      let badge = '<span class="module-card__status-badge badge--locked">&#128274; Locked</span>';
+
+      if (complete) {
+        statusClass = 'module-card--complete';
+        badge = '<span class="module-card__status-badge badge--complete">&#10003; Complete</span>';
+      } else if (unlocked && prog.completed > 0) {
+        statusClass = 'module-card--active';
+        badge = '<span class="module-card__status-badge badge--unlocked">In Progress</span>';
+      } else if (unlocked) {
+        statusClass = '';
+        badge = '<span class="module-card__status-badge badge--unlocked">Unlocked</span>';
+      }
+
+      const card = document.createElement(unlocked ? 'a' : 'div');
+      card.className = 'module-card ' + statusClass;
+      if (unlocked) card.href = `modules/module-${mod.id}.html`;
+
+      card.innerHTML = `
+        <div class="module-card__header">
+          <span class="module-card__num">MODULE ${mod.id}</span>
+          ${badge}
+        </div>
+        <p class="module-card__title">${mod.title}</p>
+        <div class="module-card__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" style="width: ${pct}%"></div>
+          </div>
+          <span class="module-card__progress-label">${prog.completed} / ${prog.total}</span>
+        </div>`;
+
+      grid.appendChild(card);
+    });
+  }
+
+  function renderTopbarProgress() {
+    const overall = getOverallProgress();
+    const pct = overall.total > 0 ? Math.round((overall.completed / overall.total) * 100) : 0;
+    document.getElementById('topbar-progress-fill').style.width = pct + '%';
+    document.getElementById('topbar-progress-label').textContent = `${overall.completed} / ${overall.total} chunks`;
+    document.getElementById('overall-progress-fill').style.width = pct + '%';
+    document.getElementById('overall-progress-text').textContent =
+      `${overall.completed} of ${overall.total} chunks complete`;
+
+    const progress = loadProgress();
+    const streakEl = document.getElementById('streak-display');
+    streakEl.innerHTML = `Streak: <span>${progress.streak}</span> day(s)`;
+  }
+
+  function checkSRNotification() {
+    if (typeof getDueQuestions !== 'function') return;
+    const due = getDueQuestions();
+    if (due.length > 0) {
+      const notif = document.getElementById('sr-notification');
+      document.getElementById('sr-notification-text').innerHTML =
+        `<strong>${due.length} recap question${due.length > 1 ? 's' : ''} due</strong> — keep your knowledge sharp.`;
+      notif.style.display = 'flex';
+    }
+  }
+
+  function startSRReview() {
+    // SR review initiated from dashboard — redirect to module 01 which handles SR overlay
+    // In a full implementation, this would open the SR overlay directly
+    alert('SR review coming in Phase 4.');
+  }
+
+  init();
+</script>
+
+</body>
+</html>
