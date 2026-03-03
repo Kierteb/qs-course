@@ -686,6 +686,9 @@ function closeSROverlay() {
   const overlay = document.getElementById('sr-overlay');
   if (overlay) overlay.style.display = 'none';
   dismissSRBanner();
+  // Also dismiss the dashboard-style notification if present
+  const dashNotif = document.getElementById('sr-notification');
+  if (dashNotif) dashNotif.style.display = 'none';
 }
 
 function _renderSRCard() {

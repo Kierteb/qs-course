@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Practical QS for Civil Engineering & Groundworks</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/module.css">
   <style>
     /* Dashboard-specific overrides */
     .main--dashboard {
@@ -75,6 +76,16 @@
     </div>
   </main>
 
+</div>
+
+<!-- SR Review Overlay (dashboard) -->
+<div class="sr-overlay" id="sr-overlay" style="display: none;">
+  <div class="sr-overlay__header">
+    <span class="sr-overlay__title">Spaced Repetition Review</span>
+    <span class="sr-overlay__counter" id="sr-counter"></span>
+  </div>
+  <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+  <div class="sr-card" id="sr-card"></div>
 </div>
 
 <script src="js/progress.js"></script>
@@ -189,9 +200,7 @@
   }
 
   function startSRReview() {
-    // SR review initiated from dashboard — redirect to module 01 which handles SR overlay
-    // In a full implementation, this would open the SR overlay directly
-    alert('SR review coming in Phase 4.');
+    openSROverlay();
   }
 
   init();
