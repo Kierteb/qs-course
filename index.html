@@ -79,37 +79,23 @@
 
 <script src="js/progress.js"></script>
 <script src="js/spaced-repetition.js"></script>
+<script src="js/exercises.js"></script>
+<script src="js/chunk-types.js"></script>
 <script>
-  // Module metadata
-  const MODULES = [
-    { id: '01', title: 'How QS Works in Civil & Groundworks',     chunks: 6  },
-    { id: '02', title: 'Reading a Bill of Quantities',            chunks: 8  },
-    { id: '03', title: 'Understanding Measurements & Units',      chunks: 6  },
-    { id: '04', title: 'Labour Pricing',                          chunks: 8  },
-    { id: '05', title: 'Plant & Equipment Pricing',               chunks: 8  },
-    { id: '06', title: 'Materials Pricing',                       chunks: 7  },
-    { id: '07', title: 'Earthworks & Excavation Pricing',         chunks: 9  },
-    { id: '08', title: 'Drainage & Utilities Pricing',            chunks: 10 },
-    { id: '09', title: 'Concrete & Structures Pricing',           chunks: 8  },
-    { id: '10', title: 'Roads, Hardstanding & Surfacing',         chunks: 7  },
-    { id: '11', title: 'Preliminaries, Overheads & Profit',       chunks: 8  },
-    { id: '12', title: 'Putting It Together: Pricing a Tender',   chunks: 8  },
-  ];
-
   function init() {
     updateStreak();
-    renderSidebar();
+    renderDashboardSidebar();
     renderModuleGrid();
     renderTopbarProgress();
     checkSRNotification();
   }
 
-  function renderSidebar() {
+  // Dashboard sidebar uses root-relative paths (no ../ prefix)
+  function renderDashboardSidebar() {
     const nav = document.getElementById('sidebar-nav');
     nav.innerHTML = '';
-    MODULES.forEach(mod => {
+    MODULES_META.forEach(mod => {
       const unlocked = isModuleUnlocked(mod.id);
-      const complete = isModuleComplete(mod.id);
       const prog = getModuleProgress(mod.id);
       const li = document.createElement('li');
       li.className = 'sidebar__nav-item' + (unlocked ? '' : ' locked');
@@ -136,7 +122,7 @@
   function renderModuleGrid() {
     const grid = document.getElementById('module-grid');
     grid.innerHTML = '';
-    MODULES.forEach(mod => {
+    MODULES_META.forEach(mod => {
       const unlocked = isModuleUnlocked(mod.id);
       const complete = isModuleComplete(mod.id);
       const prog = getModuleProgress(mod.id);

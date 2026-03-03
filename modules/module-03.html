@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 03 — Measurements & Units | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 03</p>
+        <h1 class="module-header__title">Understanding Measurements &amp; Units</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 6</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Dismiss</button>
+        </div>
+      </div>
+
+      <div class="chunk-list">
+
+        <!-- CHUNK 03-01: Concept -->
+        <div class="chunk" id="chunk-03-01" data-chunk="03-01">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">The Six Units Used in a Civil Engineering BoQ</h2>
+          <div class="chunk__body">
+            <p>CESMM4 uses exactly six units of measurement. Knowing which unit applies to which work type is fundamental to reading a BoQ correctly — a misread unit is a pricing error before you've entered a single rate.</p>
+            <table class="rate-table">
+              <thead><tr><th>Unit</th><th>What it measures</th><th>Common examples</th></tr></thead>
+              <tbody>
+                <tr><td class="text-accent">m</td><td>Linear metre</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Pipes, kerbs, road centrelines, fencing, drainage channels</td></tr>
+                <tr><td class="text-accent">m²</td><td>Square metre</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Geotextile, road surfacing area, formwork face area, topsoil strip</td></tr>
+                <tr><td class="text-accent">m³</td><td>Cubic metre</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Excavation, concrete, fill, disposal, dredging</td></tr>
+                <tr><td class="text-accent">t</td><td>Tonne</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Aggregates, bituminous surfacing, reinforcement (rebar)</td></tr>
+                <tr><td class="text-accent">nr</td><td>Number</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Manholes, valves, fittings, piles, tree planting, tests</td></tr>
+                <tr><td class="text-accent">sum</td><td>Lump sum</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Attendance on nominated subcontractors, insurance, bonds, demob</td></tr>
+              </tbody>
+            </table>
+            <p style="margin-top: var(--sp-2);">A common mistake: reading <span class="mono">m</span> as metres when the item is measured in <span class="mono">m³</span>, or confusing <span class="mono">m²</span> with <span class="mono">m³</span> for earthworks. Always check the unit column before entering a rate — a rate entered against the wrong unit is immediately wrong by a factor of the item dimension.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="03-01"
+              onclick="handleMarkComplete('03-01')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 03-02: Concept + Rate Card -->
+        <div class="chunk chunk--locked" id="chunk-03-02" data-chunk="03-02">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">Cubic Metres in Practice — Excavation, Concrete, and Fill</h2>
+          <div class="chunk__body">
+            <p>The cubic metre (m³) is the most used unit in civil and groundworks BoQs. Understanding exactly what is measured — and what is not — prevents systematic pricing errors.</p>
+            <p><strong>The golden rule: everything is measured NET.</strong> The BoQ quantity represents the theoretical volume of the permanent work as designed, in its final position. No allowance is made for bulking, compaction, over-excavation, or waste. Those factors go into your <em>rate</em>, not the quantity.</p>
+            <table class="rate-table">
+              <thead><tr><th>Work Type</th><th>What is measured</th><th>What goes in the rate</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Excavation</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Net void to be excavated: length × width × depth to specified lines</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Bulking factor, extra for over-dig, disposal transport</td>
+                </tr>
+                <tr>
+                  <td>Concrete</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Net volume of finished concrete element: to formwork dimensions</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Wastage (typically 5%), pump cost, pour sequence</td>
+                </tr>
+                <tr>
+                  <td>Fill</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Net volume of compacted fill in final position</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Compaction shrinkage (extra tonnes to order), layer thickness constraints</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin-top: var(--sp-2);">Practical example: a BoQ shows <span class="mono">150 m³</span> of excavation. That is the net hole. Your rate must include the cost of removing <span class="mono">~188 m³</span> of loose clay (at 25% bulking) plus disposal. The BoQ quantity never changes — your rate absorbs the difference.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="03-02"
+              onclick="handleMarkComplete('03-02')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 03-03: Key Numbers — Bulking & Compaction -->
+        <div class="chunk chunk--locked" id="chunk-03-03" data-chunk="03-03">
+          <p class="chunk__type-label">Key Numbers</p>
+          <h2 class="chunk__title">Bulking and Compaction Factors — Clay, Granular, Made Ground</h2>
+          <div class="chunk__body">
+            <p>When soil or aggregate is disturbed, its volume changes. These factors must be built into your rate calculations for excavation, disposal, and fill.</p>
+            <table class="rate-table">
+              <thead><tr><th>Material</th><th>Factor</th><th>Teaching figure</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Clay excavation (bulking)</td>
+                  <td class="text-accent">+20–30%</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Use 25% for standard tender calculations</td>
+                </tr>
+                <tr>
+                  <td>Granular fill (compaction shrinkage)</td>
+                  <td class="text-accent">−10–15%</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">You need ~12% more tonnes than the net m³</td>
+                </tr>
+                <tr>
+                  <td>Rock excavation (bulking)</td>
+                  <td class="text-accent">+30–50%</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Highly variable — use higher end and flag as risk</td>
+                </tr>
+                <tr>
+                  <td>Made ground</td>
+                  <td class="text-accent">Highly variable</td>
+                  <td style="color:var(--text-secondary); font-size:var(--text-xs);">Treat as a risk item — always allowance for worst case</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="rate-table__disclaimer">Indicative UK 2025 market rates — verify locally before use in any live tender.</p>
+            <p style="margin-top: var(--sp-2);"><strong>Important:</strong> Always state the material type alongside a bulking factor. "25% bulking" is valid for typical cohesive clay, not for sandy soils (which bulk less) or rock (which bulks more). When ground conditions are uncertain, allow the higher end of the range and flag it as a pricing assumption in your tender.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="03-03"
+              onclick="handleMarkComplete('03-03')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 03-04: Worked Example -->
+        <div class="chunk chunk--locked" id="chunk-03-04" data-chunk="03-04">
+          <p class="chunk__type-label">Worked Example</p>
+          <h2 class="chunk__title">Converting m³ to Tonnes — Aggregates, Soil, Concrete</h2>
+          <div class="chunk__body">
+
+            <div class="worked-example__problem">
+              <strong>Problem</strong>
+              A BoQ contains 85 m³ of Type 1 MOT sub-base fill and 40 m³ of C25 concrete. Calculate: (a) how many tonnes of Type 1 to order, and (b) the weight of concrete for pump specification.
+            </div>
+
+            <div class="worked-example__steps" id="steps-03-04">
+
+              <div class="step" id="step-03-04-1">
+                <button class="step__trigger" onclick="revealStep('03-04', 1)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 1</span>
+                  <span class="step__trigger-label">Establish bulk density figures</span>
+                </button>
+                <div class="step__content">
+                  <p>Before converting, you need the bulk density for each material:</p>
+                  <div class="step__formula">
+                    Type 1 MOT sub-base:  ~1.95 t/m³  (compacted)<br>
+                    C25 ready-mix concrete: ~2.40 t/m³<br>
+                    <br>
+                    Formula: Tonnes = Volume (m³) × Bulk Density (t/m³)
+                  </div>
+                  <p style="margin-top:12px;">These densities are for material in its final, compacted or hardened state. For ordering purposes, also add the compaction allowance (see Step 2).</p>
+                </div>
+              </div>
+
+              <div class="step" id="step-03-04-2">
+                <button class="step__trigger" disabled onclick="revealStep('03-04', 2)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 2</span>
+                  <span class="step__trigger-label">Calculate Type 1 order quantity including compaction allowance</span>
+                </button>
+                <div class="step__content">
+                  <p>The BoQ shows 85 m³ net. But when granular fill is placed and compacted, it shrinks by ~12%. So you need to order more than 85 m³:</p>
+                  <div class="step__formula">
+                    Bulk volume to order = 85 m³ ÷ (1 − 0.12) = 85 ÷ 0.88 = <span style="color:var(--text-primary)">96.6 m³</span><br>
+                    <br>
+                    Convert to tonnes:<br>
+                    96.6 m³ × 1.95 t/m³ = <span style="color:var(--accent)">188.4 tonnes</span>
+                  </div>
+                  <p style="margin-top:12px;">Round up to the nearest practical load — typically 20t per vehicle. So order <strong>200 tonnes</strong> (10 loads). The extra 11.6 tonnes gives a small buffer for wastage and consolidation.</p>
+                </div>
+              </div>
+
+              <div class="step" id="step-03-04-3">
+                <button class="step__trigger" disabled onclick="revealStep('03-04', 3)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 3</span>
+                  <span class="step__trigger-label">Calculate concrete weight for pump specification</span>
+                </button>
+                <div class="step__content">
+                  <p>For the 40 m³ concrete pour — the pump supplier needs to know the load on any temporary structures:</p>
+                  <div class="step__formula">
+                    40 m³ × 2.40 t/m³ = <span style="color:var(--accent)">96 tonnes</span>
+                  </div>
+                  <p style="margin-top:12px;">This matters for: temporary works design (formwork props, falsework), pump truck positioning (ground-bearing pressure), and welfare/access planning around the pour zone. On a £2,500 pump day, getting the weight wrong can stop the pour.</p>
+                  <p style="margin-top:8px;">Note: the BoQ quantity of 40 m³ does not change. You order ~42 m³ (5% wastage) but price the rate for 40 m³. Wastage is in the rate, not the quantity.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" id="complete-btn-03-04"
+              data-chunk="03-04" onclick="handleMarkComplete('03-04')" disabled>&#10003; Mark Complete</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 03-05: Concept -->
+        <div class="chunk chunk--locked" id="chunk-03-05" data-chunk="03-05">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">Checking BoQ Quantities Against Drawings — A Sanity Check Method</h2>
+          <div class="chunk__body">
+            <p>Before pricing any major section, spend 20 minutes back-calculating key quantities from the drawings. You are looking for order-of-magnitude errors — not the final precise figure, but enough to know if the BoQ quantity is credible.</p>
+            <p><strong>The method:</strong></p>
+            <ul style="margin: 8px 0 12px 20px; color: var(--text-primary); line-height: 2;">
+              <li>Pick 2–3 high-value items (earthworks, drainage, concrete slab)</li>
+              <li>Measure or scale the key dimensions from the drawings</li>
+              <li>Calculate your own rough quantity (length × width × depth, etc.)</li>
+              <li>Compare to the BoQ figure — a ±10% difference is normal; ±30% or more warrants a query</li>
+            </ul>
+            <p><strong>If your check quantity differs significantly:</strong> Raise a tender query. State clearly what you have measured and the BoQ figure shown. The engineer will either confirm the quantity or issue an erratum. Do not silently price a quantity you believe to be wrong — if it's understated and the project goes ahead on that quantity, you may have limited contractual recourse.</p>
+            <p>This sanity check takes less than an hour for most civil BoQs and can prevent a very expensive mistake.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="03-05"
+              onclick="handleMarkComplete('03-05')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 03-06: Numeric Exercise -->
+        <div class="chunk chunk--locked" id="chunk-03-06" data-chunk="03-06">
+          <p class="chunk__type-label">Exercise</p>
+          <h2 class="chunk__title">Units Exercise — Calculate BoQ Quantities From Dimensions</h2>
+          <div class="chunk__body">
+            <p style="margin-bottom: var(--sp-3);">Calculate the BoQ quantity for each scenario below. Enter your answer in the unit shown. Round to one decimal place where needed.</p>
+
+            <div id="numeric-exercise-03-06">
+
+              <!-- Q1 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">QUESTION 1</p>
+                <p style="margin-bottom: var(--sp-2);">A trench is <span class="mono">45 m</span> long, <span class="mono">0.8 m</span> wide, and <span class="mono">1.5 m</span> deep. What is the net volume of excavation?</p>
+                <div style="display:flex; align-items:center; gap: var(--sp-2);">
+                  <input class="rate-builder__input numeric-input" type="number" id="numeric-03-06-q1"
+                    placeholder="0.0" step="0.1" style="width:120px;">
+                  <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-secondary);">m³</span>
+                  <span id="numeric-result-03-06-q1" style="font-size:var(--text-lg);"></span>
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">QUESTION 2</p>
+                <p style="margin-bottom: var(--sp-2);">A ground-bearing slab is <span class="mono">18 m × 12 m</span> in plan, <span class="mono">200 mm</span> thick. What is the net volume of concrete?</p>
+                <div style="display:flex; align-items:center; gap: var(--sp-2);">
+                  <input class="rate-builder__input numeric-input" type="number" id="numeric-03-06-q2"
+                    placeholder="0.0" step="0.1" style="width:120px;">
+                  <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-secondary);">m³</span>
+                  <span id="numeric-result-03-06-q2" style="font-size:var(--text-lg);"></span>
+                </div>
+              </div>
+
+              <!-- Q3 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">QUESTION 3</p>
+                <p style="margin-bottom: var(--sp-2);">You have <span class="mono">150 m³</span> net of clay excavation. Allowing for 25% bulking, approximately how many m³ loose will you need to cart away?</p>
+                <div style="display:flex; align-items:center; gap: var(--sp-2);">
+                  <input class="rate-builder__input numeric-input" type="number" id="numeric-03-06-q3"
+                    placeholder="0.0" step="0.5" style="width:120px;">
+                  <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-secondary);">m³</span>
+                  <span id="numeric-result-03-06-q3" style="font-size:var(--text-lg);"></span>
+                </div>
+              </div>
+
+              <!-- Q4 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">QUESTION 4</p>
+                <p style="margin-bottom: var(--sp-2);">A drainage run includes <span class="mono">5 manholes</span> and <span class="mono">3 pipe junctions</span> (tees). How many items appear in Class K of the BoQ and how many in Class J?</p>
+                <div style="display:flex; flex-direction:column; gap: var(--sp-2);">
+                  <div style="display:flex; align-items:center; gap: var(--sp-2);">
+                    <span style="font-size:var(--text-sm); color:var(--text-secondary); width:180px;">Class K items (manholes)</span>
+                    <input class="rate-builder__input numeric-input" type="number" id="numeric-03-06-q4k"
+                      placeholder="0" step="1" style="width:80px;">
+                    <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-secondary);">nr</span>
+                    <span id="numeric-result-03-06-q4k" style="font-size:var(--text-lg);"></span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap: var(--sp-2);">
+                    <span style="font-size:var(--text-sm); color:var(--text-secondary); width:180px;">Class J items (junctions)</span>
+                    <input class="rate-builder__input numeric-input" type="number" id="numeric-03-06-q4j"
+                      placeholder="0" step="1" style="width:80px;">
+                    <span style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--text-secondary);">nr</span>
+                    <span id="numeric-result-03-06-q4j" style="font-size:var(--text-lg);"></span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn--secondary" id="numeric-submit-03-06"
+                onclick="submitNumericExercise('03-06')">
+                Submit Answers
+              </button>
+
+              <div id="numeric-feedback-03-06" style="display:none; margin-top: var(--sp-3);"></div>
+
+            </div>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" id="complete-btn-03-06"
+              data-chunk="03-06" onclick="handleMarkComplete('03-06')" disabled>&#10003; Mark Complete</button>
+          </div>
+        </div>
+
+      </div><!-- end chunk-list -->
+
+      <div class="module-complete" id="module-complete" style="display: none;">
+        <div class="module-complete__icon">&#10003;</div>
+        <h2 class="module-complete__title">Module 03 Complete</h2>
+        <p class="module-complete__subtitle">Module 04 — Labour Pricing is now unlocked.</p>
+        <a href="../index.html" class="btn btn--primary" style="margin-top: 8px;">Back to Dashboard</a>
+      </div>
+
+    </div><!-- end content-wrapper -->
+  </main>
+
+</div><!-- end layout -->
+
+<div class="sr-overlay" id="sr-overlay" style="display: none;">
+  <div class="sr-overlay__header">
+    <span class="sr-overlay__title">Spaced Repetition Review</span>
+    <span class="sr-overlay__counter" id="sr-counter"></span>
+  </div>
+  <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+  <div class="sr-card" id="sr-card"></div>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID  = '03';
+  const CHUNK_LIST = ['03-01','03-02','03-03','03-04','03-05','03-06'];
+
+  const CHUNK_WE_CONFIG = {
+    '03-04': { totalSteps: 3 },
+  };
+
+  const CHUNK_NUMERIC_EXERCISE_CONFIG = {
+    '03-06': {
+      questions: [
+        {
+          id: 'q1',
+          correctAnswer: 54.0,
+          tolerance: 0.02,
+          unit: 'm³',
+          explanation: '45 m × 0.8 m × 1.5 m = 54.0 m³. All excavation quantities in CESMM4 are measured NET to the specified excavation lines. Bulking goes into your rate.',
+        },
+        {
+          id: 'q2',
+          correctAnswer: 43.2,
+          tolerance: 0.02,
+          unit: 'm³',
+          explanation: '18 m × 12 m × 0.2 m = 43.2 m³. Note the slab thickness must be converted to metres (200 mm = 0.2 m). This is the net volume — your rate includes ~5% wastage on ordering.',
+        },
+        {
+          id: 'q3',
+          correctAnswer: 187.5,
+          tolerance: 0.05,
+          unit: 'm³',
+          explanation: '150 m³ × 1.25 = 187.5 m³ loose. The 25% bulking factor means every m³ of net excavation becomes 1.25 m³ of loose material to dispose of. This drives wagon numbers and disposal cost.',
+        },
+        {
+          id: 'q4k',
+          correctAnswer: 5,
+          tolerance: 0,
+          unit: 'nr',
+          explanation: 'The 5 manholes each appear as a separate item in Class K (Pipework: Manholes & Ancillaries), measured by number (nr), with depth captured in the item description.',
+        },
+        {
+          id: 'q4j',
+          correctAnswer: 3,
+          tolerance: 0,
+          unit: 'nr',
+          explanation: 'The 3 pipe junctions appear in Class J (Pipework: Fittings & Valves), also measured by number (nr). Fittings are always separately itemised — they are never included in the Class I pipe run rate.',
+        },
+      ],
+    },
+  };
+
+  // Override submitNumericExercise to handle the split Q4 (two inputs)
+  const _baseSubmitNumeric = submitNumericExercise;
+  function submitNumericExercise(chunkId) {
+    if (chunkId !== '03-06') {
+      _baseSubmitNumeric(chunkId);
+      return;
+    }
+
+    const config = CHUNK_NUMERIC_EXERCISE_CONFIG[chunkId];
+    let correct = 0;
+    const feedbackHtml = [];
+    let qNum = 0;
+
+    config.questions.forEach(q => {
+      const input = document.getElementById(`numeric-${chunkId}-${q.id}`);
+      const resultEl = document.getElementById(`numeric-result-${chunkId}-${q.id}`);
+      if (!input) return;
+      input.disabled = true;
+
+      const userVal = parseFloat(input.value);
+      const isCorrect = q.tolerance === 0
+        ? userVal === q.correctAnswer
+        : !isNaN(userVal) && Math.abs(userVal - q.correctAnswer) / q.correctAnswer <= q.tolerance;
+
+      if (isCorrect) correct++;
+      input.classList.add(isCorrect ? 'correct' : 'incorrect');
+      if (resultEl) {
+        resultEl.textContent = isCorrect ? '✓' : '✗';
+        resultEl.style.color = isCorrect ? 'var(--success)' : 'var(--error)';
+      }
+
+      // Group Q4 parts together in feedback
+      const qLabel = q.id === 'q4k' ? 'Q4 (Class K)' : q.id === 'q4j' ? 'Q4 (Class J)' : `Q${++qNum}`;
+      feedbackHtml.push(`
+        <div class="boq-feedback__item boq-feedback__item--${isCorrect ? 'correct' : 'incorrect'}">
+          ${isCorrect
+            ? `<strong style="color:var(--success)">${qLabel}: Correct.</strong>`
+            : `<strong style="color:var(--error)">${qLabel}: Not quite.</strong>
+               Your answer: <span class="text-mono">${isNaN(userVal) ? '—' : userVal} ${q.unit}</span>
+               &nbsp;|&nbsp; Correct: <span class="text-mono">${q.correctAnswer} ${q.unit}</span>`}
+          <br><span style="color:var(--text-secondary); font-size:var(--text-sm);">${q.explanation}</span>
+        </div>`);
+    });
+
+    const submitBtn = document.getElementById('numeric-submit-' + chunkId);
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitted'; }
+
+    const feedbackPanel = document.getElementById('numeric-feedback-' + chunkId);
+    if (feedbackPanel) {
+      feedbackPanel.style.display = 'block';
+      feedbackPanel.innerHTML = `
+        <p class="boq-score">${correct} / ${config.questions.length} correct</p>
+        <div class="boq-feedback">${feedbackHtml.join('')}</div>`;
+    }
+
+    const completeBtn = document.getElementById('complete-btn-' + chunkId);
+    if (completeBtn) completeBtn.disabled = false;
+  }
+
+  initModulePage();
+</script>
+
+</body>
+</html>

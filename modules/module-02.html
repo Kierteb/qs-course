@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 02 — Reading a Bill of Quantities | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 02</p>
+        <h1 class="module-header__title">Reading a Bill of Quantities</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 8</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Dismiss</button>
+        </div>
+      </div>
+
+      <div class="chunk-list">
+
+        <!-- CHUNK 02-01: Concept -->
+        <div class="chunk" id="chunk-02-01" data-chunk="02-01">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">What CESMM4 Is and Why It Exists</h2>
+          <div class="chunk__body">
+            <p>The <strong>Civil Engineering Standard Method of Measurement, 4th Edition (CESMM4)</strong> is published by the Institution of Civil Engineers. It is the standard document that defines how civil engineering work is measured, described, and included in a Bill of Quantities.</p>
+            <p>Before CESMM4, every client and engineer used different measurement rules. One project might measure pipe runs net; another might allow for joints and overlaps. Comparing tenders was difficult and disputes were common. CESMM4 creates a common language: all contractors pricing the same BoQ are working to the same rules.</p>
+            <p>CESMM4 is not a pricing manual — it does not tell you what a rate should be. It tells you <em>what to measure</em>, what <em>unit</em> to use, and critically, what is <em>included</em> in a rate even when it isn't explicitly stated. That last point — coverage rules — is where most pricing errors occur.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="02-01"
+              onclick="handleMarkComplete('02-01')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 02-02: Concept -->
+        <div class="chunk chunk--locked" id="chunk-02-02" data-chunk="02-02">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">The Structure of a BoQ — Sections, Items, Units, Quantities</h2>
+          <div class="chunk__body">
+            <p>A civil BoQ is organised into sections that correspond to CESMM4 classes. Each section groups related work — all earthworks together, all drainage together, all concrete together. This mirrors how the contractor will plan and price the job.</p>
+            <p>Within each section, individual <strong>items</strong> describe a discrete unit of work. Each item has:</p>
+            <ul style="margin: 8px 0 12px 20px; color: var(--text-primary); line-height: 2;">
+              <li>A <strong>reference code</strong> (e.g. E 4.2.3)</li>
+              <li>A <strong>description</strong> following the CESMM4 classification hierarchy</li>
+              <li>A <strong>unit</strong> (m, m², m³, t, nr, or sum)</li>
+              <li>A <strong>quantity</strong> — pre-calculated by the client's QS</li>
+              <li>A blank <strong>rate</strong> column — this is what you fill in</li>
+              <li>A blank <strong>total</strong> column (rate × quantity)</li>
+            </ul>
+            <p>At the front of the BoQ (or each section) are the <strong>preambles</strong> — definitions and measurement rules specific to this project. At the back is the General Summary, where all section totals are brought together. Always read the preambles before pricing anything.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="02-02"
+              onclick="handleMarkComplete('02-02')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 02-03: Rate Card — CESMM4 Class System -->
+        <div class="chunk chunk--locked" id="chunk-02-03" data-chunk="02-03">
+          <p class="chunk__type-label">Reference — CESMM4 Class System</p>
+          <h2 class="chunk__title">CESMM4 Classes A Through Z — Key Classes Highlighted</h2>
+          <div class="chunk__body">
+            <p>CESMM4 divides all civil engineering work into 25 classes, each assigned a letter. As a groundworks contractor, classes E, F, G, I, J, K, L, and R will appear in most of your tenders.</p>
+            <table class="rate-table">
+              <thead><tr><th>Class</th><th>Description</th><th>Relevance</th></tr></thead>
+              <tbody>
+                <tr><td>A</td><td>General Items</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Prelims, PC sums, provisional sums</td></tr>
+                <tr><td>B</td><td>Ground Investigation</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Trial pits, boreholes</td></tr>
+                <tr><td>C</td><td>Geotechnical Processes</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Ground treatment, grouting</td></tr>
+                <tr><td>D</td><td>Demolition &amp; Site Clearance</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Strip, demolish existing structures</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">E</td><td style="color:var(--accent);">Earthworks</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Excavation, filling, disposal</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">F</td><td style="color:var(--accent);">In-Situ Concrete</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Blinding, foundations, slabs</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">G</td><td style="color:var(--accent);">Concrete Ancillaries</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Formwork, rebar, joints</td></tr>
+                <tr><td>H</td><td>Precast Concrete</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Precast beams, panels</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">I</td><td style="color:var(--accent);">Pipework: Pipes</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Pipe runs measured by type, bore, depth</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">J</td><td style="color:var(--accent);">Pipework: Fittings &amp; Valves</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Bends, tees, junctions, valves</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">K</td><td style="color:var(--accent);">Pipework: Manholes &amp; Ancillaries</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Manholes, chambers, gullies</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">L</td><td style="color:var(--accent);">Pipework: Supports &amp; Protection</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Concrete surround, thrust blocks</td></tr>
+                <tr><td>M</td><td>Structural Metalwork</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Steel frames, connections</td></tr>
+                <tr><td>N</td><td>Miscellaneous Metalwork</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Rails, ladders, grilles</td></tr>
+                <tr><td>O</td><td>Timber</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Structural timber, boarding</td></tr>
+                <tr><td>P</td><td>Piles</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Bored, driven, CFA piles</td></tr>
+                <tr><td>Q</td><td>Ground Anchors</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Soil nails, ground anchors</td></tr>
+                <tr><td style="color:var(--accent);font-weight:700;">R</td><td style="color:var(--accent);">Roads &amp; Paving</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">&#9733; Sub-base, surfacing, kerbs</td></tr>
+                <tr><td>S</td><td>Rail Track</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Specialist rail work</td></tr>
+                <tr><td>T</td><td>Tunnels</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Tunnel lining, excavation</td></tr>
+                <tr><td>U</td><td>Brickwork</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Brick and blockwork structures</td></tr>
+                <tr><td>V</td><td>Painting</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Line marking, protective coatings</td></tr>
+                <tr><td>W</td><td>Waterproofing</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Tanking, membranes</td></tr>
+                <tr><td>X</td><td>Miscellaneous Works</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Fencing, seeding, landscaping</td></tr>
+                <tr><td>Z</td><td>Simple Building Works</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Associated simple structures</td></tr>
+              </tbody>
+            </table>
+            <p class="rate-table__disclaimer">&#9733; Highlighted classes appear in most civil and groundworks tenders. Focus your study on these.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="02-03"
+              onclick="handleMarkComplete('02-03')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 02-04: Worked Example -->
+        <div class="chunk chunk--locked" id="chunk-02-04" data-chunk="02-04">
+          <p class="chunk__type-label">Worked Example</p>
+          <h2 class="chunk__title">Decoding a CESMM4 Item Description — Class Code and Three Division Levels</h2>
+          <div class="chunk__body">
+
+            <div class="worked-example__problem">
+              <strong>Problem</strong>
+              Decode two items from a civil BoQ: one earthworks item and one drainage item. Identify what each covers and what unit it uses.
+            </div>
+
+            <div class="worked-example__steps" id="steps-02-04">
+
+              <div class="step" id="step-02-04-1">
+                <button class="step__trigger" onclick="revealStep('02-04', 1)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 1</span>
+                  <span class="step__trigger-label">The three-division structure of CESMM4 items</span>
+                </button>
+                <div class="step__content">
+                  <p>Every CESMM4 item is classified at three levels beneath its class. Together, they build a complete description:</p>
+                  <div class="step__formula">
+                    Class letter<br>
+                    → First division  (type of operation or material)<br>
+                    &nbsp;&nbsp;→ Second division (sub-type, material grade, bore range, etc.)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;→ Third division  (depth band, size, or further detail)
+                  </div>
+                  <p style="margin-top:12px;">The BoQ description is written out in full — the reference code maps to these three levels. You never need to memorise numeric codes; you read the written description.</p>
+                </div>
+              </div>
+
+              <div class="step" id="step-02-04-2">
+                <button class="step__trigger" disabled onclick="revealStep('02-04', 2)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 2</span>
+                  <span class="step__trigger-label">Decode an earthworks item</span>
+                </button>
+                <div class="step__content">
+                  <p>BoQ item: <em>"Excavation; material other than topsoil, rock or artificial hard material; maximum depth 1–2 m"</em></p>
+                  <div class="step__formula">
+                    Class:           E — Earthworks<br>
+                    First division:  Excavation (as opposed to filling or disposal)<br>
+                    Second division: Material other than topsoil, rock or hardstanding<br>
+                    Third division:  Maximum depth band: 1–2 m<br>
+                    Unit:            m³ (volumes of excavation are always measured in m³)<br>
+                    <br>
+                    What is NOT separately stated but IS in the rate (coverage rule):<br>
+                    disposal of excavated material within 100 m of the excavation
+                  </div>
+                  <p style="margin-top:12px;">The depth band is critical for pricing: a 1–2 m excavation costs less per m³ than a 3–4 m excavation. They are separate items in the BoQ precisely because their rates differ.</p>
+                </div>
+              </div>
+
+              <div class="step" id="step-02-04-3">
+                <button class="step__trigger" disabled onclick="revealStep('02-04', 3)">
+                  <span class="step__trigger-icon">&#9654;</span>
+                  <span class="step__trigger-num">Step 3</span>
+                  <span class="step__trigger-label">Decode a pipe item</span>
+                </button>
+                <div class="step__content">
+                  <p>BoQ item: <em>"Pipes; uPVC; nominal bore 150 mm; depth 1.5–2 m"</em></p>
+                  <div class="step__formula">
+                    Class:           I — Pipework: Pipes<br>
+                    First division:  uPVC (pipe material)<br>
+                    Second division: Nominal bore: 150 mm<br>
+                    Third division:  Depth tranche: 1.5–2 m<br>
+                    Unit:            m (pipe runs are always measured in linear metres)<br>
+                    <br>
+                    Coverage — what is in the rate even though not stated:<br>
+                    excavation, preparation of trench bottom, laying, jointing,<br>
+                    backfilling and compaction of the trench
+                  </div>
+                  <p style="margin-top:12px;">This is the most important coverage rule in drainage pricing. The Class I rate includes all the work of getting the pipe in the ground. Miss it and you underprice by 60–70% of the true cost.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" id="complete-btn-02-04"
+              data-chunk="02-04" onclick="handleMarkComplete('02-04')" disabled>&#10003; Mark Complete</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 02-05: Concept -->
+        <div class="chunk chunk--locked" id="chunk-02-05" data-chunk="02-05">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">Coverage Rules — The Hidden Work Inside a Rate</h2>
+          <div class="chunk__body">
+            <p>CESMM4 defines <strong>coverage rules</strong> for every class: work that is deemed included in a rate even though it is not separately described or itemised. This is not hidden in a dishonest sense — it is part of the standard that every QS and contractor is expected to know.</p>
+            <p>Coverage rules exist because listing every sub-task as a separate line item would make BoQs unworkably long. Instead, CESMM4 bundles logical combinations of work into single items. A Class I pipe item covers not just the pipe supply and laying, but all the trench work around it.</p>
+            <p><strong>Why this matters in practice:</strong> If you price a Class I item at £30/m thinking it is just pipe supply and laying, you will lose money. The correct rate needs to cover excavation, bedding, laying, jointing, backfilling, and compaction — because CESMM4 says they are all in the rate. Coverage rules must be checked for every class before you price a single item.</p>
+            <p>Class-specific coverage rules are covered in detail in the relevant modules (Module 08 for drainage, Module 07 for earthworks, etc.).</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="02-05"
+              onclick="handleMarkComplete('02-05')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 02-06: Concept -->
+        <div class="chunk chunk--locked" id="chunk-02-06" data-chunk="02-06">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">The Preambles Section — What to Look For Before Pricing Anything</h2>
+          <div class="chunk__body">
+            <p>The preambles appear at the front of the BoQ (sometimes at the front of each section). They are not just boilerplate — they define how this particular project is measured, and they can modify the standard CESMM4 coverage rules.</p>
+            <p><strong>What to look for in the preambles:</strong></p>
+            <ul style="margin: 8px 0 12px 20px; color: var(--text-primary); line-height: 2;">
+              <li>Definitions of materials — what does "Type 1" mean on this contract? Does it match the spec?</li>
+              <li>Coverage rule modifications — has the engineer expanded or restricted what's included in a rate?</li>
+              <li>Measurement rules — is excavation measured to the net dimension or to the outside of shoring?</li>
+              <li>Payment terms — what is the assessment date? Are retention rates specified?</li>
+              <li>Specific exclusions — anything explicitly removed from coverage that CESMM4 would normally include</li>
+            </ul>
+            <p>A contractor who skips the preambles and prices straight from the items is gambling. Changes to coverage rules in the preambles can add or remove significant cost from your rates.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="02-06"
+              onclick="handleMarkComplete('02-06')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 02-07: Concept -->
+        <div class="chunk chunk--locked" id="chunk-02-07" data-chunk="02-07">
+          <p class="chunk__type-label">Concept</p>
+          <h2 class="chunk__title">Common BoQ Errors and Ambiguities — Your Options When Something Looks Wrong</h2>
+          <div class="chunk__body">
+            <p>BoQ errors are more common than they should be. The three most frequent types are:</p>
+            <p><strong>1. Quantity errors</strong> — The QS has miscalculated a volume or length. If you spot an understated quantity on a high-value item (e.g. the earthworks volume is 30% lower than your takeoff suggests), flag it. Under most civil contracts quantities can be remeasured, but your rate must still be correct.</p>
+            <p><strong>2. Missing items</strong> — Work that is clearly required by the drawings but has no BoQ item. You cannot price what isn't there. Your options: raise a query and ask for the item to be added, or note it as a risk in your tender and decide whether to absorb it or exclude it explicitly.</p>
+            <p><strong>3. Ambiguous descriptions</strong> — Items where it isn't clear what is included. This is particularly common at class boundaries: is the geotextile included in the sub-base item, or is it in Class X? Check the preambles, then raise a query if still unclear.</p>
+            <p><strong>The process:</strong> Log all queries in a formal Tender Queries Register and submit in writing. Document your assumptions. If you receive no answer before the tender deadline, state your assumptions clearly in the Tender Submissions cover letter.</p>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="02-07"
+              onclick="handleMarkComplete('02-07')">&#10003; Got it</button>
+          </div>
+        </div>
+
+        <!-- CHUNK 02-08: BoQ Decode Exercise -->
+        <div class="chunk chunk--locked" id="chunk-02-08" data-chunk="02-08">
+          <p class="chunk__type-label">Exercise</p>
+          <h2 class="chunk__title">BoQ Reading Exercise — Decode 5 CESMM4 Items</h2>
+          <div class="chunk__body">
+            <p style="margin-bottom: var(--sp-3);">For each item description below, select the correct answer. Submit when all five are answered. You can retry after submitting — learning, not testing.</p>
+
+            <div id="boq-decode-02-08">
+
+              <!-- Question 1 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">ITEM 1</p>
+                <p style="font-style: italic; margin-bottom: var(--sp-2); color: var(--text-secondary);">"Excavation; material other than topsoil, rock or artificial hard material; maximum depth 1–2 m"</p>
+                <p style="font-weight: 600; margin-bottom: var(--sp-1); font-size: var(--text-sm);">What unit is this item measured in?</p>
+                <div class="knowledge-check__options" id="boq-decode-02-08-q0">
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 0, 0)"><span class="kc-option__letter">A</span>Linear metres (m)</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 0, 1)"><span class="kc-option__letter">B</span>Square metres (m²)</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 0, 2)"><span class="kc-option__letter">C</span>Cubic metres (m³)</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 0, 3)"><span class="kc-option__letter">D</span>Tonnes (t)</button>
+                </div>
+              </div>
+
+              <!-- Question 2 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">ITEM 2</p>
+                <p style="font-style: italic; margin-bottom: var(--sp-2); color: var(--text-secondary);">"Pipes; uPVC; nominal bore 150 mm; depth 1.5–2 m"</p>
+                <p style="font-weight: 600; margin-bottom: var(--sp-1); font-size: var(--text-sm);">Under CESMM4 coverage rules, what work is included in the rate for this item?</p>
+                <div class="knowledge-check__options" id="boq-decode-02-08-q1">
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 1, 0)"><span class="kc-option__letter">A</span>Supply and laying of the pipe only</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 1, 1)"><span class="kc-option__letter">B</span>Excavation, bed preparation, laying, jointing, backfilling and compaction</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 1, 2)"><span class="kc-option__letter">C</span>Pipe supply and excavation only; bedding is a separate item</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 1, 3)"><span class="kc-option__letter">D</span>Everything including manholes at each end</button>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">ITEM 3</p>
+                <p style="font-style: italic; margin-bottom: var(--sp-2); color: var(--text-secondary);">"Manholes; precast concrete rings; internal diameter 1050 mm; depth 2–2.5 m"</p>
+                <p style="font-weight: 600; margin-bottom: var(--sp-1); font-size: var(--text-sm);">This manhole item is measured by:</p>
+                <div class="knowledge-check__options" id="boq-decode-02-08-q2">
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 2, 0)"><span class="kc-option__letter">A</span>Number (nr)</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 2, 1)"><span class="kc-option__letter">B</span>Linear metres of depth (m)</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 2, 2)"><span class="kc-option__letter">C</span>Cubic metres of excavation (m³)</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 2, 3)"><span class="kc-option__letter">D</span>Kilograms of concrete (kg)</button>
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">ITEM 4</p>
+                <p style="font-style: italic; margin-bottom: var(--sp-2); color: var(--text-secondary);">"In-situ concrete; designed mix; strength class C32/40; to bases and footings"</p>
+                <p style="font-weight: 600; margin-bottom: var(--sp-1); font-size: var(--text-sm);">Which CESMM4 class covers the supply of this concrete?</p>
+                <div class="knowledge-check__options" id="boq-decode-02-08-q3">
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 3, 0)"><span class="kc-option__letter">A</span>Class G — Concrete Ancillaries</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 3, 1)"><span class="kc-option__letter">B</span>Class E — Earthworks</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 3, 2)"><span class="kc-option__letter">C</span>Class F — In-Situ Concrete</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 3, 3)"><span class="kc-option__letter">D</span>Class H — Precast Concrete</button>
+                </div>
+              </div>
+
+              <!-- Question 5 -->
+              <div style="margin-bottom: var(--sp-4);">
+                <p style="font-size: var(--text-sm); color: var(--text-dim); font-family: var(--font-mono); margin-bottom: var(--sp-1);">ITEM 5</p>
+                <p style="font-style: italic; margin-bottom: var(--sp-2); color: var(--text-secondary);">"General items; Prime Cost Item: supply and fix decorative paving; PC sum £12,000"</p>
+                <p style="font-weight: 600; margin-bottom: var(--sp-1); font-size: var(--text-sm);">What does a contractor add to a Prime Cost (PC) Item in their tender submission?</p>
+                <div class="knowledge-check__options" id="boq-decode-02-08-q4">
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 4, 0)"><span class="kc-option__letter">A</span>Nothing — the PC sum is priced exactly as stated</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 4, 1)"><span class="kc-option__letter">B</span>Their profit and attendance costs (fixing, access, connection)</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 4, 2)"><span class="kc-option__letter">C</span>Their own material mark-up only</button>
+                  <button class="kc-option" onclick="selectDecodeAnswer('boq-decode-02-08', 4, 3)"><span class="kc-option__letter">D</span>A contingency of 10% of the PC sum</button>
+                </div>
+              </div>
+
+              <button class="btn btn--secondary" id="submit-boq-decode-02-08" disabled
+                onclick="submitBoQDecodeExercise('boq-decode-02-08', DECODE_EXERCISE_02_08, '02-08')">
+                Submit Answers
+              </button>
+
+              <div id="feedback-boq-decode-02-08" style="display:none; margin-top: var(--sp-3);"></div>
+
+            </div>
+          </div>
+          <div class="chunk__footer">
+            <button class="btn btn--small btn--primary mark-complete-btn" id="complete-btn-02-08"
+              data-chunk="02-08" onclick="handleMarkComplete('02-08')" disabled>&#10003; Mark Complete</button>
+          </div>
+        </div>
+
+      </div><!-- end chunk-list -->
+
+      <div class="module-complete" id="module-complete" style="display: none;">
+        <div class="module-complete__icon">&#10003;</div>
+        <h2 class="module-complete__title">Module 02 Complete</h2>
+        <p class="module-complete__subtitle">Module 03 — Understanding Measurements &amp; Units is now unlocked.</p>
+        <a href="../index.html" class="btn btn--primary" style="margin-top: 8px;">Back to Dashboard</a>
+      </div>
+
+    </div><!-- end content-wrapper -->
+  </main>
+
+</div><!-- end layout -->
+
+<div class="sr-overlay" id="sr-overlay" style="display: none;">
+  <div class="sr-overlay__header">
+    <span class="sr-overlay__title">Spaced Repetition Review</span>
+    <span class="sr-overlay__counter" id="sr-counter"></span>
+  </div>
+  <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+  <div class="sr-card" id="sr-card"></div>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID  = '02';
+  const CHUNK_LIST = ['02-01','02-02','02-03','02-04','02-05','02-06','02-07','02-08'];
+
+  const CHUNK_WE_CONFIG = {
+    '02-04': { totalSteps: 3 },
+  };
+
+  // Decode exercise answer config (used by chunk-types.js submitBoQDecodeExercise)
+  const DECODE_EXERCISE_02_08 = [
+    {
+      correctIdx: 2,
+      explanation: 'Excavation is always measured in cubic metres (m³) under CESMM4 Class E. The volume is length × width × depth, measured net to the specified excavation dimensions.',
+    },
+    {
+      correctIdx: 1,
+      explanation: 'Under CESMM4 Class I coverage rules, a pipe item includes excavation, preparation of trench bottom, laying, jointing, backfilling and compaction. This is the single most important coverage rule in drainage pricing — miss it and you underprice by over 60% of the true cost.',
+    },
+    {
+      correctIdx: 0,
+      explanation: 'Manholes in CESMM4 Class K are measured by number (nr). Each manhole is a single item, and depth is captured in the item description (as a depth band), not as a separate linear measurement.',
+    },
+    {
+      correctIdx: 2,
+      explanation: 'Class F covers In-Situ Concrete — the provision (supply) of the concrete itself. Class G covers Concrete Ancillaries — formwork, reinforcement, joints, and finishes. Both classes will appear in a concrete BoQ section; they are always priced separately.',
+    },
+    {
+      correctIdx: 1,
+      explanation: 'A PC sum is a fixed allowance for a nominated supplier or subcontractor. You carry the £12,000 as stated in your tender. On top of it, you add separate items for your profit (a percentage) and attendance (the cost of providing labour, access, and facilities to support the nominated subcontractor).',
+    },
+  ];
+
+  initModulePage();
+</script>
+
+</body>
+</html>

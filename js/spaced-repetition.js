@@ -88,6 +88,53 @@ const QUESTION_BANK = [
     explanation: 'Dayworks is a method of valuing work where the contractor is reimbursed for actual resources used (labour, plant, materials) plus an agreed percentage for overhead and profit. It is used where work cannot be measured and valued in the normal way.',
   },
 
+  // Module 03
+  {
+    id: 'q-03-01',
+    moduleSource: '03',
+    question: 'Excavated clay bulks by approximately what percentage?',
+    type: 'multiple-choice',
+    options: ['10%', '25%', '40%', '50%'],
+    correctIndex: 1,
+    explanation: 'Clay typically bulks by 20–30%. Use 25% as the teaching and standard tender figure for typical cohesive clay. Sandy soils bulk less; rock bulks more. Always state the material type alongside the factor.',
+  },
+  {
+    id: 'q-03-02',
+    moduleSource: '03',
+    question: 'Granular fill compacts by approximately what percentage when placed and compacted?',
+    type: 'multiple-choice',
+    options: ['2–5%', '10–15%', '25–30%', '40%'],
+    correctIndex: 1,
+    explanation: 'Granular fill shrinks by 10–15% when compacted. This means you need to order approximately 12% more tonnes than the net m³ in the BoQ to fill the specified volume after compaction.',
+  },
+  {
+    id: 'q-03-03',
+    moduleSource: '03',
+    question: 'If you have 100 m³ net of clay excavation, approximately how many m³ loose will you cart away?',
+    type: 'multiple-choice',
+    options: ['100 m³', '110 m³', '125 m³', '150 m³'],
+    correctIndex: 2,
+    explanation: '100 m³ × 1.25 = 125 m³ loose. The 25% bulking factor means every m³ dug becomes 1.25 m³ to dispose of. This drives your wagon count, disposal cost, and road sweeper requirement.',
+  },
+  {
+    id: 'q-03-04',
+    moduleSource: '03',
+    question: 'What unit is used to measure manholes in a CESMM4 BoQ?',
+    type: 'multiple-choice',
+    options: ['Linear metres (m)', 'Cubic metres (m³)', 'Number (nr)', 'Tonnes (t)'],
+    correctIndex: 2,
+    explanation: 'Manholes in Class K are measured by number (nr). Each manhole is a separate item. The depth band appears in the item description, not as a separate linear measurement.',
+  },
+  {
+    id: 'q-03-05',
+    moduleSource: '03',
+    question: 'What unit is used to measure pipe runs in a CESMM4 BoQ?',
+    type: 'multiple-choice',
+    options: ['Cubic metres (m³)', 'Linear metres (m)', 'Number (nr)', 'Square metres (m²)'],
+    correctIndex: 1,
+    explanation: 'Pipe runs in Class I are always measured in linear metres (m). The depth tranche, pipe material, and nominal bore appear in the description. The overall rate per metre must account for all the work in the trench.',
+  },
+
   // Module 02
   {
     id: 'q-02-01',

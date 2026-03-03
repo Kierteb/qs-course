@@ -592,6 +592,11 @@
   opacity: 0.4;
 }
 
+.kc-option--selected {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
 .kc-option__letter {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
