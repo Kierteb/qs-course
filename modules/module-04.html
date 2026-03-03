@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 04 — Labour Pricing | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 04</p>
+        <h1 class="module-header__title">Labour Pricing</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 8</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <!-- SR Review Overlay -->
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- ─────────────────────────────────────────── -->
+      <!-- CHUNK 04-01: Concept -->
+      <!-- ─────────────────────────────────────────── -->
+      <div class="chunk chunk--active" id="chunk-04-01" data-chunk="04-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">What Is an All-In Labour Rate?</h2>
+        <div class="chunk__body">
+          <p>When you price labour in a civil tender, you never use the operative's take-home pay as your cost. You use the <strong>all-in rate</strong> — the total cost to the company of employing one person for one hour.</p>
+          <p>The all-in rate is always higher than basic pay because the contractor pays several statutory and contractual obligations on top of wages. These additional costs are real and significant — typically <strong>35–45% above basic pay</strong> for a PAYE operative.</p>
+          <p>Using basic pay instead of an all-in rate is one of the most dangerous tendering mistakes a new estimator can make. You would be pricing labour at a loss before a single spade hits the ground.</p>
+          <div class="callout callout--info">
+            <strong>Key principle:</strong> The all-in rate is your <em>cost to employ</em>, not the operative's earnings. These are different numbers.
+          </div>
+          <p>All-in rates are calculated for each operative category: general operative, skilled operative, ganger/chargehand, plant operator (with CPCS card). Each category has different base pay and, often, different contractual allowances.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-01"
+            onclick="handleMarkComplete('04-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 04-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-04-02" data-chunk="04-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">The Components of an All-In Rate</h2>
+        <div class="chunk__body">
+          <p>Every all-in rate is built from the same components. Each must be calculated individually — a rough percentage uplift is not reliable for formal tendering.</p>
+          <table class="rate-table">
+            <thead><tr><th>Component</th><th>Rate</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Basic pay</strong></td>
+                <td>—</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">CIJC Working Rule Agreement rate for category. Starting point for all calculations.</td>
+              </tr>
+              <tr>
+                <td><strong>Employer's National Insurance</strong></td>
+                <td>13.8%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">On earnings above the secondary threshold (~£9,100/yr). Largest single add-on.</td>
+              </tr>
+              <tr>
+                <td><strong>Holiday pay accrual</strong></td>
+                <td>~12.07%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Statutory 5.6 weeks' paid holiday. Accrued as a percentage of pay for hourly workers.</td>
+              </tr>
+              <tr>
+                <td><strong>Pension (auto-enrolment)</strong></td>
+                <td>3%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Minimum employer contribution on qualifying earnings. Can be higher under CIJC.</td>
+              </tr>
+              <tr>
+                <td><strong>CITB levy</strong></td>
+                <td>0.35%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Construction Industry Training Board levy on PAYE payroll. Funds industry training grants.</td>
+              </tr>
+              <tr>
+                <td><strong>Insurance loading</strong></td>
+                <td>~1–2%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Employer's liability insurance, often quoted as a percentage of payroll by insurer.</td>
+              </tr>
+              <tr>
+                <td><strong>Productivity allowance</strong></td>
+                <td>~2–5%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Allowance for unproductive time: tool maintenance, welfare breaks, briefings. Not always shown separately.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">Rates shown are indicative as at 2024–2025. Always verify current CIJC wage rates and statutory rates for your tender date.</p>
+          <div class="callout callout--warning">
+            <strong>Do not double-count:</strong> Some sub-contractor quotes are already all-in. Some plant hire quotes include the operator. Always confirm what is and isn't included before adding further costs.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-02"
+            onclick="handleMarkComplete('04-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 04-03: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-04-03" data-chunk="04-03">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Typical All-In Labour Rates — Civil &amp; Groundworks</h2>
+        <div class="chunk__body">
+          <p>These figures represent typical all-in rates for an experienced London/South-East contractor in 2024–2025. Regional variation applies — rates in the North of England may be 10–15% lower.</p>
+          <table class="rate-table">
+            <thead><tr><th>Operative Category</th><th>Basic Pay</th><th>All-In Rate</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>General Operative (groundworker)</td>
+                <td>£14.50/hr</td>
+                <td style="color:var(--accent); font-weight:700;">£20–22/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">CIJC Craft Rate or above. Most common category on groundworks sites.</td>
+              </tr>
+              <tr>
+                <td>Skilled Operative / Drain Layer</td>
+                <td>£16.00/hr</td>
+                <td style="color:var(--accent); font-weight:700;">£22–25/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">CIJC Craft Rate + skill premium. Required for drainage, concrete, and kerb laying.</td>
+              </tr>
+              <tr>
+                <td>Ganger / Chargehand</td>
+                <td>£17.50/hr</td>
+                <td style="color:var(--accent); font-weight:700;">£24–27/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Supervisory premium above Craft Rate. Leads a gang of 3–5 operatives.</td>
+              </tr>
+              <tr>
+                <td>Plant Operator (CPCS — Excavator)</td>
+                <td>£18.00/hr</td>
+                <td style="color:var(--accent); font-weight:700;">£26–30/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">CPCS card holder. Rate varies by machine category — 360° excavator commands higher rate than telehandler.</td>
+              </tr>
+              <tr>
+                <td>Site Manager / Foreman</td>
+                <td>£25–35/hr</td>
+                <td style="color:var(--accent); font-weight:700;">£38–50/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Priced in Preliminaries, not unit rates. Staff rather than operatives in many contractors.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--info">
+            <strong>Where does this number come from?</strong> Your accounts/payroll team produce a labour burden analysis annually. The estimating department uses this to set their standard all-in rates for the year. Always use your company's actual rates — do not use industry averages uncritically.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-03"
+            onclick="handleMarkComplete('04-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 04-04: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-04-04" data-chunk="04-04">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Building an All-In Rate from Basic Pay</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A groundworks operative has a CIJC basic pay of £14.50/hr. Build the all-in rate using standard statutory add-ons.
+          </div>
+
+          <div class="worked-example__steps" id="steps-04-04">
+
+            <div class="step" id="step-04-04-1">
+              <button class="step__trigger" onclick="revealStep('04-04', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Calculate the statutory add-ons</span>
+              </button>
+              <div class="step__content">
+                <p>Starting from basic pay of £14.50/hr, apply each component as a percentage:</p>
+                <div class="step__formula">
+                  Basic pay:              £14.50/hr<br>
+                  + Employer's NI (13.8%): £14.50 × 0.138 = £2.00/hr<br>
+                  + Holiday pay (12.07%):  £14.50 × 0.1207 = £1.75/hr<br>
+                  + Pension (3%):          £14.50 × 0.03   = £0.44/hr<br>
+                  + CITB levy (0.35%):     £14.50 × 0.0035 = £0.05/hr<br>
+                  + Insurance (1.5%):      £14.50 × 0.015  = £0.22/hr
+                </div>
+                <p style="margin-top:12px;">Each add-on is calculated independently on basic pay. Some contractors calculate NI on total employment cost, but applying percentages to basic pay is the simpler and common estimating approach.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-04-04-2">
+              <button class="step__trigger" disabled onclick="revealStep('04-04', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Sum to the bare all-in rate</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Basic pay:          £14.50<br>
+                  + NI:               £ 2.00<br>
+                  + Holiday:          £ 1.75<br>
+                  + Pension:          £ 0.44<br>
+                  + CITB:             £ 0.05<br>
+                  + Insurance:        £ 0.22<br>
+                  ─────────────────────────<br>
+                  <strong>Bare all-in:        £18.96/hr</strong>
+                </div>
+                <p style="margin-top:12px;">The bare all-in rate excludes any productivity allowance or tool allowance. It's the minimum cost per productive hour worked.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-04-04-3">
+              <button class="step__trigger" disabled onclick="revealStep('04-04', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Add productivity allowance and round</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Bare all-in:            £18.96/hr<br>
+                  + Productivity (3%):    £18.96 × 0.03 = £0.57/hr<br>
+                  ──────────────────────────────────────────────<br>
+                  <strong>All-in rate (rounded): £20.00/hr</strong>
+                </div>
+                <p style="margin-top:12px;">Rounding up slightly (£19.53 → £20.00) provides a small contingency and simplifies gang rate calculations. You might use £20.00–£21.00/hr depending on your company's policy and current tender conditions.</p>
+                <p>To check your answer: £20.00 is approximately 38% above basic pay of £14.50. An uplift of 35–45% is the expected range for a PAYE groundworks operative.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-04" disabled
+            onclick="handleMarkComplete('04-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 04-05: Rate Builder -->
+      <div class="chunk chunk--locked" id="chunk-04-05" data-chunk="04-05">
+        <p class="chunk__type-label">Rate Builder</p>
+        <h2 class="chunk__title">All-In Rate Calculator</h2>
+        <div class="chunk__body">
+          <p>Adjust the inputs to build your own all-in rate. The calculator applies each percentage to basic pay and sums the components.</p>
+
+          <div class="rate-builder" id="rb-04-05">
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Basic pay (£/hr)</label>
+              <input class="rate-builder__input" data-key="basic" type="number" value="14.50" min="10" max="50" step="0.25">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Employer's NI (%)</label>
+              <input class="rate-builder__input" data-key="ni" type="number" value="13.8" min="0" max="25" step="0.1">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Holiday pay (%)</label>
+              <input class="rate-builder__input" data-key="holiday" type="number" value="12.07" min="0" max="20" step="0.01">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Pension (%)</label>
+              <input class="rate-builder__input" data-key="pension" type="number" value="3.0" min="0" max="10" step="0.5">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">CITB levy (%)</label>
+              <input class="rate-builder__input" data-key="citb" type="number" value="0.35" min="0" max="1" step="0.05">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Insurance (%)</label>
+              <input class="rate-builder__input" data-key="insurance" type="number" value="1.5" min="0" max="5" step="0.1">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Productivity allowance (%)</label>
+              <input class="rate-builder__input" data-key="productivity" type="number" value="3.0" min="0" max="10" step="0.5">
+            </div>
+            <div class="rate-builder__result">
+              <span class="rate-builder__result-label">All-in rate</span>
+              <span class="rate-builder__result-value" id="rb-04-05-result">£—</span>
+              <span class="rate-builder__result-unit">per hour</span>
+            </div>
+          </div>
+
+          <p style="margin-top:16px; color:var(--text-secondary); font-size:var(--text-sm);">
+            Try changing the basic pay to £16.00/hr (skilled operative) and observe how the all-in rate changes. Notice that higher basic pay amplifies the NI and holiday costs proportionally.
+          </p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-05"
+            onclick="handleMarkComplete('04-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 04-06: Concept -->
+      <div class="chunk chunk--locked" id="chunk-04-06" data-chunk="04-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Gang Composition and Daily Output</h2>
+        <div class="chunk__body">
+          <p>Civil and groundworks operations are priced by <strong>gang</strong>: the group of operatives and plant that perform a defined operation together. You price the gang as a unit, then divide by daily output to get cost per BoQ unit.</p>
+          <p>The formula is:</p>
+          <div class="step__formula" style="margin:12px 0;">
+            Labour cost per unit = (Gang all-in cost per hour × Hours per day) ÷ Daily output
+          </div>
+          <p>Daily output is the <strong>key variable</strong>. It depends on: ground conditions, trench depth, gang experience, plant type, access constraints, and weather. Always state your output assumption explicitly in your pricing notes.</p>
+          <table class="rate-table">
+            <thead><tr><th>Operation</th><th>Typical Gang</th><th>Output Benchmark</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Drainage pipe laying (150mm, <1.5m deep)</td>
+                <td>Ganger + 2 operatives</td>
+                <td style="color:var(--accent);">25–35 m/day</td>
+              </tr>
+              <tr>
+                <td>Drainage pipe laying (300mm, 2–3m deep)</td>
+                <td>Ganger + 2 operatives</td>
+                <td style="color:var(--accent);">10–18 m/day</td>
+              </tr>
+              <tr>
+                <td>Kerb laying (precast concrete)</td>
+                <td>2 operatives</td>
+                <td style="color:var(--accent);">60–80 m/day</td>
+              </tr>
+              <tr>
+                <td>Concrete blinding (hand finish)</td>
+                <td>3 operatives</td>
+                <td style="color:var(--accent);">40–60 m²/day</td>
+              </tr>
+              <tr>
+                <td>Manhole construction (brick, 2m deep)</td>
+                <td>2 operatives</td>
+                <td style="color:var(--accent);">0.5–1 nr/day</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">These are indicative benchmarks under average conditions. Do not use them as absolutes — always check against site-specific factors and your company's historical data.</p>
+          <div class="callout callout--warning">
+            <strong>Deep trench penalty:</strong> Output halves (or worse) when trench depth exceeds 2 m, due to shoring requirements, spoil handling, and safe working constraints. Always price deep work at a higher rate per metre.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-06"
+            onclick="handleMarkComplete('04-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 04-07: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-04-07" data-chunk="04-07">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Calculating Labour Cost Per Linear Metre of Pipe</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A drainage gang consists of a ganger (£26/hr all-in) and two operatives (£21/hr all-in each). They lay 28 m of 225mm pipe per 8-hour day in 1.2 m deep trenches. Calculate the labour cost per linear metre.
+          </div>
+
+          <div class="worked-example__steps" id="steps-04-07">
+
+            <div class="step" id="step-04-07-1">
+              <button class="step__trigger" onclick="revealStep('04-07', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Calculate the gang all-in cost per hour</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Ganger:       1 × £26.00 = £26.00/hr<br>
+                  Operatives:   2 × £21.00 = £42.00/hr<br>
+                  ────────────────────────────────────<br>
+                  Gang total:              = £68.00/hr
+                </div>
+                <p style="margin-top:12px;">The gang rate is the sum of all individual all-in rates. This is the cost to the company per hour the gang is working.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-04-07-2">
+              <button class="step__trigger" disabled onclick="revealStep('04-07', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Calculate total gang cost per day</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Gang rate:    £68.00/hr<br>
+                  × 8 hrs/day:  × 8<br>
+                  ─────────────────────<br>
+                  Daily cost:   £544.00/day
+                </div>
+                <p style="margin-top:12px;">This is the total labour cost for the day regardless of output. Even if the gang lays only 20 m instead of 28 m (due to unexpected ground conditions), this cost is still £544.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-04-07-3">
+              <button class="step__trigger" disabled onclick="revealStep('04-07', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Divide by daily output</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Daily cost:   £544.00<br>
+                  ÷ Output:     ÷ 28 m<br>
+                  ─────────────────────<br>
+                  <strong>Labour cost: £19.43/m</strong>
+                </div>
+                <p style="margin-top:12px;">This labour cost per metre is one component of your overall pipe-laying unit rate. You still need to add plant, materials (pipe, bedding), and backfill costs to reach the full BoQ rate.</p>
+                <p>If the gang output drops to 20 m/day (difficult ground), the labour cost jumps to £544 ÷ 20 = <strong>£27.20/m</strong> — a 40% increase for the same gang on the same day. Output risk is the biggest variable in labour pricing.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-07" disabled
+            onclick="handleMarkComplete('04-07')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 04-08: BoQ Rate Exercise -->
+      <div class="chunk chunk--locked" id="chunk-04-08" data-chunk="04-08">
+        <p class="chunk__type-label">BoQ Rate Exercise</p>
+        <h2 class="chunk__title">Price the Labour Component of Three Drainage Items</h2>
+        <div class="chunk__body">
+          <p>Using the gang data below, enter your estimated <strong>labour cost per unit</strong> for each BoQ item. A ±15% tolerance is accepted as commercially reasonable.</p>
+
+          <div class="callout callout--info" style="margin-bottom:16px;">
+            <strong>Gang data:</strong> Ganger £26/hr + 2 operatives £21/hr each = £68/hr gang rate, 8-hr day.
+            <br><strong>Outputs:</strong> 150mm pipe @ 1m depth = 35 m/day &nbsp;|&nbsp; 300mm pipe @ 2.5m depth = 14 m/day &nbsp;|&nbsp; Hand dig near services = 2 m/day (1 operative alone, £21/hr)
+          </div>
+
+          <table class="boq-table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Qty</th>
+                <th>Labour Rate (£)</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>I.1</td>
+                <td>Pipe, uPVC 150mm, depth 0.5–1.5m</td>
+                <td>m</td>
+                <td>120</td>
+                <td><input class="boq-rate-input" id="boq-input-04-08-i1" type="number" placeholder="£/m" min="0" step="0.50"></td>
+                <td id="boq-total-04-08-i1">—</td>
+                <td id="boq-result-04-08-i1"></td>
+              </tr>
+              <tr>
+                <td>I.2</td>
+                <td>Pipe, concrete 300mm, depth 2–3m</td>
+                <td>m</td>
+                <td>45</td>
+                <td><input class="boq-rate-input" id="boq-input-04-08-i2" type="number" placeholder="£/m" min="0" step="0.50"></td>
+                <td id="boq-total-04-08-i2">—</td>
+                <td id="boq-result-04-08-i2"></td>
+              </tr>
+              <tr>
+                <td>E.1</td>
+                <td>Hand excavation near services, any depth</td>
+                <td>m</td>
+                <td>8</td>
+                <td><input class="boq-rate-input" id="boq-input-04-08-e1" type="number" placeholder="£/m" min="0" step="0.50"></td>
+                <td id="boq-total-04-08-e1">—</td>
+                <td id="boq-result-04-08-e1"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn--primary" id="boq-submit-04-08" onclick="submitBoQRateExercise('04-08')">
+            Submit &amp; Grade
+          </button>
+          <div id="boq-feedback-04-08" class="boq-feedback-panel" style="display:none;"></div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="04-08" disabled
+            onclick="handleMarkComplete('04-08')">&#10003; Complete</button>
+        </div>
+      </div>
+
+      <!-- Module complete banner -->
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 04 Complete</h2>
+        <p>You can now price labour for civil operations. Next: plant and equipment pricing.</p>
+        <a href="module-05.html" class="btn btn--primary">Continue to Module 05 &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '04';
+  const CHUNK_LIST = ['04-01','04-02','04-03','04-04','04-05','04-06','04-07','04-08'];
+
+  const CHUNK_WE_CONFIG = {
+    '04-04': { totalSteps: 3 },
+    '04-07': { totalSteps: 3 },
+  };
+
+  const CHUNK_BOQ_EXERCISE_CONFIG = {
+    '04-08': {
+      items: [
+        {
+          ref: 'i1',
+          description: 'Pipe, uPVC 150mm, depth 0.5–1.5m',
+          unit: 'm',
+          qty: 120,
+          // Gang £68/hr × 8hr = £544/day ÷ 35m/day = £15.54/m
+          correctRate: 15.54,
+          tolerance: 0.15,
+          explanation: 'Gang cost £68/hr × 8hr = £544/day ÷ 35 m/day output = £15.54/m labour. Shallow 150mm pipe in good conditions supports a high output rate.',
+        },
+        {
+          ref: 'i2',
+          description: 'Pipe, concrete 300mm, depth 2–3m',
+          unit: 'm',
+          qty: 45,
+          // Gang £68/hr × 8hr = £544/day ÷ 14m/day = £38.86/m
+          correctRate: 38.86,
+          tolerance: 0.15,
+          explanation: 'Gang cost £544/day ÷ 14 m/day output = £38.86/m labour. Deep trench and larger pipe drastically reduce output, more than doubling the labour cost per metre.',
+        },
+        {
+          ref: 'e1',
+          description: 'Hand excavation near services',
+          unit: 'm',
+          qty: 8,
+          // 1 operative £21/hr × 8hr = £168/day ÷ 2m/day = £84/m
+          correctRate: 84.00,
+          tolerance: 0.15,
+          explanation: 'Single operative at £21/hr × 8hr = £168/day ÷ 2 m/day hand output = £84/m. Hand digging near services is the most expensive labour operation per metre — budget carefully.',
+        },
+      ],
+    },
+  };
+
+  initRateBuilder('rb-04-05', function(v) {
+    const totalPercent = (v.ni + v.holiday + v.pension + v.citb + v.insurance + v.productivity) / 100;
+    return v.basic * (1 + totalPercent);
+  }, '£', '/hr');
+
+  initModulePage();
+</script>
+
+</body>
+</html>

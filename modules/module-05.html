@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 05 — Plant &amp; Equipment Pricing | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 05</p>
+        <h1 class="module-header__title">Plant &amp; Equipment Pricing</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 8</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 05-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-05-01" data-chunk="05-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Owned Plant vs Hired Plant</h2>
+        <div class="chunk__body">
+          <p>Plant costs in a civil tender come from two sources: <strong>owned plant</strong> (the company's own machines) and <strong>hired plant</strong> (brought in from a plant hire company for the duration of the project).</p>
+          <p>The costing approach differs between the two:</p>
+          <table class="rate-table">
+            <thead><tr><th>Approach</th><th>Owned Plant</th><th>Hired Plant</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Cost basis</td>
+                <td>Depreciation + maintenance + insurance + fuel + operator</td>
+                <td>Hire rate (dry or wet) + fuel (if dry) + operator (if dry)</td>
+              </tr>
+              <tr>
+                <td>Flexibility</td>
+                <td>Fixed cost — must recover whether working or idle</td>
+                <td>Only hired for the period needed — returned when not required</td>
+              </tr>
+              <tr>
+                <td>Risk</td>
+                <td>Breakdown cost falls on contractor; must carry own plant maintenance</td>
+                <td>Replacement arranged by hire company; less downtime risk</td>
+              </tr>
+              <tr>
+                <td>Record keeping</td>
+                <td>Internal plant schedule with standard rates per hour</td>
+                <td>Hire invoices — confirm dry vs wet rate before ordering</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--info">
+            <strong>Dry rate vs Wet rate:</strong> A <em>dry hire</em> rate includes the machine only — you supply the fuel and operator separately. A <em>wet hire</em> rate includes machine, fuel, and operator in one charge. Always confirm which applies — the difference is significant when building a rate.
+          </div>
+          <p>Most medium and large groundworks contractors use a mix: key plant (excavators, dumpers) is often owned; specialist plant (piling rigs, compaction plates) is usually hired in for specific operations.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-01"
+            onclick="handleMarkComplete('05-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 05-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-05-02" data-chunk="05-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Building a Plant Cost: The Five Components</h2>
+        <div class="chunk__body">
+          <p>For owned plant, or for dry-hire plant where you add individual components, the all-in plant cost is built from five elements:</p>
+          <table class="rate-table">
+            <thead><tr><th>Component</th><th>How calculated</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Depreciation</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Purchase price ÷ economic life in working hours. A £90,000 excavator lasting 10,000 hrs = £9.00/hr depreciation.</td>
+              </tr>
+              <tr>
+                <td><strong>Maintenance &amp; repairs</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Typically 50–100% of annual depreciation. Includes servicing, consumables (filters, oil), and breakdown repairs.</td>
+              </tr>
+              <tr>
+                <td><strong>Insurance</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Plant all-risks insurance, typically 1–2% of replacement value per year.</td>
+              </tr>
+              <tr>
+                <td><strong>Fuel &amp; oils</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Litres per hour × current diesel price. A 13T excavator burns ~8–12 L/hr depending on duty cycle.</td>
+              </tr>
+              <tr>
+                <td><strong>Operator</strong></td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">CPCS-certified operator all-in rate (£26–£30/hr). Add only once — not if already in a wet hire rate.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">Most contractors maintain an internal plant schedule: a standard cost per hour for each machine. This rate is charged to contracts at an agreed hourly or daily rate, regardless of whether the machine is owned or on internal hire.</p>
+          <div class="callout callout--warning">
+            <strong>Mobilisation and demobilisation</strong> costs (loading, transport to/from site) are fixed costs that do not vary with output. They belong in <strong>Preliminaries</strong>, not in unit rates.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-02"
+            onclick="handleMarkComplete('05-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 05-03: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-05-03" data-chunk="05-03">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Typical Plant Hire &amp; Ownership Rates</h2>
+        <div class="chunk__body">
+          <p>These are typical 2024–2025 dry-hire rates (machine only, no fuel or operator). Add fuel and operator separately when building your unit rate.</p>
+          <table class="rate-table">
+            <thead><tr><th>Plant Type</th><th>Dry Hire (£/day)</th><th>Fuel Use</th><th>Operator All-In</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>3T mini excavator</td>
+                <td style="color:var(--accent);">£150–200/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">3–5 L/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£24–26/hr</td>
+              </tr>
+              <tr>
+                <td>13T tracked excavator</td>
+                <td style="color:var(--accent);">£400–600/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">8–12 L/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£26–30/hr</td>
+              </tr>
+              <tr>
+                <td>20T tracked excavator</td>
+                <td style="color:var(--accent);">£600–900/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">12–18 L/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£28–32/hr</td>
+              </tr>
+              <tr>
+                <td>6T articulated dumper</td>
+                <td style="color:var(--accent);">£250–350/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">5–8 L/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£24–26/hr</td>
+              </tr>
+              <tr>
+                <td>Vibrating roller (1.5T)</td>
+                <td style="color:var(--accent);">£120–180/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">2–4 L/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£22–24/hr</td>
+              </tr>
+              <tr>
+                <td>Telehandler 10m reach</td>
+                <td style="color:var(--accent);">£300–450/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">5–8 L/hr</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£24–27/hr</td>
+              </tr>
+              <tr>
+                <td>8m³ tipper wagon (haulage)</td>
+                <td style="color:var(--accent);">£450–650/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Driver incl.</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Driver in day rate</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">Rates vary by region, market conditions, and hire period. Longer hires attract discounts. Always get written quotations — do not rely on memory rates for formal tenders.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-03"
+            onclick="handleMarkComplete('05-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 05-04: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-05-04" data-chunk="05-04">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Calculating Excavator Cost Per m³</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A 13T excavator is hired dry at £500/day. Diesel costs £1.35/litre; the machine uses 10 L/hr. A CPCS operator costs £28/hr all-in. The machine achieves 180 m³/day of bulk clay excavation. Calculate the plant cost per m³.
+          </div>
+
+          <div class="worked-example__steps" id="steps-05-04">
+
+            <div class="step" id="step-05-04-1">
+              <button class="step__trigger" onclick="revealStep('05-04', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Calculate total daily plant cost</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Dry hire rate:        £500.00/day<br>
+                  + Fuel (10 L/hr × £1.35 × 8 hrs): £108.00/day<br>
+                  + Operator (£28/hr × 8 hrs):       £224.00/day<br>
+                  ──────────────────────────────────────────────<br>
+                  Total plant cost:                  £832.00/day
+                </div>
+                <p style="margin-top:12px;">The dry hire rate covers only the machine. Fuel and operator are added separately because this is a dry hire. If the hire was wet (machine + fuel + operator), you would use only the wet hire day rate.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-05-04-2">
+              <button class="step__trigger" disabled onclick="revealStep('05-04', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Divide by daily output</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Total daily cost:  £832.00<br>
+                  ÷ Output:          ÷ 180 m³/day<br>
+                  ──────────────────────────────<br>
+                  <strong>Plant cost:        £4.62/m³</strong>
+                </div>
+                <p style="margin-top:12px;">This plant cost per m³ is the excavation component only. Disposal (haulage and tipping) is a separate cost — calculated on the loose volume (m³ net × bulking factor).</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-05-04-3">
+              <button class="step__trigger" disabled onclick="revealStep('05-04', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Sensitivity: output drops to 120 m³/day</span>
+              </button>
+              <div class="step__content">
+                <p>If ground conditions are worse than expected and output drops to 120 m³/day:</p>
+                <div class="step__formula">
+                  Total daily cost:  £832.00<br>
+                  ÷ Output:          ÷ 120 m³/day<br>
+                  ──────────────────────────────<br>
+                  <strong>Plant cost:        £6.93/m³</strong> (+50%)
+                </div>
+                <p style="margin-top:12px;">A 33% drop in output produces a 50% increase in unit cost. This is why output assumptions must be conservative and well-documented — output risk directly translates to cost overrun.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-04" disabled
+            onclick="handleMarkComplete('05-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 05-05: Rate Builder -->
+      <div class="chunk chunk--locked" id="chunk-05-05" data-chunk="05-05">
+        <p class="chunk__type-label">Rate Builder</p>
+        <h2 class="chunk__title">Plant Cost Per m³ Calculator</h2>
+        <div class="chunk__body">
+          <p>Enter your plant data to calculate the all-in cost per m³ of excavation. This covers machine, fuel, and operator — not disposal.</p>
+
+          <div class="rate-builder" id="rb-05-05">
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Dry hire rate (£/day)</label>
+              <input class="rate-builder__input" data-key="hire" type="number" value="500" min="50" max="2000" step="10">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Fuel use (litres/hour)</label>
+              <input class="rate-builder__input" data-key="fuel_litres" type="number" value="10" min="1" max="30" step="0.5">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Diesel price (£/litre)</label>
+              <input class="rate-builder__input" data-key="diesel" type="number" value="1.35" min="0.50" max="2.50" step="0.01">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Working hours per day</label>
+              <input class="rate-builder__input" data-key="hours" type="number" value="8" min="6" max="12" step="0.5">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Operator all-in rate (£/hr)</label>
+              <input class="rate-builder__input" data-key="operator" type="number" value="28" min="15" max="50" step="0.50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Daily output (m³/day)</label>
+              <input class="rate-builder__input" data-key="output" type="number" value="180" min="10" max="600" step="5">
+            </div>
+            <div class="rate-builder__result">
+              <span class="rate-builder__result-label">Plant cost</span>
+              <span class="rate-builder__result-value" id="rb-05-05-result">£—</span>
+              <span class="rate-builder__result-unit">per m³ (excavation only)</span>
+            </div>
+          </div>
+
+          <p style="margin-top:16px; color:var(--text-secondary); font-size:var(--text-sm);">
+            Try reducing output from 180 to 90 m³/day. Notice how the cost per m³ doubles — the machine and operator cost the same regardless of how much is dug.
+          </p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-05"
+            onclick="handleMarkComplete('05-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 05-06: Concept -->
+      <div class="chunk chunk--locked" id="chunk-05-06" data-chunk="05-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Output Factors: What Changes the Rate?</h2>
+        <div class="chunk__body">
+          <p>Plant output is a benchmark — the number of m³ per day the machine <em>can</em> achieve under average conditions. In reality, output varies with site conditions, and you must adjust your benchmark accordingly.</p>
+          <table class="rate-table">
+            <thead><tr><th>Factor</th><th>Effect on Output</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Material type (clay vs rock vs granular)</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Rock may require breaking before digging — dramatically reduces output and requires specialist plant. Granular sand is fast; stiff clay is slower.</td>
+              </tr>
+              <tr>
+                <td>Working depth</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Deeper excavation = longer cycle times. Beyond arm reach, the machine must reposition more frequently. Trench work: output falls with depth.</td>
+              </tr>
+              <tr>
+                <td>Confined space / restricted access</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Unable to swing freely. Frequent repositioning. Reduced swing arc reduces cycle efficiency by 20–40%.</td>
+              </tr>
+              <tr>
+                <td>Waiting for wagons</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Excavator is idle if the wagon fleet is too small. Idle time costs the same as working time. Size your fleet correctly (see Worked Example).</td>
+              </tr>
+              <tr>
+                <td>Groundwater / wet conditions</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Slippery ramps, heaving trench bottom, dewatering pumping interruptions. Can halve output in waterlogged clay.</td>
+              </tr>
+              <tr>
+                <td>Existing services</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Must slow down and hand-trim within 0.5m of known services. Can reduce to hand-dig pace (2 m³/day/operative).</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--info">
+            <strong>Document your assumptions:</strong> When you set an output benchmark, write it into your pricing notes: "13T excavator, clay, 1.5m depth, unrestricted, 180 m³/day." If conditions are worse on site, you have a documented basis for a compensation event claim.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-06"
+            onclick="handleMarkComplete('05-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 05-07: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-05-07" data-chunk="05-07">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Sizing a Wagon Fleet to Match Excavator Output</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A 13T excavator digs 180 m³/day (net clay). Clay bulks 25%. Tip is 8 km away; round-trip takes 45 minutes. Wagons carry 8 m³ loose. How many wagons are needed to keep the excavator running without idle time?
+          </div>
+
+          <div class="worked-example__steps" id="steps-05-07">
+
+            <div class="step" id="step-05-07-1">
+              <button class="step__trigger" onclick="revealStep('05-07', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Calculate loose volume per day</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Net volume:       180 m³/day<br>
+                  × Bulking factor: × 1.25<br>
+                  ─────────────────────────────<br>
+                  Loose volume:     225 m³/day
+                </div>
+                <p style="margin-top:12px;">The 25% bulking converts net (bank) m³ to loose m³. Wagons carry loose material, so loose volume drives the number of loads.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-05-07-2">
+              <button class="step__trigger" disabled onclick="revealStep('05-07', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Calculate number of loads per day</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Loose volume:       225 m³/day<br>
+                  ÷ Wagon capacity:   ÷ 8 m³<br>
+                  ─────────────────────────────<br>
+                  Loads needed:       28.1 → 29 loads/day
+                </div>
+                <p style="margin-top:12px;">Round up: you cannot send a fraction of a wagon load. 29 loads × 8 m³ = 232 m³ loose capacity, enough for the daily dig.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-05-07-3">
+              <button class="step__trigger" disabled onclick="revealStep('05-07', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Calculate fleet size needed</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Loading time per wagon:    ~15 minutes<br>
+                  Round-trip time:           45 minutes<br>
+                  Total cycle per wagon:     60 minutes (1 hr)<br>
+                  <br>
+                  Loads per wagon per day:   8 hrs ÷ 1 hr/load = 8 loads/wagon<br>
+                  <br>
+                  Wagons needed:   29 loads ÷ 8 loads/wagon = 3.6 → <strong>4 wagons</strong>
+                </div>
+                <p style="margin-top:12px;">With 4 wagons (32 loads/day capacity), the excavator should rarely wait. Budget: 4 wagons × £550/day = £2,200/day haulage. This is the disposal cost component of your earthworks rate.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-07" disabled
+            onclick="handleMarkComplete('05-07')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 05-08: Knowledge Check -->
+      <div class="chunk chunk--locked" id="chunk-05-08" data-chunk="05-08">
+        <p class="chunk__type-label">Knowledge Check</p>
+        <h2 class="chunk__title">Plant Pricing: Check Your Understanding</h2>
+        <div class="chunk__body">
+          <p>A 13T excavator is dry-hired at £500/day. Fuel costs £108/day. The CPCS operator costs £224/day. The machine achieves <strong>160 m³/day</strong>. What is the all-in plant cost per m³?</p>
+          <div id="kc-options-05-08" class="knowledge-check__options">
+            <button class="kc-option" onclick="selectKCOption('05-08', 0)">£5.20/m³</button>
+            <button class="kc-option" onclick="selectKCOption('05-08', 1)">£3.13/m³</button>
+            <button class="kc-option" onclick="selectKCOption('05-08', 2)">£6.93/m³</button>
+            <button class="kc-option" onclick="selectKCOption('05-08', 3)">£4.00/m³</button>
+          </div>
+          <div id="kc-feedback-05-08" class="kc-feedback" style="display:none;"></div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="05-08" disabled
+            onclick="handleMarkComplete('05-08')">&#10003; Complete</button>
+        </div>
+      </div>
+
+      <!-- Module complete banner -->
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 05 Complete</h2>
+        <p>You can now price plant operations and size wagon fleets. Next: materials pricing.</p>
+        <a href="module-06.html" class="btn btn--primary">Continue to Module 06 &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '05';
+  const CHUNK_LIST = ['05-01','05-02','05-03','05-04','05-05','05-06','05-07','05-08'];
+
+  const CHUNK_WE_CONFIG = {
+    '05-04': { totalSteps: 3 },
+    '05-07': { totalSteps: 3 },
+  };
+
+  const CHUNK_KC_CONFIG = {
+    '05-08': {
+      // £500 + £108 + £224 = £832 ÷ 160 = £5.20/m³
+      correctIdx: 0,
+      correctExplanation: '(£500 hire + £108 fuel + £224 operator) = £832/day ÷ 160 m³/day = £5.20/m³. Sum all three components first, then divide by output.',
+      incorrectExplanations: [
+        null,
+        'This would be £500 ÷ 160 — but you forgot fuel and operator costs.',
+        'This is £832 ÷ 120 m³/day — wrong output figure.',
+        'This is just a round number — no formula applied.',
+      ],
+    },
+  };
+
+  initRateBuilder('rb-05-05', function(v) {
+    const dailyHire = v.hire;
+    const dailyFuel = v.fuel_litres * v.diesel * v.hours;
+    const dailyOp = v.operator * v.hours;
+    const totalDaily = dailyHire + dailyFuel + dailyOp;
+    return v.output > 0 ? totalDaily / v.output : 0;
+  }, '£', '/m³');
+
+  initModulePage();
+</script>
+
+</body>
+</html>

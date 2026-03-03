@@ -65,9 +65,8 @@ function renderModuleSidebar() {
       + (unlocked ? '' : ' locked');
 
     if (unlocked) {
-      const prefix = mod.id === MODULE_ID ? '' : '../';
       li.innerHTML = `
-        <a href="${prefix}modules/module-${mod.id}.html">
+        <a href="../modules/module-${mod.id}.html">
           <span class="sidebar__module-num">${mod.id}</span>
           <span class="sidebar__module-name">${mod.title}</span>
           <span class="sidebar__module-progress">${prog.completed}/${prog.total}</span>

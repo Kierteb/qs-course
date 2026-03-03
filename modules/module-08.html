@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 08 — Drainage &amp; Utilities Pricing | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 08</p>
+        <h1 class="module-header__title">Drainage &amp; Utilities Pricing</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 10</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 08-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-08-01" data-chunk="08-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">The Drainage Super-Rate: What Goes Into One Line of the BoQ</h2>
+        <div class="chunk__body">
+          <p>In CESMM4, a Class I pipe item is measured in <strong>linear metres (m)</strong>. That single line in the BoQ — for example, "Pipe, uPVC 225mm nominal bore, depth 1–1.5m: 180 m" — must be priced to cover everything in and around the trench per metre run:</p>
+          <ul class="content-list">
+            <li><strong>Trench excavation:</strong> excavator cost per m³ of trench × trench volume per linear metre</li>
+            <li><strong>Trench disposal:</strong> haulage and tipping of excavated spoil (applying bulking factor)</li>
+            <li><strong>Pipe supply:</strong> pipe material cost per metre, supplied to site</li>
+            <li><strong>Pipe bedding:</strong> granular material placed below and around the pipe (as specified)</li>
+            <li><strong>Laying and jointing:</strong> labour cost per metre (gang output)</li>
+            <li><strong>Backfill and compaction:</strong> material placed above the pipe, compacted in layers</li>
+            <li><strong>Reinstatement:</strong> reinstating the trench surface (if priced here rather than separately)</li>
+          </ul>
+          <p>This is why drainage rates vary so much: a 150mm pipe at 0.8m depth costs fundamentally less per metre than a 450mm pipe at 2.5m depth, even though both appear as a single rate in the BoQ.</p>
+          <div class="callout callout--warning">
+            <strong>Read the Preambles first.</strong> Some preambles exclude trench excavation and disposal from the pipe rate — they are measured separately in Class E. If you price excavation into both, you double-count and over-price; if you miss it, you lose money. The preamble tells you exactly what the rate must include.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-01"
+            onclick="handleMarkComplete('08-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-08-02" data-chunk="08-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Trench Geometry: Calculating Volumes Per Linear Metre</h2>
+        <div class="chunk__body">
+          <p>To build a drainage unit rate, you first need to calculate the volumes of excavation and backfill per linear metre of pipe. These depend on trench width, trench depth, and pipe diameter.</p>
+          <p><strong>Trench width</strong> is set by the preamble or specification. Typical minimum widths:</p>
+          <table class="rate-table">
+            <thead><tr><th>Pipe Nominal Bore</th><th>Minimum Trench Width</th></tr></thead>
+            <tbody>
+              <tr><td>Up to 150mm</td><td style="color:var(--accent);">0.45 m</td></tr>
+              <tr><td>225mm</td><td style="color:var(--accent);">0.60 m</td></tr>
+              <tr><td>300mm</td><td style="color:var(--accent);">0.75 m</td></tr>
+              <tr><td>450mm</td><td style="color:var(--accent);">1.00 m</td></tr>
+              <tr><td>600mm</td><td style="color:var(--accent);">1.20 m</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">Trench depth is the depth to the pipe invert (bottom of the pipe) plus the pipe wall thickness. CESMM4 classifies pipes into depth bands (0.5m, 1m, 1.5m, 2m, 2.5m, 3m+) — the band determines the rate band in the BoQ.</p>
+          <p><strong>Trench excavation volume per metre run:</strong></p>
+          <div class="step__formula" style="margin:12px 0;">
+            V = Width (m) × Depth (m) × 1.0 m (length unit)
+          </div>
+          <p><strong>Backfill volume per metre run</strong> = Trench volume minus pipe volume (usually minor, often ignored for small pipes) minus bedding below pipe.</p>
+          <div class="callout callout--info">
+            <strong>Trench side batters:</strong> In unstable ground, the trench may need to be battered (sloped sides) rather than vertical. This increases excavation volume — calculate the trapezoid volume, not a rectangle. The preamble should state whether battered trenches are measured at the actual excavated width.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-02"
+            onclick="handleMarkComplete('08-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-03: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-08-03" data-chunk="08-03">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Pipe Types, Supply Rates &amp; Trench Widths</h2>
+        <div class="chunk__body">
+          <table class="rate-table">
+            <thead><tr><th>Pipe Type &amp; Bore</th><th>Supply Rate</th><th>Trench Width</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>uPVC 150mm</td>
+                <td style="color:var(--accent);">£8–12/m</td>
+                <td>0.45 m</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Most common surface water/foul drain. Light, easy to handle.</td>
+              </tr>
+              <tr>
+                <td>uPVC 225mm</td>
+                <td style="color:var(--accent);">£18–24/m</td>
+                <td>0.60 m</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Site roads and larger drainage runs.</td>
+              </tr>
+              <tr>
+                <td>Concrete pipe 300mm</td>
+                <td style="color:var(--accent);">£28–40/m</td>
+                <td>0.75 m</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Heavy — requires mechanical handling. Road crossings, main drains.</td>
+              </tr>
+              <tr>
+                <td>Concrete pipe 450mm</td>
+                <td style="color:var(--accent);">£55–75/m</td>
+                <td>1.00 m</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Major culverts. Crane or 360° required for installation.</td>
+              </tr>
+              <tr>
+                <td>HDPE 150mm (flexible)</td>
+                <td style="color:var(--accent);">£12–18/m</td>
+                <td>0.45 m</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Ground movement tolerance. Contaminated land, brownfield sites.</td>
+              </tr>
+              <tr>
+                <td>Ductile iron 150mm</td>
+                <td style="color:var(--accent);">£35–55/m</td>
+                <td>0.45 m</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Water mains, aggressive ground. Higher supply cost but robust.</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="rate-table" style="margin-top:16px;">
+            <thead><tr><th>Bedding Type</th><th>Supply Rate</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>10mm single-size gravel (Class B)</td>
+                <td style="color:var(--accent);">£24–30/t delivered</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Standard surround for uPVC pipes. Per spec: typically 100mm below, to springing or 150mm above.</td>
+              </tr>
+              <tr>
+                <td>Granular fill (selected excavated)</td>
+                <td style="color:var(--accent);">No supply cost</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Use excavated material if specified. No material cost but still needs placing and compacting.</td>
+              </tr>
+              <tr>
+                <td>Concrete surround</td>
+                <td style="color:var(--accent);">£125–145/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Road crossings and where pipes are at risk from traffic loading. Measured in Class L.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-03"
+            onclick="handleMarkComplete('08-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-04: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-08-04" data-chunk="08-04">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Building a 225mm Pipe Unit Rate at 1.5m Depth</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            Price a CESMM4 Class I item: "Pipe, uPVC 225mm nominal bore, depth 1–1.5m." Preambles confirm the rate includes: excavation, disposal, pipe, granular bedding (Class B, 100mm below and 300mm above pipe), laying and jointing, and granular backfill. Trench width: 0.60m; depth: 1.4m to invert.
+            <br>Rates: Excavation (trench) £12/m³; disposal £14/m³ net; pipe supply £22/m; bedding (10mm gravel) £26/t; labour £19.43/m; granular backfill £15/m³ (incl. place &amp; compact). Clay density 1.7 t/m³, bulking 25%.
+          </div>
+
+          <div class="worked-example__steps" id="steps-08-04">
+
+            <div class="step" id="step-08-04-1">
+              <button class="step__trigger" onclick="revealStep('08-04', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Excavation and disposal cost per metre</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Trench volume/m:   0.60m wide × 1.40m deep × 1m = 0.840 m³/m<br>
+                  <br>
+                  Excavation:        0.840 m³/m × £12/m³       = £10.08/m<br>
+                  Disposal:          0.840 m³/m × £14/m³ net   = £11.76/m<br>
+                  ───────────────────────────────────────────────────────<br>
+                  Excav. + disposal: £21.84/m
+                </div>
+                <p style="margin-top:12px;">The disposal rate of £14/m³ is already expressed as per m³ net BoQ volume (the calculation to convert loose volume is done when building that rate). Here we apply it directly to the trench volume.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-08-04-2">
+              <button class="step__trigger" disabled onclick="revealStep('08-04', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Pipe, bedding, and backfill cost per metre</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Pipe supply:         1m × £22/m                   = £22.00/m<br>
+                  <br>
+                  Bedding volume/m:    0.60m × (0.10 + 0.30)m = 0.240 m³/m<br>
+                  Bedding cost/m³:     £26/t × 1.8 t/m³ × 1.10 wastage = £51.48/m³<br>
+                  Bedding cost/m:      0.240 × £51.48             = £12.36/m<br>
+                  <br>
+                  Backfill volume/m:   0.840 − 0.240 − 0.025* = ~0.575 m³/m<br>
+                  (*pipe cross-section ~0.025m² for 225mm OD, minor adjustment)<br>
+                  Backfill cost/m:     0.575 × £15              = £8.63/m<br>
+                  ─────────────────────────────────────────────────────────<br>
+                  Materials + fill:    £22.00 + £12.36 + £8.63  = £42.99/m
+                </div>
+                <p style="margin-top:12px;">Note the bedding volume assumes 100mm (0.10m) below the pipe and 300mm (0.30m) above, full trench width. In practice, check the specification drawing for the exact bedding zone detail.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-08-04-3">
+              <button class="step__trigger" disabled onclick="revealStep('08-04', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Add labour and sum to unit rate</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Excavation + disposal:  £21.84/m<br>
+                  Pipe supply:            £22.00/m<br>
+                  Bedding:                £12.36/m<br>
+                  Backfill:               £ 8.63/m<br>
+                  Labour:                 £19.43/m<br>
+                  ─────────────────────────────────<br>
+                  <strong>Unit rate:              £84.26/m</strong>
+                </div>
+                <p style="margin-top:12px;">This full rate for a 225mm uPVC pipe at 1.4m depth would appear in the BoQ as a single number. If you forgot to include the excavation or the bedding, the rate would be dangerously low. Breaking it into components like this ensures you never miss a cost element.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-04" disabled
+            onclick="handleMarkComplete('08-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-05: Rate Builder -->
+      <div class="chunk chunk--locked" id="chunk-08-05" data-chunk="08-05">
+        <p class="chunk__type-label">Rate Builder</p>
+        <h2 class="chunk__title">Pipe-Laying Unit Rate Builder</h2>
+        <div class="chunk__body">
+          <p>Build a complete per-metre pipe-laying rate. Adjust the inputs to see how depth, trench width, and material choice affect the all-in rate.</p>
+
+          <div class="rate-builder" id="rb-08-05">
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Trench width (m)</label>
+              <input class="rate-builder__input" data-key="width" type="number" value="0.60" min="0.30" max="2.00" step="0.05">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Trench depth (m)</label>
+              <input class="rate-builder__input" data-key="depth" type="number" value="1.40" min="0.50" max="5.00" step="0.10">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Excavation rate (£/m³)</label>
+              <input class="rate-builder__input" data-key="excav" type="number" value="12.00" min="5" max="80" step="0.50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Disposal rate (£/m³ net)</label>
+              <input class="rate-builder__input" data-key="disposal" type="number" value="14.00" min="0" max="60" step="0.50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Pipe supply (£/m)</label>
+              <input class="rate-builder__input" data-key="pipe" type="number" value="22.00" min="5" max="200" step="0.50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Bedding cost (£/m³)</label>
+              <input class="rate-builder__input" data-key="bedding_rate" type="number" value="51.48" min="0" max="200" step="0.50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Bedding zone depth (m above + below pipe)</label>
+              <input class="rate-builder__input" data-key="bedding_depth" type="number" value="0.40" min="0.10" max="1.00" step="0.05">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Backfill rate (£/m³)</label>
+              <input class="rate-builder__input" data-key="backfill" type="number" value="15.00" min="0" max="50" step="0.50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Labour (£/m)</label>
+              <input class="rate-builder__input" data-key="labour" type="number" value="19.43" min="5" max="150" step="0.50">
+            </div>
+            <div class="rate-builder__result">
+              <span class="rate-builder__result-label">All-in pipe rate</span>
+              <span class="rate-builder__result-value" id="rb-08-05-result">£—</span>
+              <span class="rate-builder__result-unit">per linear metre</span>
+            </div>
+          </div>
+
+          <p style="margin-top:16px; color:var(--text-secondary); font-size:var(--text-sm);">
+            Try increasing depth from 1.4m to 2.5m and observe how the rate increases — deeper trenches mean more excavation volume per metre, more backfill, more spoil, and typically worse labour output (raise the labour rate too).
+          </p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-05"
+            onclick="handleMarkComplete('08-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-06: Concept -->
+      <div class="chunk chunk--locked" id="chunk-08-06" data-chunk="08-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Manholes and Chambers: Pricing by Number</h2>
+        <div class="chunk__body">
+          <p>Manholes are priced as a <strong>lump sum per number (nr)</strong> under CESMM4 Class K. Each manhole is a unique item — described by construction type, internal diameter, and depth band. Your price per manhole must cover all work from excavation to completed installation:</p>
+          <ul class="content-list">
+            <li><strong>Excavation and disposal</strong> of the manhole pit (larger volume than a pipe trench)</li>
+            <li><strong>Concrete base slab</strong> (thickness and mix to specification)</li>
+            <li><strong>Chamber construction:</strong> precast concrete rings or brickwork to the specified internal diameter</li>
+            <li><strong>Benching</strong> inside the chamber (concrete haunching around the channel)</li>
+            <li><strong>Step irons or ladder</strong> (if specified)</li>
+            <li><strong>Frame and cover</strong> (heavy duty, medium duty, or light duty — load class to specification)</li>
+            <li><strong>Backfill and compaction</strong> around the chamber</li>
+            <li><strong>Connections</strong> from incoming and outgoing pipes</li>
+          </ul>
+          <p>Manhole cost increases non-linearly with depth: a 3m deep brick manhole costs significantly more than twice a 1.5m deep one, because the brickwork is more extensive, the excavation is larger, and the working conditions are harder.</p>
+          <div class="callout callout--info">
+            <strong>Common mistake:</strong> Pricing the precast rings only and forgetting the base slab, frame and cover, connections, and backfill. Always work through a manhole checklist item by item.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-06"
+            onclick="handleMarkComplete('08-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-07: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-08-07" data-chunk="08-07">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Precast Concrete Manholes — Component Costs</h2>
+        <div class="chunk__body">
+          <table class="rate-table">
+            <thead><tr><th>Component</th><th>1200mm dia</th><th>1500mm dia</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Precast base unit</td>
+                <td style="color:var(--accent);">£350–500</td>
+                <td style="color:var(--accent);">£500–700</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Includes channel invert — confirm whether pre-benched or requires site benching.</td>
+              </tr>
+              <tr>
+                <td>Precast ring (500mm height)</td>
+                <td style="color:var(--accent);">£180–240</td>
+                <td style="color:var(--accent);">£280–380</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Number of rings = (chamber depth − base depth) ÷ ring height. Round up.</td>
+              </tr>
+              <tr>
+                <td>Reducing slab / taper</td>
+                <td style="color:var(--accent);">£250–350</td>
+                <td style="color:var(--accent);">£350–500</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Transitions chamber diameter to cover frame. One per manhole.</td>
+              </tr>
+              <tr>
+                <td>Frame and cover (D400 heavy duty)</td>
+                <td style="color:var(--accent);">£180–280</td>
+                <td style="color:var(--accent);">£220–320</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">D400 for carriageway; B125 for footway; A15 for non-trafficked areas. Spec determines class.</td>
+              </tr>
+              <tr>
+                <td>Step irons (per set)</td>
+                <td style="color:var(--accent);">£30–60</td>
+                <td style="color:var(--accent);">£30–60</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Only if specified. Fixed at 300mm centres from base to cover.</td>
+              </tr>
+              <tr>
+                <td>Concrete base slab (if not precast)</td>
+                <td colspan="2" style="color:var(--accent);">£130–160/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Ready-mix C25/30 + labour to form and pour.</td>
+              </tr>
+              <tr>
+                <td>Pipe connections (per connection)</td>
+                <td colspan="2" style="color:var(--accent);">£80–150 each</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Drilling, flexible coupler, sealing. Separate item or included in rate — check preamble.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">These are supply-only rates for precast units. Add excavation, installation labour, backfill, and any setting mortar. Total built rate for a 1200mm dia, 2m deep manhole typically ranges £1,200–£2,500 fully installed.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-07"
+            onclick="handleMarkComplete('08-07')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-08: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-08-08" data-chunk="08-08">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Pricing a 1200mm Precast Manhole at 2.0m Depth</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            Price a CESMM4 Class K item: "Precast concrete manhole, 1200mm internal diameter, depth 1.5–2.0m: 4 nr." Build the lump sum rate per manhole.
+            <br>Components: precast base £420; rings at £210/ring (500mm high); reducing slab £300; D400 frame and cover £230; step irons (included in base); 3 pipe connections at £100 each. Excavation pit: 1.8m dia × 2.2m deep (allow for working space); excavation rate £12/m³, disposal £14/m³ net; labour installation £420/nr; backfill £15/m³.
+          </div>
+
+          <div class="worked-example__steps" id="steps-08-08">
+
+            <div class="step" id="step-08-08-1">
+              <button class="step__trigger" onclick="revealStep('08-08', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Precast components supply cost</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Base unit:           £420<br>
+                  Rings: (2.0 − 0.5 base − 0.5 taper) ÷ 0.5m = 2 rings × £210 = £420<br>
+                  Reducing slab:       £300<br>
+                  Frame &amp; cover:       £230<br>
+                  Connections: 3 × £100 = £300<br>
+                  ───────────────────────────────<br>
+                  Supply total:        £1,670
+                </div>
+                <p style="margin-top:12px;">Ring count: total depth 2.0m, minus base (0.5m) and taper (0.5m) = 1.0m of rings ÷ 0.5m per ring = 2 rings. Always sketch this out — incorrect ring count is a common error.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-08-08-2">
+              <button class="step__trigger" disabled onclick="revealStep('08-08', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Excavation, disposal, and backfill</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Pit volume:   π × (1.8/2)² × 2.2 = π × 0.81 × 2.2 ≈ 5.60 m³<br>
+                  <br>
+                  Excavation:   5.60 m³ × £12/m³         = £67.20<br>
+                  Disposal:     5.60 m³ × £14/m³          = £78.40<br>
+                  <br>
+                  Chamber volume (rings): π × (1.2/2)² × 2.0 ≈ 2.26 m³<br>
+                  Backfill vol: 5.60 − 2.26 ≈ 3.34 m³<br>
+                  Backfill:     3.34 m³ × £15/m³          = £50.10<br>
+                  ──────────────────────────────────────────<br>
+                  Excavation + disposal + backfill:  £195.70
+                </div>
+                <p style="margin-top:12px;">The pit is sized to allow working space around the chamber. The chamber itself displaces some backfill volume. The calculation does not need to be exact — ±10% is acceptable at tender stage. Use a consistent method and document your assumptions.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-08-08-3">
+              <button class="step__trigger" disabled onclick="revealStep('08-08', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Add installation labour and sum</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Supply components:      £1,670.00<br>
+                  Excavation + disposal:  £  145.60<br>
+                  Backfill:               £   50.10<br>
+                  Installation labour:    £  420.00<br>
+                  ────────────────────────────────────<br>
+                  <strong>Rate per manhole:     £2,285.70</strong><br>
+                  <br>
+                  Round to:              £2,300 nr
+                </div>
+                <p style="margin-top:12px;">This is the BoQ rate to enter for each 1200mm dia, 2m deep manhole. With 4 nr in the BoQ, the section total is approximately £9,200. Rates in this range (£1,500–£3,000/nr for a standard 1200mm manhole) are commercially normal for this specification.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-08" disabled
+            onclick="handleMarkComplete('08-08')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-09: Concept -->
+      <div class="chunk chunk--locked" id="chunk-08-09" data-chunk="08-09">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Dewatering, Trench Support, and Drainage Risk</h2>
+        <div class="chunk__body">
+          <p>Two risk factors can transform a standard drainage item into a major cost centre: <strong>groundwater</strong> and <strong>unstable ground</strong>. Both must be identified at tender and either priced explicitly or acknowledged as a risk.</p>
+
+          <h3 style="margin:16px 0 8px; font-size:var(--text-base);">Dewatering</h3>
+          <p>If the water table is at or above the pipe invert depth, the trench will flood. Options include:</p>
+          <ul class="content-list">
+            <li><strong>Sump pumping:</strong> simple submersible pump in the trench — cheap but limited to modest inflows</li>
+            <li><strong>Wellpoint dewatering:</strong> a ring of shallow wells around the excavation, pumping continuously — effective for granular soils, significant cost (£500–2,000+/day for system + pumps)</li>
+            <li><strong>Sheet piling / secant piles:</strong> for deep excavations in high water table — expensive but provides both support and water cut-off</li>
+          </ul>
+
+          <h3 style="margin:16px 0 8px; font-size:var(--text-base);">Trench Support</h3>
+          <p>Trenches deeper than 1.2m (or less in unstable ground) require support to prevent collapse — both for safety and to prevent overbreak. Methods:</p>
+          <ul class="content-list">
+            <li><strong>Drag box / trench box:</strong> hydraulic steel box moved along the trench as work progresses — most common for drainage. Cost: £150–350/day hire.</li>
+            <li><strong>Steel sheet piling:</strong> driven ahead of excavation — used for deep trenches or where collapse risk is high. Expensive and requires crane.</li>
+            <li><strong>Timber shoring:</strong> traditional method, labour intensive, used for short runs in difficult access.</li>
+          </ul>
+
+          <div class="callout callout--warning">
+            <strong>Pricing tip:</strong> If the ground investigation shows groundwater or soft ground, price dewatering and trench support in Preliminaries or as explicit additional items. Do not bury these costs in pipe rates — if quantities change, you need to recover these costs separately. If the BoQ does not have dedicated items and the preambles include these costs in the pipe rate, add a contingency allowance or raise a tender query.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-09"
+            onclick="handleMarkComplete('08-09')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 08-10: BoQ Rate Exercise -->
+      <div class="chunk chunk--locked" id="chunk-08-10" data-chunk="08-10">
+        <p class="chunk__type-label">BoQ Rate Exercise</p>
+        <h2 class="chunk__title">Price a Drainage BoQ Extract</h2>
+        <div class="chunk__body">
+          <p>Price the following drainage items using the all-in rates provided. Enter the rate per unit. ±15% tolerance accepted.</p>
+
+          <div class="callout callout--info" style="margin-bottom:16px;">
+            <strong>Rate data (all-in, per unit):</strong><br>
+            uPVC 150mm pipe at 0.5–1.0m depth: £52/m &nbsp;|&nbsp;
+            uPVC 225mm pipe at 1.0–1.5m depth: £84/m &nbsp;|&nbsp;
+            Concrete 300mm pipe at 1.5–2.0m depth: £145/m &nbsp;|&nbsp;
+            1200mm precast manhole, depth 1.5–2.0m: £2,300/nr &nbsp;|&nbsp;
+            Gully pot, precast, 375mm dia: £380/nr
+          </div>
+
+          <table class="boq-table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Qty</th>
+                <th>Rate (£)</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>I.1</td>
+                <td>Pipe, uPVC 150mm nom. bore, depth 0.5–1.0m</td>
+                <td>m</td>
+                <td>85</td>
+                <td><input class="boq-rate-input" id="boq-input-08-10-i1" type="number" placeholder="£/m" min="0" step="1"></td>
+                <td id="boq-total-08-10-i1">—</td>
+                <td id="boq-result-08-10-i1"></td>
+              </tr>
+              <tr>
+                <td>I.2</td>
+                <td>Pipe, uPVC 225mm nom. bore, depth 1.0–1.5m</td>
+                <td>m</td>
+                <td>45</td>
+                <td><input class="boq-rate-input" id="boq-input-08-10-i2" type="number" placeholder="£/m" min="0" step="1"></td>
+                <td id="boq-total-08-10-i2">—</td>
+                <td id="boq-result-08-10-i2"></td>
+              </tr>
+              <tr>
+                <td>I.3</td>
+                <td>Pipe, concrete 300mm nom. bore, depth 1.5–2.0m</td>
+                <td>m</td>
+                <td>30</td>
+                <td><input class="boq-rate-input" id="boq-input-08-10-i3" type="number" placeholder="£/m" min="0" step="1"></td>
+                <td id="boq-total-08-10-i3">—</td>
+                <td id="boq-result-08-10-i3"></td>
+              </tr>
+              <tr>
+                <td>K.1</td>
+                <td>Precast concrete manhole, 1200mm int. dia, depth 1.5–2.0m</td>
+                <td>nr</td>
+                <td>4</td>
+                <td><input class="boq-rate-input" id="boq-input-08-10-k1" type="number" placeholder="£/nr" min="0" step="10"></td>
+                <td id="boq-total-08-10-k1">—</td>
+                <td id="boq-result-08-10-k1"></td>
+              </tr>
+              <tr>
+                <td>K.2</td>
+                <td>Gully pot, precast concrete, 375mm dia</td>
+                <td>nr</td>
+                <td>6</td>
+                <td><input class="boq-rate-input" id="boq-input-08-10-k2" type="number" placeholder="£/nr" min="0" step="10"></td>
+                <td id="boq-total-08-10-k2">—</td>
+                <td id="boq-result-08-10-k2"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn--primary" id="boq-submit-08-10" onclick="submitBoQRateExercise('08-10')">
+            Submit &amp; Grade
+          </button>
+          <div id="boq-feedback-08-10" class="boq-feedback-panel" style="display:none;"></div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="08-10" disabled
+            onclick="handleMarkComplete('08-10')">&#10003; Complete</button>
+        </div>
+      </div>
+
+      <!-- Module complete banner -->
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 08 Complete</h2>
+        <p>You can now price a complete drainage BoQ section including pipes and manholes. Next: concrete and structures.</p>
+        <a href="../index.html" class="btn btn--primary">Back to Dashboard &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '08';
+  const CHUNK_LIST = ['08-01','08-02','08-03','08-04','08-05','08-06','08-07','08-08','08-09','08-10'];
+
+  const CHUNK_WE_CONFIG = {
+    '08-04': { totalSteps: 3 },
+    '08-08': { totalSteps: 3 },
+  };
+
+  const CHUNK_BOQ_EXERCISE_CONFIG = {
+    '08-10': {
+      items: [
+        {
+          ref: 'i1',
+          description: 'uPVC 150mm pipe, depth 0.5–1.0m',
+          unit: 'm',
+          qty: 85,
+          correctRate: 52.00,
+          tolerance: 0.15,
+          explanation: 'All-in rate provided: £52/m. Covers excavation, disposal, pipe supply, bedding, laying, backfill at this shallow depth.',
+        },
+        {
+          ref: 'i2',
+          description: 'uPVC 225mm pipe, depth 1.0–1.5m',
+          unit: 'm',
+          qty: 45,
+          correctRate: 84.00,
+          tolerance: 0.15,
+          explanation: 'All-in rate provided: £84/m. Larger pipe, deeper trench — higher cost per metre due to greater volume of excavation and bedding.',
+        },
+        {
+          ref: 'i3',
+          description: 'Concrete 300mm pipe, depth 1.5–2.0m',
+          unit: 'm',
+          qty: 30,
+          correctRate: 145.00,
+          tolerance: 0.15,
+          explanation: 'All-in rate provided: £145/m. Concrete pipe is heavier (mechanical handling required), trench is deeper and wider, and output is much lower — all combine to produce a significantly higher rate per metre.',
+        },
+        {
+          ref: 'k1',
+          description: '1200mm precast manhole, depth 1.5–2.0m',
+          unit: 'nr',
+          qty: 4,
+          correctRate: 2300.00,
+          tolerance: 0.15,
+          explanation: 'All-in rate provided: £2,300/nr. A fully installed precast manhole at this depth including all components, excavation, backfill, and labour.',
+        },
+        {
+          ref: 'k2',
+          description: 'Gully pot, 375mm dia precast',
+          unit: 'nr',
+          qty: 6,
+          correctRate: 380.00,
+          tolerance: 0.15,
+          explanation: 'All-in rate provided: £380/nr. Gully pots are smaller and shallower than manholes — supply, excavation, and installation all less complex.',
+        },
+      ],
+    },
+  };
+
+  initRateBuilder('rb-08-05', function(v) {
+    const trenchVol = v.width * v.depth; // per metre run
+    const excavCost = trenchVol * v.excav;
+    const disposalCost = trenchVol * v.disposal;
+    const beddingVol = v.width * v.bedding_depth;
+    const beddingCost = beddingVol * v.bedding_rate;
+    const backfillVol = Math.max(0, trenchVol - beddingVol - 0.025); // subtract approx pipe section
+    const backfillCost = backfillVol * v.backfill;
+    return excavCost + disposalCost + v.pipe + beddingCost + backfillCost + v.labour;
+  }, '£', '/m');
+
+  initModulePage();
+</script>
+
+</body>
+</html>

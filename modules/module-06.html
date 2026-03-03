@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 06 — Materials Pricing | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 06</p>
+        <h1 class="module-header__title">Materials Pricing</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 7</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 06-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-06-01" data-chunk="06-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">How Material Pricing Works in a Civil Tender</h2>
+        <div class="chunk__body">
+          <p>Material costs in civil and groundworks tenders are rarely straightforward. Prices are quoted by different units (tonnes, m³, nr, litres), need conversion to BoQ units, and must include haulage, wastage, and sometimes specialist handling.</p>
+          <p>The fundamental challenge: <strong>suppliers quote in tonnes; BoQ items are measured in m³.</strong> You must convert using bulk density, then apply a wastage allowance to ensure you order enough.</p>
+          <p>The full material cost per m³ (net BoQ quantity) follows this logic:</p>
+          <div class="step__formula" style="margin:12px 0;">
+            Material cost per m³ = Supply rate (£/t) × Bulk density (t/m³) × (1 + Wastage fraction)
+          </div>
+          <p>Each variable must come from a reliable source: supplier quotation for the rate, ground investigation or specification for the density, and your company's standard wastage table for the allowance.</p>
+          <div class="callout callout--info">
+            <strong>Always quote on the spec.</strong> Substituting a cheaper material without engineer approval can lead to rejection of the work, remedial cost, and potential professional liability. Match the material specification exactly when enquiring.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="06-01"
+            onclick="handleMarkComplete('06-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 06-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-06-02" data-chunk="06-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Bulk Density: Converting Tonnes to m³</h2>
+        <div class="chunk__body">
+          <p><strong>Bulk density</strong> (also called dry density or placed density for fill materials) is the mass per unit volume of a material in its placed, settled state. It is measured in <strong>tonnes per cubic metre (t/m³)</strong>.</p>
+          <p>You need it to convert supplier quotes (£/tonne) to BoQ units (£/m³):</p>
+          <div class="step__formula" style="margin:12px 0;">
+            Cost per m³ = Cost per tonne × Bulk density (t/m³)
+          </div>
+          <p>Bulk density varies significantly between materials. Using the wrong density produces large pricing errors:</p>
+          <table class="rate-table">
+            <thead><tr><th>Material</th><th>Bulk Density</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr><td>Type 1 granular sub-base</td><td style="color:var(--accent);">2.0–2.2 t/m³</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Compacted. Use 2.1 t/m³ as standard.</td></tr>
+              <tr><td>Concrete (C25/30 standard)</td><td style="color:var(--accent);">2.35–2.40 t/m³</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Reinforced concrete is slightly higher.</td></tr>
+              <tr><td>Clay (excavated, bank)</td><td style="color:var(--accent);">1.60–1.80 t/m³</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Varies with moisture content. 1.7 t/m³ typical.</td></tr>
+              <tr><td>Sand/gravel (bedding)</td><td style="color:var(--accent);">1.75–1.90 t/m³</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Compacted. Use 1.8 t/m³ as standard.</td></tr>
+              <tr><td>Bituminous macadam (surfacing)</td><td style="color:var(--accent);">2.30–2.40 t/m³</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Compacted mix density. Confirm with lab data.</td></tr>
+              <tr><td>Imported fill (mixed granular)</td><td style="color:var(--accent);">1.8–2.0 t/m³</td><td style="color:var(--text-secondary); font-size:var(--text-xs);">Use 1.9 t/m³ unless specification states otherwise.</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout--warning">
+            <strong>Loose vs compacted density:</strong> Bulk density figures for fill materials are typically for the <em>compacted</em> state (after placing and rolling). You will need to order more tonnes than the net compacted volume suggests — the additional quantity accounts for air voids removed during compaction. A 10–15% extra order is typical for granular fill.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="06-02"
+            onclick="handleMarkComplete('06-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 06-03: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-06-03" data-chunk="06-03">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Key Materials — Supply Rates &amp; Bulk Densities</h2>
+        <div class="chunk__body">
+          <p>These are indicative delivered rates for a Midlands/South-East site in 2024–2025. Always obtain written supplier quotations for formal tenders — these figures are for orientation only.</p>
+          <table class="rate-table">
+            <thead><tr><th>Material</th><th>Supply Rate</th><th>Bulk Density</th><th>Cost/m³ (approx)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Type 1 granular sub-base</td>
+                <td>£18–22/t</td>
+                <td>2.1 t/m³</td>
+                <td style="color:var(--accent); font-weight:700;">£38–46/m³</td>
+              </tr>
+              <tr>
+                <td>Ready-mixed concrete C25/30</td>
+                <td>£125–145/m³</td>
+                <td>—</td>
+                <td style="color:var(--accent); font-weight:700;">£125–145/m³</td>
+              </tr>
+              <tr>
+                <td>Ready-mixed concrete C16/20 (blinding)</td>
+                <td>£110–125/m³</td>
+                <td>—</td>
+                <td style="color:var(--accent); font-weight:700;">£110–125/m³</td>
+              </tr>
+              <tr>
+                <td>Granular bedding (10mm single size)</td>
+                <td>£20–28/t</td>
+                <td>1.8 t/m³</td>
+                <td style="color:var(--accent); font-weight:700;">£36–50/m³</td>
+              </tr>
+              <tr>
+                <td>Imported fill (granular general)</td>
+                <td>£10–16/t</td>
+                <td>1.9 t/m³</td>
+                <td style="color:var(--accent); font-weight:700;">£19–30/m³</td>
+              </tr>
+              <tr>
+                <td>Bituminous macadam (50mm DBM)</td>
+                <td>£90–110/t</td>
+                <td>2.35 t/m³</td>
+                <td style="color:var(--accent); font-weight:700;">£212–259/m³</td>
+              </tr>
+              <tr>
+                <td>uPVC pipe 150mm (per metre run)</td>
+                <td colspan="2">£8–12/m</td>
+                <td style="color:var(--accent); font-weight:700;">—</td>
+              </tr>
+              <tr>
+                <td>Concrete pipe 300mm (per metre run)</td>
+                <td colspan="2">£28–40/m</td>
+                <td style="color:var(--accent); font-weight:700;">—</td>
+              </tr>
+              <tr>
+                <td>Precast manhole ring 1200mm dia</td>
+                <td colspan="2">£180–240/ring</td>
+                <td style="color:var(--accent); font-weight:700;">—</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">Concrete is quoted per m³ (already a volumetric rate — no density conversion needed). All other aggregate materials are typically quoted per tonne.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="06-03"
+            onclick="handleMarkComplete('06-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 06-04: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-06-04" data-chunk="06-04">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Converting a Tonne Price to Cost Per m³</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            Type 1 granular sub-base is quoted at £19/t delivered. The specification requires placement to 300 mm compacted depth. Calculate the material cost per m² of sub-base (the BoQ unit is m²) and the material cost per m³.
+          </div>
+
+          <div class="worked-example__steps" id="steps-06-04">
+
+            <div class="step" id="step-06-04-1">
+              <button class="step__trigger" onclick="revealStep('06-04', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Convert tonne price to cost per m³</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Supply rate:          £19.00/t<br>
+                  Bulk density:         2.1 t/m³<br>
+                  ──────────────────────────────────<br>
+                  Material cost/m³:     £19.00 × 2.1 = £39.90/m³
+                </div>
+                <p style="margin-top:12px;">Multiply the tonne rate by the bulk density to get cost per compacted m³. This is the base material cost before wastage.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-06-04-2">
+              <button class="step__trigger" disabled onclick="revealStep('06-04', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Apply wastage allowance</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Base material cost/m³:    £39.90<br>
+                  Wastage allowance:        7.5% (typical for granular fill)<br>
+                  <br>
+                  Material cost/m³ (gross): £39.90 × 1.075 = £42.90/m³
+                </div>
+                <p style="margin-top:12px;">The wastage factor covers material lost in transit, spillage during spreading, and overbreak beyond the theoretical compacted volume. 5–10% is standard for granular fill. This is your order quantity uplift — not a profit margin.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-06-04-3">
+              <button class="step__trigger" disabled onclick="revealStep('06-04', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Convert to cost per m² at 300 mm depth</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Material cost/m³ (gross): £42.90<br>
+                  × Depth:                  × 0.300 m<br>
+                  ─────────────────────────────────────<br>
+                  <strong>Material cost/m²:          £12.87/m²</strong>
+                </div>
+                <p style="margin-top:12px;">The BoQ item is measured in m², so you multiply cost/m³ by the specified depth (in metres) to get cost/m². Your full unit rate for this item still needs to add: spreading and compaction (plant and labour), and any testing costs.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="06-04" disabled
+            onclick="handleMarkComplete('06-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 06-05: Rate Builder -->
+      <div class="chunk chunk--locked" id="chunk-06-05" data-chunk="06-05">
+        <p class="chunk__type-label">Rate Builder</p>
+        <h2 class="chunk__title">Material Cost Per m³ Calculator</h2>
+        <div class="chunk__body">
+          <p>Enter the material supply rate, bulk density, and wastage allowance to calculate the material cost per compacted m³.</p>
+
+          <div class="rate-builder" id="rb-06-05">
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Supply rate (£/tonne, delivered)</label>
+              <input class="rate-builder__input" data-key="supply" type="number" value="19.00" min="1" max="500" step="0.50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Bulk density (t/m³)</label>
+              <input class="rate-builder__input" data-key="density" type="number" value="2.10" min="0.5" max="3.5" step="0.05">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Wastage allowance (%)</label>
+              <input class="rate-builder__input" data-key="wastage" type="number" value="7.5" min="0" max="25" step="0.5">
+            </div>
+            <div class="rate-builder__result">
+              <span class="rate-builder__result-label">Material cost</span>
+              <span class="rate-builder__result-value" id="rb-06-05-result">£—</span>
+              <span class="rate-builder__result-unit">per m³ (incl. wastage)</span>
+            </div>
+          </div>
+
+          <p style="margin-top:16px; color:var(--text-secondary); font-size:var(--text-sm);">
+            Try setting supply rate to £130/t, density to 2.35 t/m³ and wastage to 5% — that's an approximate bituminous macadam figure. Notice how dense paving materials produce very high m³ costs, which is why surfacing is often measured in m² × thickness or in tonnes directly.
+          </p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="06-05"
+            onclick="handleMarkComplete('06-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 06-06: Concept -->
+      <div class="chunk chunk--locked" id="chunk-06-06" data-chunk="06-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Wastage, Losses, and Over-ordering</h2>
+        <div class="chunk__body">
+          <p>Wastage is not a fudge factor — it represents identifiable, quantifiable material losses that occur during a normal construction process. Each material has a different wastage profile:</p>
+          <table class="rate-table">
+            <thead><tr><th>Material</th><th>Typical Wastage</th><th>Cause</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Ready-mixed concrete</td>
+                <td style="color:var(--accent);">2–5%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Over-pour at edges of formwork, laitance, residue in drum.</td>
+              </tr>
+              <tr>
+                <td>Granular fill (Type 1)</td>
+                <td style="color:var(--accent);">5–10%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Spread beyond the theoretical edge, contamination from subgrade, trafficking loss.</td>
+              </tr>
+              <tr>
+                <td>Pipe bedding (pea gravel)</td>
+                <td style="color:var(--accent);">8–12%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Migration into surrounding soil, irregular trench bottom, handling loss.</td>
+              </tr>
+              <tr>
+                <td>Pipes (uPVC/concrete)</td>
+                <td style="color:var(--accent);">2–4%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Breakages during delivery and handling, cut-offs at junctions. Price as a number of extra pipes.</td>
+              </tr>
+              <tr>
+                <td>Reinforcement bar</td>
+                <td style="color:var(--accent);">5–10%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Cut-offs from bar lengths, lap lengths, spacer/tie wire.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout callout--info">
+            <strong>Over-ordering vs under-ordering:</strong> Ordering short means an emergency top-up delivery at spot price — often 20–30% more than the tender quote and with a delivery charge. It is almost always cheaper to order slightly over and return unused material (if the supplier accepts returns) than to run short.
+          </div>
+          <p>A practical rule: apply wastage percentages consistently using your company's standard table, document the percentages used, and review them against actuals after each project.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="06-06"
+            onclick="handleMarkComplete('06-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 06-07: BoQ Rate Exercise -->
+      <div class="chunk chunk--locked" id="chunk-06-07" data-chunk="06-07">
+        <p class="chunk__type-label">BoQ Rate Exercise</p>
+        <h2 class="chunk__title">Price the Material Component of Three BoQ Items</h2>
+        <div class="chunk__body">
+          <p>Using the material data below, enter the <strong>material cost per BoQ unit</strong> for each item. Include the wastage allowance. A ±15% tolerance is accepted.</p>
+
+          <div class="callout callout--info" style="margin-bottom:16px;">
+            <strong>Material data:</strong>
+            Type 1 sub-base: £20/t delivered, 2.1 t/m³, 7.5% wastage &nbsp;|&nbsp;
+            Pipe bedding (10mm gravel): £24/t, 1.8 t/m³, 10% wastage &nbsp;|&nbsp;
+            Concrete C25/30: £135/m³ delivered, 3% wastage
+          </div>
+
+          <table class="boq-table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Qty</th>
+                <th>Material Rate (£)</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>E.1</td>
+                <td>Type 1 sub-base filling, 300mm thick</td>
+                <td>m²</td>
+                <td>500</td>
+                <td><input class="boq-rate-input" id="boq-input-06-07-e1" type="number" placeholder="£/m²" min="0" step="0.10"></td>
+                <td id="boq-total-06-07-e1">—</td>
+                <td id="boq-result-06-07-e1"></td>
+              </tr>
+              <tr>
+                <td>I.1</td>
+                <td>Granular bedding to pipe trench, 150mm thick</td>
+                <td>m</td>
+                <td>200</td>
+                <td><input class="boq-rate-input" id="boq-input-06-07-i1" type="number" placeholder="£/m" min="0" step="0.10"></td>
+                <td id="boq-total-06-07-i1">—</td>
+                <td id="boq-result-06-07-i1"></td>
+              </tr>
+              <tr>
+                <td>F.1</td>
+                <td>Concrete blinding, 75mm thick, under foundations</td>
+                <td>m²</td>
+                <td>120</td>
+                <td><input class="boq-rate-input" id="boq-input-06-07-f1" type="number" placeholder="£/m²" min="0" step="0.10"></td>
+                <td id="boq-total-06-07-f1">—</td>
+                <td id="boq-result-06-07-f1"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn--primary" id="boq-submit-06-07" onclick="submitBoQRateExercise('06-07')">
+            Submit &amp; Grade
+          </button>
+          <div id="boq-feedback-06-07" class="boq-feedback-panel" style="display:none;"></div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="06-07" disabled
+            onclick="handleMarkComplete('06-07')">&#10003; Complete</button>
+        </div>
+      </div>
+
+      <!-- Module complete banner -->
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 06 Complete</h2>
+        <p>You can now convert material prices and apply wastage allowances. Next: earthworks and excavation pricing.</p>
+        <a href="module-07.html" class="btn btn--primary">Continue to Module 07 &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '06';
+  const CHUNK_LIST = ['06-01','06-02','06-03','06-04','06-05','06-06','06-07'];
+
+  const CHUNK_WE_CONFIG = {
+    '06-04': { totalSteps: 3 },
+  };
+
+  const CHUNK_BOQ_EXERCISE_CONFIG = {
+    '06-07': {
+      items: [
+        {
+          ref: 'e1',
+          description: 'Type 1 sub-base, 300mm thick',
+          unit: 'm²',
+          qty: 500,
+          // £20/t × 2.1 t/m³ × 1.075 wastage = £45.15/m³ × 0.300m = £13.55/m²
+          correctRate: 13.55,
+          tolerance: 0.15,
+          explanation: '£20/t × 2.1 t/m³ × 1.075 (7.5% wastage) = £45.15/m³ × 0.300m depth = £13.55/m² material cost.',
+        },
+        {
+          ref: 'i1',
+          description: 'Granular bedding, 150mm thick to pipe trench',
+          unit: 'm',
+          qty: 200,
+          // Assume trench width 0.45m (150mm pipe, typical trench)
+          // £24/t × 1.8 t/m³ × 1.10 wastage = £47.52/m³ × 0.150m depth × 0.45m wide = £3.21/m
+          // Simpler: bedding volume per m = 0.45 wide × 0.15 deep = 0.0675 m³/m
+          // £47.52 × 0.0675 = £3.21/m
+          correctRate: 3.21,
+          tolerance: 0.15,
+          explanation: '£24/t × 1.8 t/m³ × 1.10 wastage = £47.52/m³. Bedding volume = 0.45m wide × 0.15m deep = 0.0675 m³/m. £47.52 × 0.0675 = £3.21/m material only.',
+        },
+        {
+          ref: 'f1',
+          description: 'Concrete C25/30 blinding, 75mm thick',
+          unit: 'm²',
+          qty: 120,
+          // £135/m³ × 1.03 wastage = £139.05/m³ × 0.075m = £10.43/m²
+          correctRate: 10.43,
+          tolerance: 0.15,
+          explanation: '£135/m³ × 1.03 (3% wastage) = £139.05/m³ × 0.075m depth = £10.43/m² material cost. Concrete is quoted per m³ so no density conversion is needed.',
+        },
+      ],
+    },
+  };
+
+  initRateBuilder('rb-06-05', function(v) {
+    return v.supply * v.density * (1 + v.wastage / 100);
+  }, '£', '/m³');
+
+  initModulePage();
+</script>
+
+</body>
+</html>

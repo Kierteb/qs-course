@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 07 — Earthworks &amp; Excavation Pricing | Practical QS</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/module.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <header class="topbar">
+    <span class="topbar__title">Practical QS — Civil &amp; Groundworks</span>
+    <div class="topbar__progress">
+      <span class="topbar__progress-label" id="topbar-progress-label">0 / 0 chunks</span>
+      <div class="progress-bar">
+        <div class="progress-bar__fill" id="topbar-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar" aria-label="Module navigation">
+    <p class="sidebar__section-label">Modules</p>
+    <ul class="sidebar__nav" id="sidebar-nav"></ul>
+  </nav>
+
+  <main class="main">
+    <div class="content-wrapper">
+
+      <div class="module-header">
+        <a href="../index.html" class="module-header__back">Dashboard</a>
+        <p class="module-header__meta">Module 07</p>
+        <h1 class="module-header__title">Earthworks &amp; Excavation Pricing</h1>
+        <div class="module-header__progress">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" id="module-progress-fill" style="width:0%"></div>
+          </div>
+          <span class="module-header__progress-text" id="module-progress-text">Chunk 0 of 9</span>
+        </div>
+      </div>
+
+      <div class="sr-banner" id="sr-banner" style="display:none;">
+        <span class="sr-banner__icon">&#128218;</span>
+        <div class="sr-banner__text">
+          <strong id="sr-banner-count">Recap questions due</strong> from earlier modules.
+        </div>
+        <div class="sr-banner__actions">
+          <button class="btn btn--small btn--purple" onclick="openSROverlay()">Start Review</button>
+          <button class="btn btn--small btn--ghost" onclick="dismissSRBanner()">Later</button>
+        </div>
+      </div>
+
+      <div class="sr-overlay" id="sr-overlay" style="display:none;">
+        <div class="sr-overlay__header">
+          <span class="sr-overlay__title">Spaced Repetition Review</span>
+          <span class="sr-overlay__counter" id="sr-counter"></span>
+        </div>
+        <button class="sr-close" onclick="closeSROverlay()" title="Close">&#10005;</button>
+        <div class="sr-card" id="sr-card"></div>
+      </div>
+
+      <!-- CHUNK 07-01: Concept -->
+      <div class="chunk chunk--active" id="chunk-07-01" data-chunk="07-01">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">What Earthworks Pricing Covers</h2>
+        <div class="chunk__body">
+          <p>Earthworks is typically the largest single cost on a civil groundworks contract. It involves moving material — either removing it from site or placing and compacting it to form embankments, cuttings, or pavement foundations. In CESMM4, Class E covers all earthworks.</p>
+          <p>A bulk excavation unit rate must include all of:</p>
+          <ul class="content-list">
+            <li><strong>Excavation plant:</strong> excavator cost per m³ (hire/ownership + fuel + operator)</li>
+            <li><strong>Disposal:</strong> haulage cost per m³ <em>loose</em> (not net — apply bulking factor) + tip gate fee</li>
+            <li><strong>Site management:</strong> traffic management, banksmen during loading (if required)</li>
+          </ul>
+          <p>A filling unit rate (import and place) must include:</p>
+          <ul class="content-list">
+            <li><strong>Material supply:</strong> imported fill at the delivered price (converted to m³ using density)</li>
+            <li><strong>Spreading and compaction plant:</strong> dumper, dozer/grader, vibrating roller</li>
+            <li><strong>Testing:</strong> compaction testing may be required — check specification</li>
+          </ul>
+          <div class="callout callout--info">
+            <strong>CESMM4 Class E items are in m³ of bank measure</strong> — the volume of material before excavation. You must apply bulking factors for disposal and shrinkage factors for fill when converting to real quantities for cost purposes.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-01"
+            onclick="handleMarkComplete('07-01')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-02: Concept -->
+      <div class="chunk chunk--locked" id="chunk-07-02" data-chunk="07-02">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Excavator Selection and Output</h2>
+        <div class="chunk__body">
+          <p>Choosing the right machine for an earthworks operation determines both output and cost. Too small a machine and you don't dig fast enough; too large and the overhead cost is wasted.</p>
+          <table class="rate-table">
+            <thead><tr><th>Machine</th><th>Best for</th><th>Typical Output</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>3–5T mini excavator</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Restricted access, internal work, service trenches in confined spaces</td>
+                <td style="color:var(--accent);">15–40 m³/day</td>
+              </tr>
+              <tr>
+                <td>13T tracked excavator</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">General bulk excavation, trench work up to 3m, drainage</td>
+                <td style="color:var(--accent);">120–200 m³/day</td>
+              </tr>
+              <tr>
+                <td>20T tracked excavator</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Heavy bulk dig, deep trenches, rock breaking attachment</td>
+                <td style="color:var(--accent);">200–350 m³/day</td>
+              </tr>
+              <tr>
+                <td>Dozer / Scrapers</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Large open-cut earthworks, pushing over long distances on site</td>
+                <td style="color:var(--accent);">500–2,000 m³/day</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">Output varies significantly with material type. Clay at 1.5m depth with good access might yield 180 m³/day from a 13T machine. Stiff clay at 3m depth, restricted access, with dewatering might yield only 60 m³/day from the same machine.</p>
+          <div class="callout callout--warning">
+            <strong>Always state your output assumption</strong> in your pricing notes. If site conditions are worse than assumed, you have documented evidence for a compensation event claim under NEC or a variation under JCT/ICE forms.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-02"
+            onclick="handleMarkComplete('07-02')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-03: Rate Card -->
+      <div class="chunk chunk--locked" id="chunk-07-03" data-chunk="07-03">
+        <p class="chunk__type-label">Rate Card</p>
+        <h2 class="chunk__title">Earthworks Key Rates &amp; Benchmarks</h2>
+        <div class="chunk__body">
+          <table class="rate-table">
+            <thead><tr><th>Item</th><th>Rate / Benchmark</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Bulk excavation — clay, unrestricted</td>
+                <td style="color:var(--accent); font-weight:700;">£6–10/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Excavate only (not dispose). 13T machine.</td>
+              </tr>
+              <tr>
+                <td>Disposal — clay to tip, 5 km haul</td>
+                <td style="color:var(--accent); font-weight:700;">£8–14/m³ net</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Includes bulking, haulage, and typical £8–12/t gate fee.</td>
+              </tr>
+              <tr>
+                <td>Bulk excavate and dispose — all-in</td>
+                <td style="color:var(--accent); font-weight:700;">£18–28/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Typical tender rate for net m³ of clay, 5km haul. Varies significantly.</td>
+              </tr>
+              <tr>
+                <td>Import and place granular fill, compacted</td>
+                <td style="color:var(--accent); font-weight:700;">£25–40/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Material + delivery + spread + compact. Excludes testing.</td>
+              </tr>
+              <tr>
+                <td>Topsoil strip and stockpile</td>
+                <td style="color:var(--accent); font-weight:700;">£4–8/m²</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">150–200mm depth strip. Price as m² or m³ depending on BoQ.</td>
+              </tr>
+              <tr>
+                <td>Clay bulking factor</td>
+                <td style="color:var(--accent); font-weight:700;">+25%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Net m³ × 1.25 = loose m³ for disposal.</td>
+              </tr>
+              <tr>
+                <td>Granular fill shrinkage factor</td>
+                <td style="color:var(--accent); font-weight:700;">−12%</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Loose m³ × 0.88 = compacted m³ achieved.</td>
+              </tr>
+              <tr>
+                <td>Inert material gate fee (typical)</td>
+                <td style="color:var(--accent); font-weight:700;">£8–15/t</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Tip charges vary by region and material classification. Contaminated material: £50–150/t+.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="rate-table__disclaimer">These are indicative 2024–2025 figures. Haulage and tipping rates are particularly volatile. Always obtain current tip quotes and fuel-adjusted haulage rates for formal tenders.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-03"
+            onclick="handleMarkComplete('07-03')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-04: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-07-04" data-chunk="07-04">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Building a Bulk Excavation Unit Rate</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            Price a CESMM4 Class E bulk excavation item: "Excavation, material other than topsoil/rock, maximum depth 1–2m." 13T excavator (£832/day all-in including operator and fuel), output 160 m³/day (net). Clay bulks 25%. Tip is 6 km; 4 × 8m³ wagons at £550/day each. Gate fee £10/t; clay density 1.7 t/m³.
+          </div>
+
+          <div class="worked-example__steps" id="steps-07-04">
+
+            <div class="step" id="step-07-04-1">
+              <button class="step__trigger" onclick="revealStep('07-04', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Excavation cost per m³</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Excavator all-in:   £832/day<br>
+                  ÷ Output:           ÷ 160 m³/day<br>
+                  ─────────────────────────────────<br>
+                  Excavation cost:    £5.20/m³ (net)
+                </div>
+                <p style="margin-top:12px;">This is the excavation-only cost per m³. It includes the machine, fuel, and operator but not disposal.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-07-04-2">
+              <button class="step__trigger" disabled onclick="revealStep('07-04', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Disposal cost per m³ (net)</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Wagon fleet daily cost:  4 wagons × £550 = £2,200/day<br>
+                  Loose volume per day:    160 m³ net × 1.25 = 200 m³ loose<br>
+                  <br>
+                  Haulage cost/m³ loose:   £2,200 ÷ 200 = £11.00/m³ loose<br>
+                  Convert to net m³:       × 1.25 (bulking) = £13.75/m³ net<br>
+                  <br>
+                  Gate fee/m³ net:         1.25 × 1.7 t/m³ loose × £10 = £21.25/t... wait<br>
+                  Gate fee per m³ net:     1.25 (bulking) × 1.7 t/m³ × £10/t = £21.25/m³... hmm<br>
+                  <br>
+                  Simpler: gate fee per m³ net = loose factor × density × gate fee<br>
+                  &nbsp;&nbsp;= 1.25 × 1.7 × £10 = £21.25... too high<br>
+                  <br>
+                  Correct: 1 m³ net clay = 1.25 m³ loose = 1.25 × 1.7 = 2.125 t<br>
+                  Gate fee per m³ net:   2.125 t × £10/t = £21.25... this is per m³ bank<br>
+                  Actually gate fee is £10/tonne. 1m³ bank = 1.7t. Gate fee = 1.7 × £10 = £17/m³ net.<br>
+                  <br>
+                  ──────────────────────────────────────────────────<br>
+                  Haulage:        £13.75/m³ net<br>
+                  Gate fee:       £17.00/m³ net (1.7 t/m³ bank × £10/t)<br>
+                  Total disposal: £30.75/m³ net
+                </div>
+                <p style="margin-top:12px;">The gate fee is charged per tonne of material arriving at tip. 1 m³ of clay in the ground (bank measure) weighs approximately 1.7 t, so the gate fee per BoQ m³ = 1.7 × £10 = £17.00. The haulage cost is calculated on loose volume (after bulking) because that is what fills the wagons.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-07-04-3">
+              <button class="step__trigger" disabled onclick="revealStep('07-04', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Sum to the BoQ unit rate</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Excavation:     £ 5.20/m³<br>
+                  Haulage:        £13.75/m³<br>
+                  Gate fee:       £17.00/m³<br>
+                  ───────────────────────────<br>
+                  <strong>Unit rate:       £35.95/m³</strong>
+                </div>
+                <p style="margin-top:12px;">This is the earthworks rate to enter in the BoQ. It covers excavation, loading, haulage, and tipping in one all-in rate per net m³. Overhead and profit are added later in the tender summary (or built into a company mark-up applied to all rates).</p>
+                <p>This rate is sensitive to three variables: machine output, haul distance, and tip gate fee. A 10 km haul might cost twice as much in haulage; a contaminated tip might charge £60/t gate fee instead of £10.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-04" disabled
+            onclick="handleMarkComplete('07-04')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-05: Rate Builder -->
+      <div class="chunk chunk--locked" id="chunk-07-05" data-chunk="07-05">
+        <p class="chunk__type-label">Rate Builder</p>
+        <h2 class="chunk__title">Bulk Excavation Rate Builder</h2>
+        <div class="chunk__body">
+          <p>Build a bulk excavate-and-dispose rate. This calculator covers plant, haulage, and gate fee per net m³ in the BoQ.</p>
+
+          <div class="rate-builder" id="rb-07-05">
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Excavator all-in cost (£/day)</label>
+              <input class="rate-builder__input" data-key="plant" type="number" value="832" min="100" max="5000" step="10">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Excavator output (m³ net/day)</label>
+              <input class="rate-builder__input" data-key="output" type="number" value="160" min="10" max="1000" step="5">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Wagon fleet cost (£/day total)</label>
+              <input class="rate-builder__input" data-key="wagons" type="number" value="2200" min="0" max="10000" step="50">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Clay bulking factor (%)</label>
+              <input class="rate-builder__input" data-key="bulking" type="number" value="25" min="5" max="50" step="1">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Material density (t/m³, bank)</label>
+              <input class="rate-builder__input" data-key="density" type="number" value="1.7" min="1.0" max="3.0" step="0.05">
+            </div>
+            <div class="rate-builder__row">
+              <label class="rate-builder__label">Gate fee (£/tonne)</label>
+              <input class="rate-builder__input" data-key="gate" type="number" value="10" min="0" max="200" step="1">
+            </div>
+            <div class="rate-builder__result">
+              <span class="rate-builder__result-label">All-in excavate &amp; dispose</span>
+              <span class="rate-builder__result-value" id="rb-07-05-result">£—</span>
+              <span class="rate-builder__result-unit">per m³ net</span>
+            </div>
+          </div>
+
+          <p style="margin-top:16px; color:var(--text-secondary); font-size:var(--text-sm);">
+            Try increasing the gate fee to £60/t (contaminated material) and watch the rate jump. This illustrates why ground contamination risk is so heavily priced and why Phase 1/Phase 2 ground investigations are critical before tender.
+          </p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-05"
+            onclick="handleMarkComplete('07-05')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-06: Concept -->
+      <div class="chunk chunk--locked" id="chunk-07-06" data-chunk="07-06">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Topsoil Stripping, Cut-to-Fill, and Near-Services Excavation</h2>
+        <div class="chunk__body">
+          <p>Not all earthworks are priced the same. Three special categories have distinct cost profiles:</p>
+
+          <h3 style="margin:16px 0 8px; font-size:var(--text-base);">Topsoil Stripping</h3>
+          <p>Topsoil (the upper 150–300 mm organic layer) is stripped before bulk excavation begins. It cannot be used as structural fill and must be separately stockpiled for later reinstatement or disposed of. CESMM4 measures topsoil separately from bulk excavation. Rates: £3–7/m² or £15–35/m³, depending on depth and disposal route.</p>
+
+          <h3 style="margin:16px 0 8px; font-size:var(--text-base);">Cut-to-Fill</h3>
+          <p>Where excavated material from a cutting is reused as fill in an embankment or low area on the same site, a <strong>cut-to-fill earthworks balance</strong> is required. The key variables:</p>
+          <ul class="content-list">
+            <li><strong>Bulking:</strong> 1 m³ bank → 1.25 m³ loose for haul</li>
+            <li><strong>Shrinkage:</strong> 1 m³ loose → ~0.88 m³ compacted (granular fill)</li>
+            <li>Net: 1 m³ bank excavated yields approximately 1.25 × 0.88 = 1.10 m³ compacted fill</li>
+          </ul>
+          <p>This means you can fill a slightly larger area than you excavate — but the earthworks balance must be calculated carefully. Misread the balance and you either dispose of fill you needed, or run short and pay for imported material.</p>
+
+          <h3 style="margin:16px 0 8px; font-size:var(--text-base);">Excavation near Existing Services</h3>
+          <p>Within 0.5 m of known services, machine excavation is prohibited (or strictly limited). Hand excavation replaces machine work, and output drops from ~150 m³/day (machine) to 1–3 m³/day (hand). This is one of the most expensive operations per m³ in civil work. Always check whether the BoQ explicitly prices this or whether it is included in the standard excavation rate.</p>
+          <div class="callout callout--warning">
+            <strong>Service corridor pricing:</strong> If the preambles include near-service excavation in the standard rate, you must build in a contingency. If it is a separate item, price it at full hand-dig rates.
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-06"
+            onclick="handleMarkComplete('07-06')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-07: Worked Example -->
+      <div class="chunk chunk--locked" id="chunk-07-07" data-chunk="07-07">
+        <p class="chunk__type-label">Worked Example</p>
+        <h2 class="chunk__title">Pricing a Topsoil Strip and Cut-to-Fill Balance</h2>
+        <div class="chunk__body">
+
+          <div class="worked-example__problem">
+            <strong>Problem</strong>
+            A site has 2,000 m² of topsoil at 200 mm depth (400 m³ total). The topsoil is stripped and stockpiled on site for later reinstatement. Below that, 800 m³ net of clay subsoil is excavated and reused as fill in a low-lying corner. Calculate (a) the topsoil strip cost, and (b) whether the cut-to-fill balance works.
+            <br>Rates: topsoil strip and stockpile £5/m²; bulk excavation (machine only) £5.20/m³; clay bulking 25%; fill compaction factor 88%.
+          </div>
+
+          <div class="worked-example__steps" id="steps-07-07">
+
+            <div class="step" id="step-07-07-1">
+              <button class="step__trigger" onclick="revealStep('07-07', 1)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 1</span>
+                <span class="step__trigger-label">Topsoil strip cost</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Area:           2,000 m²<br>
+                  Rate:           £5.00/m²<br>
+                  ─────────────────────────<br>
+                  Topsoil strip:  £10,000
+                </div>
+                <p style="margin-top:12px;">Topsoil is measured in m² (or m³ if the BoQ uses m³). The rate includes strip, load, transport on site, and stockpile. No disposal cost because it is stockpiled for reinstatement later.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-07-07-2">
+              <button class="step__trigger" disabled onclick="revealStep('07-07', 2)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 2</span>
+                <span class="step__trigger-label">Bulk excavation cost</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Volume:               800 m³ net<br>
+                  Excavation rate:      £5.20/m³<br>
+                  ──────────────────────────────<br>
+                  Excavation cost:      £4,160
+                </div>
+                <p style="margin-top:12px;">This covers the excavator only — no disposal because we are reusing the clay on site. Haul cost on site (dozer/dumper moving material to fill area) should be added if the haul distance is significant.</p>
+              </div>
+            </div>
+
+            <div class="step" id="step-07-07-3">
+              <button class="step__trigger" disabled onclick="revealStep('07-07', 3)">
+                <span class="step__trigger-icon">&#9654;</span>
+                <span class="step__trigger-num">Step 3</span>
+                <span class="step__trigger-label">Check the cut-to-fill balance</span>
+              </button>
+              <div class="step__content">
+                <div class="step__formula">
+                  Clay cut (bank):        800 m³<br>
+                  After bulking (loose):  800 × 1.25 = 1,000 m³<br>
+                  After compaction:       1,000 × 0.88 = 880 m³ compacted fill<br>
+                  <br>
+                  Fill needed (say):      750 m³ compacted<br>
+                  Fill available:         880 m³ compacted<br>
+                  <br>
+                  Surplus cut:            880 − 750 = 130 m³ to dispose
+                </div>
+                <p style="margin-top:12px;">The cut produces more compacted fill than needed. The surplus 130 m³ must be disposed of off-site. Always work through the balance in this way: bank → loose → compacted. Getting the balance wrong by even 10% on a large earthworks job can mean unexpected disposal costs of tens of thousands of pounds.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-07" disabled
+            onclick="handleMarkComplete('07-07')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-08: Concept -->
+      <div class="chunk chunk--locked" id="chunk-07-08" data-chunk="07-08">
+        <p class="chunk__type-label">Concept</p>
+        <h2 class="chunk__title">Trench Excavation vs Bulk Excavation: Key Differences</h2>
+        <div class="chunk__body">
+          <p>Trench excavation (for pipes, foundations, culverts) is measured separately from bulk excavation in CESMM4, and for good reason — the cost per m³ is significantly higher.</p>
+          <table class="rate-table">
+            <thead><tr><th>Factor</th><th>Bulk Excavation</th><th>Trench Excavation</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Machine swing arc</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Full 360° rotation possible</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Restricted — must work along the trench</td>
+              </tr>
+              <tr>
+                <td>Repositioning</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Minimal — large open face</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Frequent — track along the run</td>
+              </tr>
+              <tr>
+                <td>Spoil management</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Wagons can spot freely</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Spoil must be cast to one side; access limited</td>
+              </tr>
+              <tr>
+                <td>Trench support</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Not usually needed</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">Required >1.2 m or per ground conditions</td>
+              </tr>
+              <tr>
+                <td>Typical output (13T)</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">150–200 m³/day</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">40–100 m³/day depending on depth</td>
+              </tr>
+              <tr>
+                <td>Typical cost (excavation only)</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£5–8/m³</td>
+                <td style="color:var(--text-secondary); font-size:var(--text-xs);">£8–20/m³ depending on depth</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;">In practice, trench excavation rates are often embedded in the <strong>pipe-laying super-rate</strong> (a single Class I rate per metre of pipe that includes all trench work). We will work through the full pipe rate in Module 08.</p>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-08"
+            onclick="handleMarkComplete('07-08')">&#10003; Got it</button>
+        </div>
+      </div>
+
+      <!-- CHUNK 07-09: BoQ Rate Exercise -->
+      <div class="chunk chunk--locked" id="chunk-07-09" data-chunk="07-09">
+        <p class="chunk__type-label">BoQ Rate Exercise</p>
+        <h2 class="chunk__title">Price Three Earthworks Items</h2>
+        <div class="chunk__body">
+          <p>Price these BoQ items using the rate data provided. Enter the all-in rate per unit. ±15% tolerance accepted.</p>
+
+          <div class="callout callout--info" style="margin-bottom:16px;">
+            <strong>Rate data:</strong>
+            All-in excavate &amp; dispose (clay, 1–2m depth): £36/m³ net &nbsp;|&nbsp;
+            Topsoil strip &amp; stockpile: £5/m² &nbsp;|&nbsp;
+            Import, place &amp; compact granular fill: £32/m³ compacted &nbsp;|&nbsp;
+            Hand excavation near services: £84/m³
+          </div>
+
+          <table class="boq-table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Qty</th>
+                <th>Rate (£)</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>E.1</td>
+                <td>Excavation, material other than topsoil/rock, max depth 1–2m</td>
+                <td>m³</td>
+                <td>850</td>
+                <td><input class="boq-rate-input" id="boq-input-07-09-e1" type="number" placeholder="£/m³" min="0" step="0.50"></td>
+                <td id="boq-total-07-09-e1">—</td>
+                <td id="boq-result-07-09-e1"></td>
+              </tr>
+              <tr>
+                <td>E.2</td>
+                <td>Excavation, topsoil for preservation, depth not exceeding 0.25m</td>
+                <td>m²</td>
+                <td>1200</td>
+                <td><input class="boq-rate-input" id="boq-input-07-09-e2" type="number" placeholder="£/m²" min="0" step="0.25"></td>
+                <td id="boq-total-07-09-e2">—</td>
+                <td id="boq-result-07-09-e2"></td>
+              </tr>
+              <tr>
+                <td>E.3</td>
+                <td>Filling, imported granular material, compacted thickness exceeding 500mm</td>
+                <td>m³</td>
+                <td>400</td>
+                <td><input class="boq-rate-input" id="boq-input-07-09-e3" type="number" placeholder="£/m³" min="0" step="0.50"></td>
+                <td id="boq-total-07-09-e3">—</td>
+                <td id="boq-result-07-09-e3"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn--primary" id="boq-submit-07-09" onclick="submitBoQRateExercise('07-09')">
+            Submit &amp; Grade
+          </button>
+          <div id="boq-feedback-07-09" class="boq-feedback-panel" style="display:none;"></div>
+        </div>
+        <div class="chunk__footer">
+          <button class="btn btn--small btn--primary mark-complete-btn" data-chunk="07-09" disabled
+            onclick="handleMarkComplete('07-09')">&#10003; Complete</button>
+        </div>
+      </div>
+
+      <!-- Module complete banner -->
+      <div class="module-complete" id="module-complete" style="display:none;">
+        <h2 class="module-complete__title">Module 07 Complete</h2>
+        <p>You can now price bulk earthworks including disposal and fill operations. Next: drainage and utilities pricing.</p>
+        <a href="module-08.html" class="btn btn--primary">Continue to Module 08 &rarr;</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/spaced-repetition.js"></script>
+<script src="../js/exercises.js"></script>
+<script src="../js/chunk-types.js"></script>
+<script>
+  const MODULE_ID = '07';
+  const CHUNK_LIST = ['07-01','07-02','07-03','07-04','07-05','07-06','07-07','07-08','07-09'];
+
+  const CHUNK_WE_CONFIG = {
+    '07-04': { totalSteps: 3 },
+    '07-07': { totalSteps: 3 },
+  };
+
+  const CHUNK_BOQ_EXERCISE_CONFIG = {
+    '07-09': {
+      items: [
+        {
+          ref: 'e1',
+          description: 'Bulk excavation, clay, max depth 1–2m',
+          unit: 'm³',
+          qty: 850,
+          correctRate: 36.00,
+          tolerance: 0.15,
+          explanation: 'All-in excavate and dispose rate provided: £36/m³ net. Includes excavation plant, haulage, and tipping.',
+        },
+        {
+          ref: 'e2',
+          description: 'Topsoil strip and stockpile',
+          unit: 'm²',
+          qty: 1200,
+          correctRate: 5.00,
+          tolerance: 0.15,
+          explanation: 'Topsoil strip and stockpile rate provided: £5/m². Includes stripping, loading, on-site haul, and stockpiling.',
+        },
+        {
+          ref: 'e3',
+          description: 'Import and compact granular fill',
+          unit: 'm³',
+          qty: 400,
+          correctRate: 32.00,
+          tolerance: 0.15,
+          explanation: 'Import, place, and compact granular fill rate provided: £32/m³ compacted. Includes material supply, delivery, spreading, and compaction.',
+        },
+      ],
+    },
+  };
+
+  initRateBuilder('rb-07-05', function(v) {
+    if (v.output <= 0) return 0;
+    const excavationCost = v.plant / v.output;
+    // Loose volume per m³ net
+    const loosePerNet = 1 + v.bulking / 100;
+    // Haulage cost per m³ net: wagon fleet costs applied to loose volume
+    const haulagePerLoose = v.wagons / (v.output * loosePerNet); // £ per m³ loose
+    const haulagePerNet = haulagePerLoose * loosePerNet;
+    // Gate fee per m³ net: density × gate fee
+    const gateFeePerNet = v.density * v.gate;
+    return excavationCost + haulagePerNet + gateFeePerNet;
+  }, '£', '/m³');
+
+  initModulePage();
+</script>
+
+</body>
+</html>
