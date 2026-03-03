@@ -59,6 +59,16 @@
         <span class="dashboard__streak" id="streak-display">Streak: <span>0</span> day(s)</span>
       </div>
 
+      <!-- Course Complete Banner (hidden until all chunks done) -->
+      <div class="course-complete" id="course-complete" style="display: none;">
+        <div class="course-complete__icon">&#127891;</div>
+        <h2 class="course-complete__title">Course Complete!</h2>
+        <p class="course-complete__subtitle">
+          You've completed all 12 modules of Practical QS for Civil Engineering &amp; Groundworks.
+          You can now read and price a civil engineering Bill of Quantities from first principles.
+        </p>
+      </div>
+
       <!-- SR Notification (hidden until due) -->
       <div class="sr-notification" id="sr-notification" style="display: none;">
         <span style="font-size: 18px;">&#128218;</span>
@@ -71,6 +81,17 @@
       <!-- Module Grid -->
       <div class="module-grid" id="module-grid">
         <!-- Populated by JS -->
+      </div>
+
+      <!-- Reset Progress -->
+      <div class="dashboard__reset" id="reset-area">
+        <span class="dashboard__reset-label">Progress is saved locally in your browser.</span>
+        <button class="btn btn--ghost btn--small" onclick="showResetConfirm()">Reset Progress</button>
+      </div>
+      <div class="dashboard__reset-confirm" id="reset-confirm" style="display: none;">
+        <span class="dashboard__reset-confirm-label">This will erase all progress and SR data. This cannot be undone.</span>
+        <button class="btn btn--ghost btn--small" onclick="cancelReset()">Cancel</button>
+        <button class="btn btn--small" style="background: var(--error); color: #fff;" onclick="doReset()">Confirm Reset</button>
       </div>
 
     </div>
@@ -99,6 +120,31 @@
     renderModuleGrid();
     renderTopbarProgress();
     checkSRNotification();
+    checkCourseComplete();
+  }
+
+  function checkCourseComplete() {
+    const overall = getOverallProgress();
+    if (overall.total > 0 && overall.completed >= overall.total) {
+      const banner = document.getElementById('course-complete');
+      if (banner) banner.style.display = 'block';
+    }
+  }
+
+  function showResetConfirm() {
+    document.getElementById('reset-area').style.display = 'none';
+    document.getElementById('reset-confirm').style.display = 'flex';
+  }
+
+  function cancelReset() {
+    document.getElementById('reset-confirm').style.display = 'none';
+    document.getElementById('reset-area').style.display = 'flex';
+  }
+
+  function doReset() {
+    resetAllProgress();
+    localStorage.removeItem('qs_sr_state');
+    location.reload();
   }
 
   // Dashboard sidebar uses root-relative paths (no ../ prefix)

@@ -600,3 +600,85 @@ code, .mono {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   Course Complete Banner (dashboard)
+   ============================================================ */
+
+.course-complete {
+  background: rgba(76, 175, 130, 0.06);
+  border: 1px solid var(--success);
+  border-radius: 6px;
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  text-align: center;
+  animation: fadeInUp 300ms ease both;
+}
+
+.course-complete__icon {
+  font-size: 36px;
+  margin-bottom: var(--sp-1);
+}
+
+.course-complete__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: var(--sp-1);
+}
+
+.course-complete__subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   Dashboard Reset Area
+   ============================================================ */
+
+.dashboard__reset {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: flex-end;
+}
+
+.dashboard__reset-label {
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  flex: 1;
+}
+
+.dashboard__reset-confirm {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: flex-end;
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+}
+
+.dashboard__reset-confirm-label {
+  font-size: var(--text-sm);
+  color: var(--error);
+  flex: 1;
+}

@@ -638,6 +638,7 @@
   padding: var(--sp-4);
   text-align: center;
   margin-top: var(--sp-4);
+  animation: fadeInUp 250ms ease both;
 }
 
 .module-complete__icon {
