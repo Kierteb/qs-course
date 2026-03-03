@@ -352,9 +352,9 @@
 
   function applyChunkStates() {
     const chunks = ['01-01', '01-02', '01-03', '01-04', '01-05', '01-06'];
-    let lastComplete = true;
+    let foundFirstIncomplete = false;
 
-    chunks.forEach((chunkId, idx) => {
+    chunks.forEach(chunkId => {
       const el = document.getElementById('chunk-' + chunkId);
       if (!el) return;
       const complete = isChunkComplete(MODULE_ID, chunkId);
@@ -363,48 +363,52 @@
         el.classList.remove('chunk--locked', 'chunk--active');
         el.classList.add('chunk--complete');
         setMarkCompleteButtonDone(chunkId);
-      } else if (lastComplete) {
+        restoreInteractiveState(chunkId);
+      } else if (!foundFirstIncomplete) {
         el.classList.remove('chunk--locked', 'chunk--complete');
         el.classList.add('chunk--active');
-        lastComplete = false;
+        foundFirstIncomplete = true;
       } else {
         el.classList.add('chunk--locked');
         el.classList.remove('chunk--active', 'chunk--complete');
-      }
-
-      if (complete) {
-        // Keep lastComplete true
-      } else {
-        lastComplete = false;
       }
     });
 
     updateModuleProgressDisplay();
 
-    // Re-evaluate lastComplete properly
-    let allPreviousComplete = true;
-    chunks.forEach(chunkId => {
-      const el = document.getElementById('chunk-' + chunkId);
-      if (!el) return;
-      const complete = isChunkComplete(MODULE_ID, chunkId);
-      if (!complete && allPreviousComplete) {
-        // This is the first incomplete chunk — ensure it is active not locked
-        el.classList.remove('chunk--locked');
-        el.classList.add('chunk--active');
-        allPreviousComplete = false;
-      } else if (!complete && !allPreviousComplete) {
-        el.classList.add('chunk--locked');
-        el.classList.remove('chunk--active');
-      }
-      if (complete) {
-        // continue
-      } else {
-        allPreviousComplete = false;
-      }
-    });
-
     if (isModuleComplete(MODULE_ID)) {
       document.getElementById('module-complete').style.display = 'block';
+    }
+  }
+
+  /**
+   * Restore interactive state for chunks that are already complete on page load.
+   * Worked examples: reveal all steps. Knowledge checks: show answered state.
+   */
+  function restoreInteractiveState(chunkId) {
+    // Worked example — reveal all steps so content is visible
+    const stepsContainer = document.getElementById('steps-' + chunkId);
+    if (stepsContainer) {
+      stepsContainer.querySelectorAll('.step').forEach(step => {
+        step.classList.add('step--revealed');
+        const trigger = step.querySelector('.step__trigger');
+        if (trigger) trigger.disabled = true;
+      });
+    }
+
+    // Knowledge check — show a "already completed" note in place of options
+    const kcContainer = document.getElementById('kc-options-' + chunkId);
+    if (kcContainer) {
+      kcContainer.querySelectorAll('.kc-option').forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add('kc-option--dimmed');
+      });
+      const feedbackEl = document.getElementById('kc-feedback-' + chunkId);
+      if (feedbackEl && feedbackEl.innerHTML.trim() === '') {
+        feedbackEl.style.display = 'block';
+        feedbackEl.className = 'kc-feedback kc-feedback--correct';
+        feedbackEl.innerHTML = '<em style="color: var(--text-dim)">This question was answered in a previous session.</em>';
+      }
     }
   }
 
