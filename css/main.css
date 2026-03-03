@@ -317,7 +317,6 @@ code, .mono {
 .main {
   grid-area: main;
   margin-top: var(--topbar-height);
-  margin-left: var(--sidebar-width);
   padding: var(--sp-6) var(--sp-6);
   min-height: calc(100vh - var(--topbar-height));
 }
